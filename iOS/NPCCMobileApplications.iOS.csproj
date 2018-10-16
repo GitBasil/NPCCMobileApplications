@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{39A72BBF-59FC-4D1D-85FF-D85D82BA43FB}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>NPCCMobileApplications.iOS</RootNamespace>
+    <AssemblyName>NPCCMobileApplications.iOS</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <IOSDebuggerPort>22237</IOSDebuggerPort>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <IOSDebuggerPort>35881</IOSDebuggerPort>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Essentials">
+      <HintPath>..\packages\Xamarin.Essentials.0.11.0-preview\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXing.Net.Mobile.Core">
+      <HintPath>..\packages\ZXing.Net.Mobile.2.4.1\lib\Xamarin.iOS10\ZXing.Net.Mobile.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.portable">
+      <HintPath>..\packages\ZXing.Net.Mobile.2.4.1\lib\Xamarin.iOS10\zxing.portable.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXingNetMobile">
+      <HintPath>..\packages\ZXing.Net.Mobile.2.4.1\lib\Xamarin.iOS10\ZXingNetMobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.SideMenu">
+      <HintPath>..\packages\Xamarin.SideMenu.1.0\lib\Xamarin.iOS10\Xamarin.SideMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="SVProgressHUD">
+      <HintPath>..\packages\SVProgressHUD.2.2.5\lib\Xamarin.iOS10\SVProgressHUD.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="SampleTableView.cs" />
+    <Compile Include="ViewClasses\CustomOverlayView.cs" />
+    <Compile Include="clsBlueButton.cs" />
+    <Compile Include="clsBlueButton.designer.cs">
+      <DependentUpon>clsBlueButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CommonControllers\LoginViewController.cs" />
+    <Compile Include="Controllers\CommonControllers\LoginViewController.designer.cs">
+      <DependentUpon>LoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CommonControllers\SplashScreenController.cs" />
+    <Compile Include="Controllers\CommonControllers\SplashScreenController.designer.cs">
+      <DependentUpon>SplashScreenController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CommonControllers\HomeController.cs" />
+    <Compile Include="Controllers\CommonControllers\HomeController.designer.cs">
+      <DependentUpon>HomeController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CommonControllers\SideMenuController.cs" />
+    <Compile Include="Controllers\CommonControllers\SideMenuController.designer.cs">
+      <DependentUpon>SideMenuController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\UtilityControllers\GenerateBarcodeController.cs" />
+    <Compile Include="Controllers\UtilityControllers\GenerateBarcodeController.designer.cs">
+      <DependentUpon>GenerateBarcodeController.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon120x120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon120x120_1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon180x180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon20x20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon29x29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon40x40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon58x58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon60x60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon80x80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon87x87.png" />
+    <ImageAsset Include="Assets.xcassets\LoginBackground.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LoginBackground.imageset\npcc-Login-Background 2.jpg" />
+    <ImageAsset Include="Assets.xcassets\LoginBackground.imageset\npcc-Login-Background 3.jpg" />
+    <ImageAsset Include="Assets.xcassets\LoginBackground.imageset\npcc-Login-Background.jpg" />
+    <ImageAsset Include="Assets.xcassets\SplashScreenBackground.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\SplashScreenBackground.imageset\npcc-splash-screen 2.jpg" />
+    <ImageAsset Include="Assets.xcassets\SplashScreenBackground.imageset\npcc-splash-screen 3.jpg" />
+    <ImageAsset Include="Assets.xcassets\SplashScreenBackground.imageset\npcc-splash-screen.jpg" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\stars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Storyboard\CommonStoryboard\LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="Storyboard\CommonStoryboard\Main.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NPCCMobileApplications\NPCCMobileApplications.Library.csproj">
+      <Project>{AE02501A-17F2-4E58-82DC-B6B53909C979}</Project>
+      <Name>NPCCMobileApplications.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\UtilityControllers\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>

@@ -8,14 +8,14 @@
     <OutputType>Library</OutputType>
     <RootNamespace>NPCCMobileApplications.Droid</RootNamespace>
     <AssemblyName>NPCCMobileApplications.Droid</AssemblyName>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -146,7 +146,6 @@
     <AndroidResource Include="Resources\menu\activity_main_drawer.xml" />
     <AndroidResource Include="Resources\menu\activity_main_drawer1.xml" />
     <AndroidResource Include="Resources\menu\main.xml" />
-    <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\values\drawables.xml" />
     <AndroidResource Include="Resources\drawable\ic_menu_white_24dp.png" />

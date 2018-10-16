@@ -5,4 +5,10 @@
     <color name="darkBlue">#1d70b7</color>
     <color name="colorSecondary">#daebf9</color>
     <color name="white">#ffffff</color>
+    
+    
+    
+    <color name="colorPrimary">#938268</color>
+    <color name="colorPrimaryDark">#494131</color>
+    <color name="colorAccent">#314941</color>
 </resources>

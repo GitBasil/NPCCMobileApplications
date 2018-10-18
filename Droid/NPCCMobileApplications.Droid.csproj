@@ -140,7 +140,7 @@
     <AndroidResource Include="Resources\drawable\npccLoginBackground.jpg" />
     <AndroidResource Include="Resources\drawable\npccSplashScreen.jpg" />
     <AndroidResource Include="Resources\drawable\splash_screen.xml" />
-    <AndroidResource Include="Resources\values\Color.xml" />
+    <AndroidResource Include="Resources\values\color.xml" />
     <AndroidResource Include="Resources\values\Styles.xml" />
     <AndroidResource Include="Resources\layout\LoginLayout.axml" />
     <AndroidResource Include="Resources\layout\Home.axml" />
@@ -156,6 +156,7 @@
     <AndroidResource Include="Resources\drawable\npccbackground.png" />
     <AndroidResource Include="Resources\drawable\wlogo.png" />
     <AndroidResource Include="Resources\drawable\wslogo.png" />
+    <AndroidResource Include="Resources\drawable\bg.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

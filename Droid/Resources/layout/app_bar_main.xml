@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="32dp"
             android:background="@android:color/transparent"
             app:popupTheme="@style/AppTheme.PopupOverlay">
             <RelativeLayout
@@ -25,8 +25,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/menu"
                         android:layout_gravity="center"/>
@@ -38,10 +38,11 @@
                 </FrameLayout>
                 <ImageView
                     android:layout_width="fill_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="right"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
+                   android:paddingTop="7dp"
                     android:src="@drawable/wlogo"
                     android:id="@+id/imageView2" />
             </RelativeLayout>

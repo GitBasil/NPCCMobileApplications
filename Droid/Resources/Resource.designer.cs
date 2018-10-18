@@ -4316,6 +4316,9 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0a00f8
 			public const int TextAppearance_Widget_AppCompat_Toolbar_Title = 2131362040;
 			
+			// aapt resource value: 0x7f0a018a
+			public const int TextLabel = 2131362186;
+			
 			// aapt resource value: 0x7f0a00f9
 			public const int Theme_AppCompat = 2131362041;
 			

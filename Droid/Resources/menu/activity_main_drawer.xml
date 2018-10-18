@@ -1,45 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<group android:checkableBehavior="single">
-		<item
-			android:id="@+id/nav_camera"
-			android:icon="@drawable/ic_menu_camera"
-			android:title="Camera" />
-		<item
-			android:id="@+id/nav_gallery"
-			android:icon="@drawable/ic_menu_gallery"
-			android:title="Gallery" />
-		<item
-			android:id="@+id/nav_slideshow"
-			android:icon="@drawable/ic_menu_slideshow"
-			android:title="Slideshow" />
-		<item
-			android:id="@+id/nav_manage"
-			android:icon="@drawable/ic_menu_manage"
-			android:title="Tools" />
-	</group>
+	<item android:title="PAPERLESS">
+    <menu>
+        <group android:checkableBehavior="single">
 
-	<item android:title="Communicate">
-		<menu>
-			<item
-				android:id="@+id/nav_share"
-				android:icon="@drawable/ic_menu_share"
-				android:title="Share" />
-			<item
-				android:id="@+id/nav_send"
-				android:icon="@drawable/ic_menu_send"
-				android:title="Send" />
-		</menu>
-	</item>
-    
-    <item android:title="Communicate">
-        <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/challengeZone"
+                android:checked="false"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Logout" />
-        </menu>
-    </item>
+                android:title="Home Work" />
+
+            <item
+                android:id="@+id/interviewSchedule"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Interview Schedule" />
+            <item
+                android:id="@+id/mockTestSchedule"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_share"
+                android:title="MockTest Schedule" />
+            <item
+                android:id="@+id/classSchdule"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Class Schedule" />
+
+        </group>
+
+    </menu>
+</item>
+
+
+<item android:title="PROFILE">
+    <menu>
+        <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/profile"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_share"
+                android:title="My Profile" />
+            <item
+                android:id="@+id/calender"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="My Calender" />
+            <item
+                android:id="@+id/settings"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Settings" />
+
+            <item
+                android:id="@+id/logout"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Log Out" />
+        </group>
+    </menu>
+</item>
+
+
+<item android:title="HELPDESK">
+
+    <menu>
+
+        <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/helpDesk"
+            android:checked="false"
+            android:icon="@drawable/ic_menu_send"
+            android:title="HelpDesk "></item>
+
+        </group>
+    </menu>
+</item>
     
 </menu>

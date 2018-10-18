@@ -7,6 +7,7 @@ using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
+using Xamarin.Essentials;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -73,34 +74,15 @@ namespace NPCCMobileApplications.Droid
         {
             // Handle navigation view item clicks here.
             int id = item.ItemId;
-            var text = "";
-            if (id == Resource.Id.nav_camera)
-            {
-                text = "camera";
-            }
-            else if (id == Resource.Id.nav_gallery)
-            {
-                text = "gallery";
-            }
-            else if (id == Resource.Id.nav_slideshow)
-            {
-                text = "slideshow";
-            }
-            else if (id == Resource.Id.nav_manage)
-            {
-                text = "tools";
-            }
-            else if (id == Resource.Id.nav_share)
-            {
-                text = "share";
-            }
-            else if (id == Resource.Id.nav_send)
-            {
-                text = "send";
+            switch(id){
+                case Resource.Id.logout:
+                    SecureStorage.Remove("oauth_token");
+                    StartActivity(typeof(LoginActivity));
+                    Finish();
+                    return true;
             }
 
-
-            Toast.MakeText(this, "You have chosen " + text, ToastLength.Long).Show();
+            Toast.MakeText(this, "You have chosen ", ToastLength.Long).Show();
 
             var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             drawer.CloseDrawer(GravityCompat.Start);

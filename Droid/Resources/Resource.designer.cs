@@ -2558,6 +2558,9 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f080063
 			public const int buttonPanel = 2131230819;
 			
+			// aapt resource value: 0x7f0800c0
+			public const int calender = 2131230912;
+			
 			// aapt resource value: 0x7f0800a9
 			public const int cancel_action = 2131230889;
 			
@@ -2570,11 +2573,17 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f080047
 			public const int center_vertical = 2131230791;
 			
+			// aapt resource value: 0x7f0800bb
+			public const int challengeZone = 2131230907;
+			
 			// aapt resource value: 0x7f080073
 			public const int checkbox = 2131230835;
 			
 			// aapt resource value: 0x7f0800b1
 			public const int chronometer = 2131230897;
+			
+			// aapt resource value: 0x7f0800be
+			public const int classSchdule = 2131230910;
 			
 			// aapt resource value: 0x7f08004e
 			public const int clip_horizontal = 2131230798;
@@ -2675,6 +2684,9 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f08000a
 			public const int ghost_view = 2131230730;
 			
+			// aapt resource value: 0x7f0800c3
+			public const int helpDesk = 2131230915;
+			
 			// aapt resource value: 0x7f080005
 			public const int home = 2131230725;
 			
@@ -2702,6 +2714,9 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0800b2
 			public const int info = 2131230898;
 			
+			// aapt resource value: 0x7f0800bc
+			public const int interviewSchedule = 2131230908;
+			
 			// aapt resource value: 0x7f080059
 			public const int italic = 2131230809;
 			
@@ -2726,6 +2741,9 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;
 			
+			// aapt resource value: 0x7f0800c2
+			public const int logout = 2131230914;
+			
 			// aapt resource value: 0x7f0800ba
 			public const int masked = 2131230906;
 			
@@ -2744,26 +2762,11 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f080053
 			public const int mini = 2131230803;
 			
+			// aapt resource value: 0x7f0800bd
+			public const int mockTestSchedule = 2131230909;
+			
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
-			
-			// aapt resource value: 0x7f0800bb
-			public const int nav_camera = 2131230907;
-			
-			// aapt resource value: 0x7f0800bc
-			public const int nav_gallery = 2131230908;
-			
-			// aapt resource value: 0x7f0800be
-			public const int nav_manage = 2131230910;
-			
-			// aapt resource value: 0x7f0800c0
-			public const int nav_send = 2131230912;
-			
-			// aapt resource value: 0x7f0800bf
-			public const int nav_share = 2131230911;
-			
-			// aapt resource value: 0x7f0800bd
-			public const int nav_slideshow = 2131230909;
 			
 			// aapt resource value: 0x7f08009f
 			public const int nav_view = 2131230879;
@@ -2800,6 +2803,9 @@ namespace NPCCMobileApplications.Droid
 			
 			// aapt resource value: 0x7f08004d
 			public const int pin = 2131230797;
+			
+			// aapt resource value: 0x7f0800bf
+			public const int profile = 2131230911;
 			
 			// aapt resource value: 0x7f080006
 			public const int progress_circular = 2131230726;
@@ -2878,6 +2884,9 @@ namespace NPCCMobileApplications.Droid
 			
 			// aapt resource value: 0x7f08008a
 			public const int select_dialog_listview = 2131230858;
+			
+			// aapt resource value: 0x7f0800c1
+			public const int settings = 2131230913;
 			
 			// aapt resource value: 0x7f080074
 			public const int shortcut = 2131230836;

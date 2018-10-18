@@ -8,19 +8,28 @@ using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Xamarin.Essentials;
+using SupportFragment = Android.Support.V4.App.Fragment;
+using System.Collections.Generic;
 
 namespace NPCCMobileApplications.Droid
 {
     [Activity(Theme = "@style/AppTheme.NoActionBar")]
     public class HomeActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
+        private FrameLayout mFragmentContainer;
+        private SupportFragment mCurrentFragment;
+        private Stack<SupportFragment> mStackFragments;
+        private DrawerLayout drawer;
+        private Fragment1 mFragment1;
+        private Fragment2 mFragment2;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Home);
 
-            var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             var menuLeft = FindViewById<Button>(Resource.Id.menuLeft);
 
             menuLeft.Click += (sender, args) =>
@@ -39,23 +48,74 @@ namespace NPCCMobileApplications.Droid
             var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
             navigationView.SetNavigationItemSelectedListener(this);
+
+
+            //Fragment
+            mFragmentContainer = FindViewById<FrameLayout>(Resource.Id.fragmentContainer);
+            setFragments();
+        }
+
+        void setFragments()
+        {
+            mFragment1 = new Fragment1();
+            mFragment2 = new Fragment2();
+
+            mStackFragments = new Stack<SupportFragment>();
+
+            var trans = SupportFragmentManager.BeginTransaction();
+
+            trans.Add(Resource.Id.fragmentContainer, mFragment2, "Fragment2");
+            trans.Hide(mFragment2);
+
+            trans.Add(Resource.Id.fragmentContainer, mFragment1, "Fragment1");
+            trans.Commit();
+
+            mCurrentFragment = mFragment1;
+        }
+
+        private void ShowFragment(SupportFragment fragment)
+        {
+            if (fragment.IsVisible)
+            {
+                return;
+            }
+
+            var trans = SupportFragmentManager.BeginTransaction();
+
+            trans.SetCustomAnimations(Resource.Animation.slide_in, Resource.Animation.slide_out, Resource.Animation.slide_in, Resource.Animation.slide_out);
+
+            fragment.View.BringToFront();
+            mCurrentFragment.View.BringToFront();
+
+            trans.Hide(mCurrentFragment);
+            trans.Show(fragment);
+
+            trans.AddToBackStack(null);
+            mStackFragments.Push(mCurrentFragment);
+            trans.Commit();
+
+            mCurrentFragment = fragment;
         }
 
         public override void OnBackPressed()
         {
-            var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
             if (drawer.IsDrawerOpen(GravityCompat.Start))
             {
                 drawer.CloseDrawer(GravityCompat.Start);
             }
-            else if (drawer.IsDrawerOpen(GravityCompat.End))
-            {
-                drawer.CloseDrawer(GravityCompat.End);
-            }
             else
             {
-                base.OnBackPressed();
+
+                if (SupportFragmentManager.BackStackEntryCount > 0)
+                {
+                    SupportFragmentManager.PopBackStack();
+                    mCurrentFragment = mStackFragments.Pop();
+                }
+                else {
+                    base.OnBackPressed();
+                }
             }
         }
 
@@ -80,11 +140,19 @@ namespace NPCCMobileApplications.Droid
                     StartActivity(typeof(LoginActivity));
                     Finish();
                     return true;
+                case Resource.Id.challengeZone:
+                    ShowFragment(mFragment1);
+                    drawer.CloseDrawer(GravityCompat.Start);
+                    return true;
+                case Resource.Id.interviewSchedule:
+                    ShowFragment(mFragment2);
+                    drawer.CloseDrawer(GravityCompat.Start);
+                    return true;
             }
 
             Toast.MakeText(this, "You have chosen ", ToastLength.Long).Show();
 
-            var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+
             drawer.CloseDrawer(GravityCompat.Start);
             return true;
         }

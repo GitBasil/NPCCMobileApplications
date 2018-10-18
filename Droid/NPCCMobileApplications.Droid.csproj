@@ -116,6 +116,8 @@
     <Compile Include="InitialActivity.cs" />
     <Compile Include="LoginActivity.cs" />
     <Compile Include="HomeActivity.cs" />
+    <Compile Include="Fragments\Fragment1.cs" />
+    <Compile Include="Fragments\Fragment2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -157,9 +159,12 @@
     <AndroidResource Include="Resources\drawable\wlogo.png" />
     <AndroidResource Include="Resources\drawable\wslogo.png" />
     <AndroidResource Include="Resources\drawable\bg.png" />
+    <AndroidResource Include="Resources\layout\Fragment1.axml" />
+    <AndroidResource Include="Resources\layout\Fragment2.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
+    <Folder Include="Fragments\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPCCMobileApplications\NPCCMobileApplications.Library.csproj">

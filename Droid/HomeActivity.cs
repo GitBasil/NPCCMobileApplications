@@ -19,18 +19,8 @@ namespace NPCCMobileApplications.Droid
 
             SetContentView(Resource.Layout.Home);
 
-            var fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            fab.Click += (sender, args) =>
-            {
-                Snackbar
-                    .Make((FloatingActionButton)sender, "You have chosen mail option", Snackbar.LengthLong)
-                    .SetAction("Action", view => { })
-                    .Show();
-            };
-
             var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            var menuLeft = FindViewById<ImageButton>(Resource.Id.menuLeft);
-            var menuRight = FindViewById<ImageButton>(Resource.Id.menuRight);
+            var menuLeft = FindViewById<ImageView>(Resource.Id.menuLeft);
 
             menuLeft.Click += (sender, args) =>
             {
@@ -43,23 +33,11 @@ namespace NPCCMobileApplications.Droid
                     drawer.OpenDrawer(GravityCompat.Start);
                 }
             };
-            menuRight.Click += (sender, args) =>
-            {
-                if (drawer.IsDrawerOpen(GravityCompat.End))
-                {
-                    drawer.CloseDrawer(GravityCompat.End);
-                }
-                else
-                {
-                    drawer.OpenDrawer(GravityCompat.End);
-                }
-            };
 
-            var navigationView1 = FindViewById<NavigationView>(Resource.Id.nav_view);
-            var navigationView2 = FindViewById<NavigationView>(Resource.Id.nav_view2);
 
-            navigationView1.SetNavigationItemSelectedListener(this);
-            navigationView2.SetNavigationItemSelectedListener(this);
+            var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+
+            navigationView.SetNavigationItemSelectedListener(this);
         }
 
         public override void OnBackPressed()
@@ -80,12 +58,6 @@ namespace NPCCMobileApplications.Droid
             }
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            MenuInflater.Inflate(Resource.Menu.main, menu);
-            return true;
-        }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
@@ -93,12 +65,6 @@ namespace NPCCMobileApplications.Droid
             // automatically handle clicks on the Home/Up button, so long
             // as you specify a parent activity in AndroidManifest.xml.
             int id = item.ItemId;
-
-            //noinspection SimplifiableIfStatement
-            if (id == Resource.Id.action_settings)
-            {
-                return true;
-            }
 
             return base.OnOptionsItemSelected(item);
         }
@@ -132,24 +98,12 @@ namespace NPCCMobileApplications.Droid
             {
                 text = "send";
             }
-            else if (id == Resource.Id.nav_home)
-            {
-                text = "home";
-            }
-            else if (id == Resource.Id.nav_bar)
-            {
-                text = "bar";
-            }
-            else if (id == Resource.Id.nav_pool)
-            {
-                text = "pool";
-            }
+
 
             Toast.MakeText(this, "You have chosen " + text, ToastLength.Long).Show();
 
             var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             drawer.CloseDrawer(GravityCompat.Start);
-            drawer.CloseDrawer(GravityCompat.End);
             return true;
         }
 

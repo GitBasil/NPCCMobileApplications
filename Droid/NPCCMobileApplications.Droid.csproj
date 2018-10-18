@@ -152,6 +152,10 @@
     <AndroidResource Include="Resources\values\drawables.xml" />
     <AndroidResource Include="Resources\drawable\ic_menu_white_24dp.png" />
     <AndroidResource Include="Resources\drawable\side_nav_bar.xml" />
+    <AndroidResource Include="Resources\drawable\menu.png" />
+    <AndroidResource Include="Resources\drawable\npccbackground.png" />
+    <AndroidResource Include="Resources\drawable\wlogo.png" />
+    <AndroidResource Include="Resources\drawable\wslogo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

@@ -20,7 +20,7 @@ namespace NPCCMobileApplications.Droid
             SetContentView(Resource.Layout.Home);
 
             var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            var menuLeft = FindViewById<ImageView>(Resource.Id.menuLeft);
+            var menuLeft = FindViewById<Button>(Resource.Id.menuLeft);
 
             menuLeft.Click += (sender, args) =>
             {

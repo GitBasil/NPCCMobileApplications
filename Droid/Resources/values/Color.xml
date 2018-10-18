@@ -2,13 +2,13 @@
 <resources>
     <color name="lightBlue">#aed3f2</color>
     <color name="activeBlue">#2a8add</color>
-    <color name="darkBlue">#1d70b7</color>
+    <color name="darkBlue">#005cb9</color>
     <color name="colorSecondary">#daebf9</color>
     <color name="white">#ffffff</color>
     
     
     
-    <color name="colorPrimary">#1d70b7</color>
-    <color name="colorPrimaryDark">#1d70b7</color>
-    <color name="colorAccent">#1d70b7</color>
+    <color name="colorPrimary">#005cb9</color>
+    <color name="colorPrimaryDark">#005cb9</color>
+    <color name="colorAccent">#2a8add</color>
 </resources>

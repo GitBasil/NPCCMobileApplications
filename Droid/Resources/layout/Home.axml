@@ -19,8 +19,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
         android:background="@drawable/bg"
+        app:itemIconTint="@drawable/side_nav_bar"
+        app:itemTextColor="@drawable/side_nav_bar"
+        app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" >
         <LinearLayout
             android:layout_width="match_parent"

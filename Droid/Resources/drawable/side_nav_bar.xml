@@ -1,9 +1,5 @@
-﻿<shape xmlns:android="http://schemas.android.com/apk/res/android"
-       android:shape="rectangle">
-	<gradient
-		android:angle="135"
-		android:centerColor="#aed3f2"
-		android:endColor="#aed3f2"
-		android:startColor="#2a8add"
-		android:type="linear" />
-</shape>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/Red" android:state_checked="true" />
+    <item android:color="@color/colorPrimary" />
+</selector>

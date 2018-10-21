@@ -7,26 +7,10 @@
         <group android:checkableBehavior="single">
 
             <item
-                android:id="@+id/challengeZone"
-                android:checked="false"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Home Work" />
-
-            <item
-                android:id="@+id/interviewSchedule"
+                android:id="@+id/landing_page"
                 android:checked="false"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Interview Schedule" />
-            <item
-                android:id="@+id/mockTestSchedule"
-                android:checked="false"
-                android:icon="@drawable/ic_menu_share"
-                android:title="MockTest Schedule" />
-            <item
-                android:id="@+id/classSchdule"
-                android:checked="false"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Class Schedule" />
+                android:title="Home" />
 
         </group>
 
@@ -42,11 +26,6 @@
                 android:checked="false"
                 android:icon="@drawable/ic_menu_share"
                 android:title="My Profile" />
-            <item
-                android:id="@+id/calender"
-                android:checked="false"
-                android:icon="@drawable/ic_menu_send"
-                android:title="My Calender" />
             <item
                 android:id="@+id/settings"
                 android:checked="false"

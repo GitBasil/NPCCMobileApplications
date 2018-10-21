@@ -14,9 +14,8 @@ using Android.Widget;
 
 namespace NPCCMobileApplications.Droid
 {
-    public class Fragment1 : Android.Support.V4.App.Fragment
+    public class landing_page : Android.Support.V4.App.Fragment
     {
-        TextView stationName;
         LayoutInflater InflaterMain;
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -26,16 +25,9 @@ namespace NPCCMobileApplications.Droid
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             InflaterMain = inflater;
-            View view = inflater.Inflate(Resource.Layout.Fragment1, container, false);
+            View view = inflater.Inflate(Resource.Layout.landing_page, container, false);
 
-            stationName = view.FindViewById<TextView>(Resource.Id.txtFragment1);
-            setMsg();
             return view;
-        }
-
-        public void setMsg()
-        {
-            stationName.Text = $"Fragment 1 ";
         }
     }
 }

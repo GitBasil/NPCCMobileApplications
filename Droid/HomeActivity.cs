@@ -20,8 +20,8 @@ namespace NPCCMobileApplications.Droid
         private SupportFragment mCurrentFragment;
         private Stack<SupportFragment> mStackFragments;
         private DrawerLayout drawer;
-        private Fragment1 mFragment1;
-        private Fragment2 mFragment2;
+        private landing_page mlanding_page;
+        private contact mcontact;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -45,7 +45,8 @@ namespace NPCCMobileApplications.Droid
             };
 
 
-            var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            navigationView.SetCheckedItem(Resource.Id.landing_page);
 
             navigationView.SetNavigationItemSelectedListener(this);
 
@@ -57,20 +58,21 @@ namespace NPCCMobileApplications.Droid
 
         void setFragments()
         {
-            mFragment1 = new Fragment1();
-            mFragment2 = new Fragment2();
+            mlanding_page = new landing_page();
+            mcontact = new contact();
 
             mStackFragments = new Stack<SupportFragment>();
 
             var trans = SupportFragmentManager.BeginTransaction();
 
-            trans.Add(Resource.Id.fragmentContainer, mFragment2, "Fragment2");
-            trans.Hide(mFragment2);
+            trans.Add(Resource.Id.fragmentContainer, mcontact, "contact");
+            trans.Hide(mcontact);
 
-            trans.Add(Resource.Id.fragmentContainer, mFragment1, "Fragment1");
+            trans.Add(Resource.Id.fragmentContainer, mlanding_page, "landing_page");
             trans.Commit();
 
-            mCurrentFragment = mFragment1;
+            mCurrentFragment = mlanding_page;
+
         }
 
         private void ShowFragment(SupportFragment fragment)
@@ -82,7 +84,7 @@ namespace NPCCMobileApplications.Droid
 
             var trans = SupportFragmentManager.BeginTransaction();
 
-            trans.SetCustomAnimations(Resource.Animation.slide_down,Resource.Animation.slide_up);
+            trans.SetCustomAnimations(Resource.Animation.abc_fade_in,Resource.Animation.abc_fade_out);
 
             fragment.View.BringToFront();
             mCurrentFragment.View.BringToFront();
@@ -140,12 +142,12 @@ namespace NPCCMobileApplications.Droid
                     StartActivity(typeof(LoginActivity));
                     Finish();
                     return true;
-                case Resource.Id.challengeZone:
-                    ShowFragment(mFragment1);
+                case Resource.Id.landing_page:
+                    ShowFragment(mlanding_page);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
-                case Resource.Id.interviewSchedule:
-                    ShowFragment(mFragment2);
+                case Resource.Id.helpDesk:
+                    ShowFragment(mcontact);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
             }

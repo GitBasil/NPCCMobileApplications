@@ -82,7 +82,7 @@ namespace NPCCMobileApplications.Droid
 
             var trans = SupportFragmentManager.BeginTransaction();
 
-            trans.SetCustomAnimations(Resource.Animation.slide_in, Resource.Animation.slide_out, Resource.Animation.slide_in, Resource.Animation.slide_out);
+            trans.SetCustomAnimations(Resource.Animation.slide_down,Resource.Animation.slide_up);
 
             fragment.View.BringToFront();
             mCurrentFragment.View.BringToFront();

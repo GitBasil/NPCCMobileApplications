@@ -21,6 +21,19 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         android:background="@drawable/bg"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:clickable="false"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="140dp"
+                android:layout_height="200dp"
+                android:layout_gravity="right"
+                android:src="@drawable/npccbackground" />
+        </LinearLayout>
+        </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

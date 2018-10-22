@@ -109,6 +109,9 @@
     <Reference Include="Xamarin.Android.Support.Design">
       <HintPath>..\packages\Xamarin.Android.Support.Design.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.Design.dll</HintPath>
     </Reference>
+    <Reference Include="SearchableSpinner.Droid">
+      <HintPath>..\packages\Xamarin.Android.SearchableSpinner.1.0.1\lib\MonoAndroid10\SearchableSpinner.Droid.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />

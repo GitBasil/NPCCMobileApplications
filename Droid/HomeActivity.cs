@@ -20,8 +20,11 @@ namespace NPCCMobileApplications.Droid
         private SupportFragment mCurrentFragment;
         private Stack<SupportFragment> mStackFragments;
         private DrawerLayout drawer;
+
         private landing_page mlanding_page;
         private contact mcontact;
+        private Webview_test mWebview_test;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -60,6 +63,7 @@ namespace NPCCMobileApplications.Droid
         {
             mlanding_page = new landing_page();
             mcontact = new contact();
+            mWebview_test = new Webview_test();
 
             mStackFragments = new Stack<SupportFragment>();
 
@@ -67,6 +71,9 @@ namespace NPCCMobileApplications.Droid
 
             trans.Add(Resource.Id.fragmentContainer, mcontact, "contact");
             trans.Hide(mcontact);
+
+            trans.Add(Resource.Id.fragmentContainer, mWebview_test, "Webview_test");
+            trans.Hide(mWebview_test);
 
             trans.Add(Resource.Id.fragmentContainer, mlanding_page, "landing_page");
             trans.Commit();
@@ -150,6 +157,11 @@ namespace NPCCMobileApplications.Droid
                     ShowFragment(mcontact);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
+                case Resource.Id.Webview_test:
+                    ShowFragment(mWebview_test);
+                    drawer.CloseDrawer(GravityCompat.Start);
+                    return true;
+
             }
 
             Toast.MakeText(this, "You have chosen ", ToastLength.Long).Show();

@@ -112,6 +112,9 @@
     <Reference Include="SearchableSpinner.Droid">
       <HintPath>..\packages\Xamarin.Android.SearchableSpinner.1.0.1\lib\MonoAndroid10\SearchableSpinner.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="PdfViewBinding">
+      <HintPath>..\packages\Xamarin.PdfView.Android.1.0.4\lib\PdfViewBinding.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -121,10 +124,10 @@
     <Compile Include="HomeActivity.cs" />
     <Compile Include="Fragments\contact.cs" />
     <Compile Include="Fragments\landing_page.cs" />
+    <Compile Include="Fragments\webview_test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
-    <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -155,7 +158,6 @@
     <AndroidResource Include="Resources\menu\activity_main_drawer.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\values\drawables.xml" />
-    <AndroidResource Include="Resources\drawable\ic_menu_white_24dp.png" />
     <AndroidResource Include="Resources\drawable\side_nav_bar.xml" />
     <AndroidResource Include="Resources\drawable\menu.png" />
     <AndroidResource Include="Resources\drawable\npccbackground.png" />
@@ -164,6 +166,7 @@
     <AndroidResource Include="Resources\drawable\bg.png" />
     <AndroidResource Include="Resources\layout\contact.axml" />
     <AndroidResource Include="Resources\layout\landing_page.axml" />
+    <AndroidResource Include="Resources\layout\webview_test.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
@@ -174,6 +177,9 @@
       <Project>{AE02501A-17F2-4E58-82DC-B6B53909C979}</Project>
       <Name>NPCCMobileApplications.Library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\sample.pdf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets')" />

@@ -17,14 +17,12 @@ namespace NPCCMobileApplications.Droid
     public class HomeActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         private FrameLayout mFragmentContainer;
-        private SupportFragment mCurrentFragment;
-        private Stack<SupportFragment> mStackFragments;
         private DrawerLayout drawer;
 
         private landing_page mlanding_page;
         private contact mcontact;
         private Webview_test mWebview_test;
-
+        private Pdfview_test mPdfview_test;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -56,76 +54,16 @@ namespace NPCCMobileApplications.Droid
 
             //Fragment
             mFragmentContainer = FindViewById<FrameLayout>(Resource.Id.fragmentContainer);
-            setFragments();
-        }
 
-        void setFragments()
-        {
             mlanding_page = new landing_page();
-            mcontact = new contact();
-            mWebview_test = new Webview_test();
-
-            mStackFragments = new Stack<SupportFragment>();
-
-            var trans = SupportFragmentManager.BeginTransaction();
-
-            trans.Add(Resource.Id.fragmentContainer, mcontact, "contact");
-            trans.Hide(mcontact);
-
-            trans.Add(Resource.Id.fragmentContainer, mWebview_test, "Webview_test");
-            trans.Hide(mWebview_test);
-
-            trans.Add(Resource.Id.fragmentContainer, mlanding_page, "landing_page");
-            trans.Commit();
-
-            mCurrentFragment = mlanding_page;
-
+            ShowFragment(mlanding_page);
         }
 
         private void ShowFragment(SupportFragment fragment)
         {
-            if (fragment.IsVisible)
-            {
-                return;
-            }
-
             var trans = SupportFragmentManager.BeginTransaction();
-
             trans.SetCustomAnimations(Resource.Animation.abc_fade_in,Resource.Animation.abc_fade_out);
-
-            fragment.View.BringToFront();
-            mCurrentFragment.View.BringToFront();
-
-            trans.Hide(mCurrentFragment);
-            trans.Show(fragment);
-
-            trans.AddToBackStack(null);
-            mStackFragments.Push(mCurrentFragment);
-            trans.Commit();
-
-            mCurrentFragment = fragment;
-        }
-
-        public override void OnBackPressed()
-        {
-            drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-
-            if (drawer.IsDrawerOpen(GravityCompat.Start))
-            {
-                drawer.CloseDrawer(GravityCompat.Start);
-            }
-            else
-            {
-
-                if (SupportFragmentManager.BackStackEntryCount > 0)
-                {
-                    SupportFragmentManager.PopBackStack();
-                    mCurrentFragment = mStackFragments.Pop();
-                }
-                else {
-                    base.OnBackPressed();
-                }
-            }
+            trans.Replace(mFragmentContainer.Id, fragment).Commit();
         }
 
 
@@ -150,15 +88,23 @@ namespace NPCCMobileApplications.Droid
                     Finish();
                     return true;
                 case Resource.Id.landing_page:
+                    mlanding_page = new landing_page();
                     ShowFragment(mlanding_page);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
                 case Resource.Id.helpDesk:
+                    mcontact = new contact();
                     ShowFragment(mcontact);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
                 case Resource.Id.Webview_test:
+                    mWebview_test = new Webview_test();
                     ShowFragment(mWebview_test);
+                    drawer.CloseDrawer(GravityCompat.Start);
+                    return true;
+                case Resource.Id.Pdfview_test:
+                    mPdfview_test = new Pdfview_test();
+                    ShowFragment(mPdfview_test);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
 

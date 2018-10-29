@@ -28,7 +28,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <AndroidSupportedAbis>arm64-v8a;armeabi-v7a;x86;x86_64;armeabi</AndroidSupportedAbis>
+    <AndroidSupportedAbis>x86_64;arm64-v8a;x86;armeabi-v7a;armeabi</AndroidSupportedAbis>
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -125,6 +125,7 @@
     <Compile Include="Fragments\contact.cs" />
     <Compile Include="Fragments\landing_page.cs" />
     <Compile Include="Fragments\webview_test.cs" />
+    <Compile Include="Fragments\Pdfview_test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -167,6 +168,7 @@
     <AndroidResource Include="Resources\layout\contact.axml" />
     <AndroidResource Include="Resources\layout\landing_page.axml" />
     <AndroidResource Include="Resources\layout\webview_test.axml" />
+    <AndroidResource Include="Resources\layout\Pdfview_test.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
@@ -180,6 +182,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\sample.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidNativeLibrary Include="libs\arm64-v8a\libvudroid.so" />
+    <AndroidNativeLibrary Include="libs\armeabi\libvudroid.so" />
+    <AndroidNativeLibrary Include="libs\armeabi-v7a\libvudroid.so" />
+    <AndroidNativeLibrary Include="libs\x86\libvudroid.so" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets')" />

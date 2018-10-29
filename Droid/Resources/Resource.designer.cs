@@ -4021,14 +4021,17 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f080035
 			public const int META = 2131230773;
 			
+			// aapt resource value: 0x7f0800c8
+			public const int Pdfview_test = 2131230920;
+			
 			// aapt resource value: 0x7f080036
 			public const int SHIFT = 2131230774;
 			
 			// aapt resource value: 0x7f080037
 			public const int SYM = 2131230775;
 			
-			// aapt resource value: 0x7f0800c6
-			public const int Webview_test = 2131230918;
+			// aapt resource value: 0x7f0800c7
+			public const int Webview_test = 2131230919;
 			
 			// aapt resource value: 0x7f0800b1
 			public const int action0 = 2131230897;
@@ -4249,8 +4252,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f08000a
 			public const int ghost_view = 2131230730;
 			
-			// aapt resource value: 0x7f0800ca
-			public const int helpDesk = 2131230922;
+			// aapt resource value: 0x7f0800cc
+			public const int helpDesk = 2131230924;
 			
 			// aapt resource value: 0x7f080005
 			public const int home = 2131230725;
@@ -4285,8 +4288,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
 			
-			// aapt resource value: 0x7f0800c5
-			public const int landing_page = 2131230917;
+			// aapt resource value: 0x7f0800c6
+			public const int landing_page = 2131230918;
 			
 			// aapt resource value: 0x7f080091
 			public const int largeLabel = 2131230865;
@@ -4306,11 +4309,11 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;
 			
-			// aapt resource value: 0x7f0800c9
-			public const int logout = 2131230921;
+			// aapt resource value: 0x7f0800cb
+			public const int logout = 2131230923;
 			
-			// aapt resource value: 0x7f0800c4
-			public const int masked = 2131230916;
+			// aapt resource value: 0x7f0800c5
+			public const int masked = 2131230917;
 			
 			// aapt resource value: 0x7f0800b4
 			public const int media_actions = 2131230900;
@@ -4318,8 +4321,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f08008c
 			public const int menuLeft = 2131230860;
 			
-			// aapt resource value: 0x7f0800c1
-			public const int message = 2131230913;
+			// aapt resource value: 0x7f0800c2
+			public const int message = 2131230914;
 			
 			// aapt resource value: 0x7f080031
 			public const int middle = 2131230769;
@@ -4363,11 +4366,14 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f08000b
 			public const int parent_matrix = 2131230731;
 			
+			// aapt resource value: 0x7f0800c1
+			public const int pdfview = 2131230913;
+			
 			// aapt resource value: 0x7f08004d
 			public const int pin = 2131230797;
 			
-			// aapt resource value: 0x7f0800c7
-			public const int profile = 2131230919;
+			// aapt resource value: 0x7f0800c9
+			public const int profile = 2131230921;
 			
 			// aapt resource value: 0x7f080006
 			public const int progress_circular = 2131230726;
@@ -4453,8 +4459,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f08008a
 			public const int select_dialog_listview = 2131230858;
 			
-			// aapt resource value: 0x7f0800c8
-			public const int settings = 2131230920;
+			// aapt resource value: 0x7f0800ca
+			public const int settings = 2131230922;
 			
 			// aapt resource value: 0x7f080074
 			public const int shortcut = 2131230836;
@@ -4606,11 +4612,11 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800c3
-			public const int visible = 2131230915;
+			// aapt resource value: 0x7f0800c4
+			public const int visible = 2131230916;
 			
-			// aapt resource value: 0x7f0800c2
-			public const int webView = 2131230914;
+			// aapt resource value: 0x7f0800c3
+			public const int webView = 2131230915;
 			
 			// aapt resource value: 0x7f08003c
 			public const int withText = 2131230780;
@@ -4873,22 +4879,25 @@ namespace NPCCMobileApplications.Droid
 			public const int notification_template_part_time = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int select_dialog_item_material = 2130968642;
+			public const int Pdfview_test = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int select_dialog_multichoice_material = 2130968643;
+			public const int select_dialog_item_material = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int select_dialog_singlechoice_material = 2130968644;
+			public const int select_dialog_multichoice_material = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int support_simple_spinner_dropdown_item = 2130968645;
+			public const int select_dialog_singlechoice_material = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int tooltip = 2130968646;
+			public const int support_simple_spinner_dropdown_item = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int webview_test = 2130968647;
+			public const int tooltip = 2130968647;
+			
+			// aapt resource value: 0x7f040048
+			public const int webview_test = 2130968648;
 			
 			static Layout()
 			{

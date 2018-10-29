@@ -14,6 +14,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Com.Joanzapata.Pdfview;
+using Dmax.Dialog;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -22,9 +23,39 @@ namespace NPCCMobileApplications.Droid
         LayoutInflater InflaterMain;
         View view;
         PDFView pdfView;
+        AlertDialog dialog;
+
+        DocBroadcastReceiver receiver;
+        private static Pdfview_test ins;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            receiver = new DocBroadcastReceiver();
+            ins = this;
+        }
+
+        public static Pdfview_test getInstace()
+        {
+            return ins;
+        }
+
+        public void ShowPDFDoc(String path)
+        {
+            ins.Activity.RunOnUiThread(() => {
+                Java.IO.File filePath = new Java.IO.File(path);
+                // Check whether the file is exist in the download directory 
+                if (filePath.Exists())
+                {
+                    pdfView.FromFile(filePath).Load();
+                }
+                else
+                {
+                    // throw exception if the file is not found in the appropriate directory 
+                    throw new FileNotFoundException("File not found" + filePath.AbsolutePath.ToString());
+                }
+            });
+            dialog.Dismiss();
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -33,42 +64,42 @@ namespace NPCCMobileApplications.Droid
             view = inflater.Inflate(Resource.Layout.Pdfview_test, container, false);
             pdfView = view.FindViewById<PDFView>(Resource.Id.pdfview);
 
-            pdfView.FromFile(ReadPdfStreamFromExternalStorage("P&ID-SFNY-STP-18-VER-00001.pdf", "https://edms.npcc.ae/NDMS/PublicDocuPreview.aspx?ORIG=P&ID-SFNY-STP-18-VER-00001.pdf&DocuVersID=5057633&SID=O")).Load();
+            Intent downloadIntent = new Intent(this.Activity, typeof(LongRunningThread));
+
+            downloadIntent.PutExtra("file_to_download", "https://edms.npcc.ae/NDMS/PublicDocuPreview.aspx?ORIG=P&ID-SFNY-STP-18-VER-00001.pdf&DocuVersID=5057633&SID=O");
+
+            dialog = new SpotsDialog(ins.Context, Resource.Style.CustomDialog);
+            dialog.SetMessage("Downloading PDF...");
+            dialog.SetCancelable(false);
+            dialog.Show();
+
+            this.Activity.StartService(downloadIntent);
 
             return view;
         }
 
-        private string SavePdf(string filename, string link) 
+        public override void OnResume()
         {
-            string documentPath = Path.Combine((Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads)).Path, filename);
-
-            using (WebClient client = new WebClient())
-            {
-                client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
-                client.DownloadFile(link, documentPath);
-            }
-
-            return documentPath;
-
+            base.OnResume();
+            this.Activity.RegisterReceiver(receiver, new IntentFilter("PDFDownloading"));
         }
 
-        private Java.IO.File ReadPdfStreamFromExternalStorage(string filename, string link)
+        public override void OnPause()
         {
-            //Get the path of external storage directory. Here we used download directory to read PDF document 
-            String path = SavePdf(filename,link);
-            //Read the specific PDF document from the download directory 
-            Java.IO.File filePath = new Java.IO.File(path);
-            // Check whether the file is exist in the download directory 
-            if (filePath.Exists())
-            {
-                return filePath;
-            }
-            else
-            {
-                // throw exception if the file is not found in the appropriate directory 
-                throw new FileNotFoundException("File not found" + filePath.AbsolutePath.ToString());
-            }
+            base.OnPause();
+            this.Activity.UnregisterReceiver(receiver);
         }
 
+    }
+
+    [BroadcastReceiver(Enabled = true)]
+    [IntentFilter(new[] { "PDFDownloading" })]
+    public class DocBroadcastReceiver : BroadcastReceiver
+    {
+        public override void OnReceive(Context context, Intent intent)
+        {
+            string file_to_view = intent.GetStringExtra("file_to_view");
+            Pdfview_test.getInstace().ShowPDFDoc(file_to_view);
+        }
     }
 }

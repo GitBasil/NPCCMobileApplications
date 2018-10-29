@@ -126,6 +126,7 @@
     <Compile Include="Fragments\landing_page.cs" />
     <Compile Include="Fragments\webview_test.cs" />
     <Compile Include="Fragments\Pdfview_test.cs" />
+    <Compile Include="class\LongRunningThread.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -173,6 +174,7 @@
   <ItemGroup>
     <Folder Include="Resources\layout\" />
     <Folder Include="Fragments\" />
+    <Folder Include="class\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPCCMobileApplications\NPCCMobileApplications.Library.csproj">

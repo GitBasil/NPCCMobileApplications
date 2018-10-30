@@ -126,7 +126,7 @@
     <Compile Include="Fragments\landing_page.cs" />
     <Compile Include="Fragments\webview_test.cs" />
     <Compile Include="Fragments\Pdfview_test.cs" />
-    <Compile Include="class\LongRunningThread.cs" />
+    <Compile Include="class\PDFLongRunningThread.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -170,6 +170,7 @@
     <AndroidResource Include="Resources\layout\landing_page.axml" />
     <AndroidResource Include="Resources\layout\webview_test.axml" />
     <AndroidResource Include="Resources\layout\Pdfview_test.axml" />
+    <AndroidResource Include="Resources\drawable\blueprogress.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

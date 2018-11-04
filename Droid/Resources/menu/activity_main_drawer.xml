@@ -23,6 +23,24 @@
                 android:checked="false"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Pdfview Test" />
+                
+                 <item
+                android:id="@+id/tabview_test"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="tabview Test" />
+                
+                <item
+                android:id="@+id/QrCode_test"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Qr Code Test" />
+                
+                  <item
+                android:id="@+id/QrCodeScan_test"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Qr Code Scan Test" />
 
         </group>
 

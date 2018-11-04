@@ -23,6 +23,11 @@ namespace NPCCMobileApplications.Droid
         private contact mcontact;
         private Webview_test mWebview_test;
         private Pdfview_test mPdfview_test;
+        private tabview_test mtabview_test;
+        private QrCode_test mQrCode_test;
+        private QrCodeScan_test mQrCodeScan_test;
+
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -105,6 +110,21 @@ namespace NPCCMobileApplications.Droid
                 case Resource.Id.Pdfview_test:
                     mPdfview_test = new Pdfview_test();
                     ShowFragment(mPdfview_test);
+                    drawer.CloseDrawer(GravityCompat.Start);
+                    return true;
+                case Resource.Id.tabview_test:
+                    mtabview_test = new tabview_test();
+                    ShowFragment(mtabview_test);
+                    drawer.CloseDrawer(GravityCompat.Start);
+                    return true;
+                case Resource.Id.QrCode_test:
+                    mQrCode_test = new QrCode_test();
+                    ShowFragment(mQrCode_test);
+                    drawer.CloseDrawer(GravityCompat.Start);
+                    return true;
+                case Resource.Id.QrCodeScan_test:
+                    mQrCodeScan_test = new QrCodeScan_test();
+                    ShowFragment(mQrCodeScan_test);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
 

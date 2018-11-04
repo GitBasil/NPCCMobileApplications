@@ -32,7 +32,7 @@ namespace NPCCMobileApplications.Droid
 
             Webview.SetWebViewClient(new ExtendWebviewClient());
 
-            Webview.LoadUrl("http://www.npcc.ae");
+            Webview.LoadUrl("http://npcc.ae");
 
             WebSettings webSettings = Webview.Settings;
             webSettings.JavaScriptEnabled = true;

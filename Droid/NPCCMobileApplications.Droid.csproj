@@ -142,6 +142,7 @@
     <Compile Include="Fragments\tabview_test.cs" />
     <Compile Include="Fragments\QrCode_test.cs" />
     <Compile Include="Fragments\QrCodeScan_test.cs" />
+    <Compile Include="class\ViewPagerAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

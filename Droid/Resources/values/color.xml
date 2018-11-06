@@ -6,7 +6,7 @@
     <color name="Red">#cd1c28</color>
     <color name="colorSecondary">#daebf9</color>
     <color name="white">#ffffff</color>
-    
+    <color name="bgColor">#efefef</color>
     
     
     <color name="colorPrimary">#005cb9</color>

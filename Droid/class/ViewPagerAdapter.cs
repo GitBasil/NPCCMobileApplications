@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Android.Support.V4.App;
+using Android.Views;
 using Java.Lang;
 
 namespace NPCCMobileApplications.Droid
 {
-    public class ViewPagerAdapter : FragmentPagerAdapter
+    public class ViewPagerAdapter : FragmentStatePagerAdapter
     {
         private readonly List<Android.Support.V4.App.Fragment> FragmentsList = new List<Android.Support.V4.App.Fragment>();
         private readonly List<Java.Lang.ICharSequence> FragmentListTitles = new List<Java.Lang.ICharSequence>();

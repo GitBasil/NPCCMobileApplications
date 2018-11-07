@@ -39,6 +39,43 @@ namespace NPCCMobileApplications.Droid
 
             return view;
         }
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            destroyWebView();
+        }
+
+        public void destroyWebView()
+        {
+
+            // Make sure you remove the WebView from its parent view before doing anything.
+            Webview.RemoveAllViews();
+
+            Webview.ClearHistory();
+
+            // NOTE: clears RAM cache, if you pass true, it will also clear the disk cache.
+            // Probably not a great idea to pass true if you have other WebViews still alive.
+            Webview.ClearCache(true);
+
+            // Loading a blank page is optional, but will ensure that the WebView isn't doing anything when you destroy it.
+            Webview.LoadUrl("about:blank");
+
+            Webview.OnPause();
+            Webview.RemoveAllViews();
+            Webview.DestroyDrawingCache();
+
+            // NOTE: This pauses JavaScript execution for ALL WebViews, 
+            // do not use if you have other WebViews still alive. 
+            // If you create another WebView after calling this, 
+            // make sure to call mWebView.resumeTimers().
+            Webview.PauseTimers();
+
+            // NOTE: This can occasionally cause a segfault below API 17 (4.2)
+            Webview.Destroy();
+
+            // Null out the reference so that you don't end up re-using it.
+            Webview = null;
+        }
     }
 
     internal class ExtendWebviewClient : WebViewClient

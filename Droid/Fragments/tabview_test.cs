@@ -24,7 +24,7 @@ namespace NPCCMobileApplications.Droid
 
         private TabLayout tabLayout;
         private ViewPager viewPager;
-
+        private ViewPagerAdapter adapter;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -38,15 +38,26 @@ namespace NPCCMobileApplications.Droid
 
             tabLayout = view.FindViewById<TabLayout>(Resource.Id.tabLayout_id);
             viewPager = view.FindViewById<ViewPager>(Resource.Id.viewPager_id);
+            return view;
+        }
 
-            ViewPagerAdapter adapter = new ViewPagerAdapter(this.Activity.SupportFragmentManager);
+        public override void OnStart()
+        {
+            base.OnStart();
+            adapter = new ViewPagerAdapter(this.Activity.SupportFragmentManager);
             adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
             adapter.AddFragment(new contact(), new Java.Lang.String("contact"));
             adapter.AddFragment(new Webview_test(), new Java.Lang.String("Webview_test"));
 
             viewPager.Adapter = adapter;
             tabLayout.SetupWithViewPager(viewPager);
-            return view;
+            Console.WriteLine("####################OnStart####################");
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            Console.WriteLine("####################OnDestroy####################");
         }
     }
 }

@@ -127,6 +127,10 @@
     <Reference Include="ZXingNetMobile">
       <HintPath>..\packages\ZXing.Net.Mobile.2.4.1\lib\MonoAndroid71\ZXingNetMobile.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Calligraphy">
+      <HintPath>..\packages\CallygraphyXamarin.2.3.0\lib\MonoAndroid\Calligraphy.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -143,6 +147,7 @@
     <Compile Include="Fragments\QrCode_test.cs" />
     <Compile Include="Fragments\QrCodeScan_test.cs" />
     <Compile Include="class\ViewPagerAdapter.cs" />
+    <Compile Include="class\App.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -195,6 +200,7 @@
     <Folder Include="Resources\layout\" />
     <Folder Include="Fragments\" />
     <Folder Include="class\" />
+    <Folder Include="Assets\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPCCMobileApplications\NPCCMobileApplications.Library.csproj">
@@ -204,6 +210,8 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\sample.pdf" />
+    <AndroidAsset Include="Assets\fonts\npcc_font.ttf" />
+    <AndroidAsset Include="Assets\fonts\IndieFlower.ttf" />
   </ItemGroup>
   <ItemGroup>
     <AndroidNativeLibrary Include="libs\arm64-v8a\libvudroid.so" />

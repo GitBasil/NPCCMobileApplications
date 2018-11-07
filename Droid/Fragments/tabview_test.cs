@@ -6,6 +6,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
@@ -38,26 +39,24 @@ namespace NPCCMobileApplications.Droid
 
             tabLayout = view.FindViewById<TabLayout>(Resource.Id.tabLayout_id);
             viewPager = view.FindViewById<ViewPager>(Resource.Id.viewPager_id);
-            return view;
-        }
 
-        public override void OnStart()
-        {
-            base.OnStart();
             adapter = new ViewPagerAdapter(this.Activity.SupportFragmentManager);
             adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
             adapter.AddFragment(new contact(), new Java.Lang.String("contact"));
+            adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
+            adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
+            adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
+            adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
+            adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
             adapter.AddFragment(new Webview_test(), new Java.Lang.String("Webview_test"));
 
             viewPager.Adapter = adapter;
             tabLayout.SetupWithViewPager(viewPager);
-            Console.WriteLine("####################OnStart####################");
+            common_functions.npcc_apply_font(view.FindViewById<TabLayout>(Resource.Id.tabLayout_id));
+            return view;
         }
 
-        public override void OnDestroy()
-        {
-            base.OnDestroy();
-            Console.WriteLine("####################OnDestroy####################");
-        }
+
     }
+
 }

@@ -148,6 +148,7 @@
     <Compile Include="Fragments\QrCodeScan_test.cs" />
     <Compile Include="class\ViewPagerAdapter.cs" />
     <Compile Include="class\App.cs" />
+    <Compile Include="class\common_functions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -195,6 +196,8 @@
     <AndroidResource Include="Resources\layout\tabview_test.axml" />
     <AndroidResource Include="Resources\layout\QrCode_test.axml" />
     <AndroidResource Include="Resources\layout\QrCodeScan_test.axml" />
+    <AndroidResource Include="Resources\drawable\tab_color_selector.xml" />
+    <AndroidResource Include="Resources\drawable\custom_background_bar.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

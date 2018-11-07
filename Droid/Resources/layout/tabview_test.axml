@@ -14,10 +14,11 @@
         app:tabGravity="fill"
         app:tabMode="scrollable"
         android:id="@+id/tabLayout_id"
-        app:tabTextColor="@color/colorAccent"
-        app:tabIndicatorColor="@color/colorAccent"
-        app:tabSelectedTextColor="@color/Red"
-        android:background="@color/bgColor"/>
+        app:tabTextColor="@color/bgColor"
+        app:tabIndicatorColor="@color/Red"
+        app:tabIndicatorHeight="3dp"
+        app:tabSelectedTextColor="@color/white"
+        app:tabBackground="@drawable/tab_color_selector"/>
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"

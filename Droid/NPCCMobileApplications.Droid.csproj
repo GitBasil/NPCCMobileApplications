@@ -131,6 +131,8 @@
     <Reference Include="Calligraphy">
       <HintPath>..\packages\CallygraphyXamarin.2.3.0\lib\MonoAndroid\Calligraphy.dll</HintPath>
     </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -149,6 +151,9 @@
     <Compile Include="class\ViewPagerAdapter.cs" />
     <Compile Include="class\App.cs" />
     <Compile Include="class\common_functions.cs" />
+    <Compile Include="Fragments\CustomView\CustomListView.cs" />
+    <Compile Include="Fragments\CustomView\CustomViewAdapter.cs" />
+    <Compile Include="Fragments\CustomView\lsCustoms.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -198,12 +203,15 @@
     <AndroidResource Include="Resources\layout\QrCodeScan_test.axml" />
     <AndroidResource Include="Resources\drawable\tab_color_selector.xml" />
     <AndroidResource Include="Resources\drawable\custom_background_bar.xml" />
+    <AndroidResource Include="Resources\layout\CustomListView.axml" />
+    <AndroidResource Include="Resources\layout\CustomListItem.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
     <Folder Include="Fragments\" />
     <Folder Include="class\" />
     <Folder Include="Assets\fonts\" />
+    <Folder Include="Fragments\CustomView\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPCCMobileApplications\NPCCMobileApplications.Library.csproj">

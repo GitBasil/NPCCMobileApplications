@@ -41,12 +41,12 @@ namespace NPCCMobileApplications.Droid
             viewPager = view.FindViewById<ViewPager>(Resource.Id.viewPager_id);
 
             adapter = new ViewPagerAdapter(this.Activity.SupportFragmentManager);
-            adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
+            adapter.AddFragment(new CustomListView(), new Java.Lang.String("CustomListView"));
             adapter.AddFragment(new contact(), new Java.Lang.String("contact"));
             adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
+            adapter.AddFragment(new CustomListView(), new Java.Lang.String("CustomListView"));
             adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
-            adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
-            adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
+            adapter.AddFragment(new CustomListView(), new Java.Lang.String("CustomListView"));
             adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
             adapter.AddFragment(new Webview_test(), new Java.Lang.String("Webview_test"));
 

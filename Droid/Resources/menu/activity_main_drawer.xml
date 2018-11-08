@@ -41,7 +41,12 @@
                 android:checked="false"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Qr Code Scan Test" />
-
+                
+                <item
+                android:id="@+id/customListView_test"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Custom List View Test" />
         </group>
 
     </menu>

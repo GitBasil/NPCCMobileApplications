@@ -26,7 +26,7 @@ namespace NPCCMobileApplications.Droid
         private tabview_test mtabview_test;
         private QrCode_test mQrCode_test;
         private QrCodeScan_test mQrCodeScan_test;
-
+        private CustomListView mCustomListView;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -125,6 +125,11 @@ namespace NPCCMobileApplications.Droid
                 case Resource.Id.QrCodeScan_test:
                     mQrCodeScan_test = new QrCodeScan_test();
                     ShowFragment(mQrCodeScan_test);
+                    drawer.CloseDrawer(GravityCompat.Start);
+                    return true;
+                case Resource.Id.customListView_test:
+                    mCustomListView = new CustomListView();
+                    ShowFragment(mCustomListView);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
 

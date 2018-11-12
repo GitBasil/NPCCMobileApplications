@@ -27,6 +27,7 @@ namespace NPCCMobileApplications.Droid
         private QrCode_test mQrCode_test;
         private QrCodeScan_test mQrCodeScan_test;
         private CustomListView mCustomListView;
+        private text_recognition mtext_recognition;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -130,6 +131,11 @@ namespace NPCCMobileApplications.Droid
                 case Resource.Id.customListView_test:
                     mCustomListView = new CustomListView();
                     ShowFragment(mCustomListView);
+                    drawer.CloseDrawer(GravityCompat.Start);
+                    return true;
+                case Resource.Id.text_recognition:
+                    mtext_recognition = new text_recognition();
+                    ShowFragment(mtext_recognition);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
 

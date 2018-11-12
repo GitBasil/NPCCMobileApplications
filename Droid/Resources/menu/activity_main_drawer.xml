@@ -47,6 +47,12 @@
                 android:checked="false"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Custom List View Test" />
+                
+                <item
+                android:id="@+id/text_recognition"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Text Recognition by Camera" />
         </group>
 
     </menu>

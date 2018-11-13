@@ -9,9 +9,11 @@ using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V4.Widget;
+using Android.Support.V7.App;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -20,6 +22,8 @@ namespace NPCCMobileApplications.Droid
         LayoutInflater InflaterMain;
         SwipeRefreshLayout _swipeRefresh;
         ListView _lvw;
+        FrameLayout mFragmentContainer;
+        AppCompatActivity act;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,11 +35,14 @@ namespace NPCCMobileApplications.Droid
             InflaterMain = inflater;
             View view = inflater.Inflate(Resource.Layout.CustomListView, container, false);
 
+            mFragmentContainer = this.Activity.FindViewById<FrameLayout>(Resource.Id.fragmentContainer);
+            act = (AppCompatActivity)this.Activity;
+
             _swipeRefresh = view.FindViewById<SwipeRefreshLayout>(Resource.Id.swiperefresh);
             _lvw = view.FindViewById<ListView>(Resource.Id.customListView);
             _swipeRefresh.Refresh += _swipeRefresh_Refresh;
 
-            _lvw.ItemSelected += Lvw_ItemSelected;
+            _lvw.ItemClick += _lvw_ItemClick;
 
             first_fill();
 
@@ -47,15 +54,12 @@ namespace NPCCMobileApplications.Droid
             fill_list();
         }
 
-    
-
-        void Lvw_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        void _lvw_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var SelObjId = e.Position;
-            //You will create a function to return the selected itms and you will pass his details to the next page (details page)
-            //Intent IntVal = new Intent(this, typeof(DisplayIntentValueActivity));
-            //IntVal.PutExtra("intVal", "Hello I'm coming from main page!!");
-            //StartActivity(IntVal);
+
+            showData mshowData = new showData();
+            common_functions.npcc_show_fragment(act, mFragmentContainer, mshowData);
         }
 
         void first_fill(){

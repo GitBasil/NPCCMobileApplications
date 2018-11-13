@@ -2,8 +2,10 @@
 using System;
 using Android.App;
 using Android.Graphics;
+using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -27,6 +29,14 @@ namespace NPCCMobileApplications.Droid
 
             }
 
+        }
+
+
+        public static void npcc_show_fragment(AppCompatActivity act, FrameLayout mFragmentContainer, SupportFragment fragment)
+        {
+            var trans = act.SupportFragmentManager.BeginTransaction();
+            trans.SetCustomAnimations(Resource.Animation.abc_fade_in, Resource.Animation.abc_fade_out);
+            trans.Replace(mFragmentContainer.Id, fragment).Commit();
         }
     }
 }

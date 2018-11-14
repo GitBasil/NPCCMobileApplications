@@ -42,6 +42,7 @@ namespace NPCCMobileApplications.Droid
 
             adapter = new ViewPagerAdapter(this.Activity.SupportFragmentManager);
             adapter.AddFragment(new CustomListView(), new Java.Lang.String("CustomListView"));
+            adapter.AddFragment(GenericCustomList.NewInstance(Resource.Layout.QrCode_test), new Java.Lang.String("landing_page"));
             adapter.AddFragment(new contact(), new Java.Lang.String("contact"));
             adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
             adapter.AddFragment(new CustomListView(), new Java.Lang.String("CustomListView"));

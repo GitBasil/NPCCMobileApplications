@@ -170,6 +170,7 @@
     <Compile Include="Fragments\CustomView\lsCustoms.cs" />
     <Compile Include="Fragments\text_recognition.cs" />
     <Compile Include="Fragments\showData.cs" />
+    <Compile Include="Fragments\GenericCustomList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

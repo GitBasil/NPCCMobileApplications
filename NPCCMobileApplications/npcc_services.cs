@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Android.Graphics;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 using static NPCCMobileApplications.Library.npcc_types;
@@ -12,7 +13,8 @@ namespace NPCCMobileApplications.Library
 {
     public static class npcc_services
     {
-        public static async Task<WebServiceResault> inf_CallWebServiceAsync<WebServiceResault, post_data>(inf_method method, string url, post_data data = default(post_data)){
+        public static async Task<WebServiceResault> inf_CallWebServiceAsync<WebServiceResault, post_data>(inf_method method, string url, post_data data = default(post_data))
+        {
 
             var oauthToken = await SecureStorage.GetAsync("oauth_token");
 
@@ -27,15 +29,15 @@ namespace NPCCMobileApplications.Library
                 {
                     case inf_method.Get:
                         response = await client.GetAsync(client.BaseAddress);
-                       
-                        break;   
+
+                        break;
                     case inf_method.Post:
                         string json = JsonConvert.SerializeObject(data);
                         var content = new StringContent(json, Encoding.UTF8, "application/json");
                         response = await client.PostAsync(client.BaseAddress, content);
 
 
-                        break;            
+                        break;
                     default:
                         response = null;
                         break;
@@ -57,10 +59,11 @@ namespace NPCCMobileApplications.Library
             }
         }
 
-        public static async void inf_mobile_exception_managerAsync(string ex){
+        public static async void inf_mobile_exception_managerAsync(string ex)
+        {
             var oauthToken = await SecureStorage.GetAsync("oauth_token");
-            if(oauthToken != null)
-            await inf_CallWebServiceAsync<bool,bool>(inf_method.Get, "https://webapps.npcc.ae/ApplicationWebServices/api/Common/MobileExceptionManager?exception=" + ex);
+            if (oauthToken != null)
+                await inf_CallWebServiceAsync<bool, bool>(inf_method.Get, "https://webapps.npcc.ae/ApplicationWebServices/api/Common/MobileExceptionManager?exception=" + ex);
         }
 
         static readonly string[] SizeSuffixes =
@@ -105,5 +108,28 @@ namespace NPCCMobileApplications.Library
                 return long.Parse(fileSize);
             }
         }
+
+        public static Bitmap GetImageBitmapFromUrl(string url)
+        {
+            Bitmap imageBitmap = null;
+
+            using (var webClient = new WebClient())
+            {
+                webClient.DownloadDataCompleted += WebClient_DownloadDataCompleted;
+                webClient.DownloadDataAsync(new Uri(url));
+            }
+
+            return imageBitmap;
+        }
+
+        static void WebClient_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
+        {
+            Bitmap imageBitmap = null;
+            if (e.Result != null && e.Result.Length > 0)
+            {
+                imageBitmap = BitmapFactory.DecodeByteArray(e.Result, 0, e.Result.Length);
+            }
+        }
+
     }
 }

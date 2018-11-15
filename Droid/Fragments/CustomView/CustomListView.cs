@@ -13,13 +13,13 @@ using Android.Support.V7.App;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using NPCCMobileApplications.Library;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace NPCCMobileApplications.Droid
 {
-    public class CustomListView : Android.Support.V4.App.Fragment
+    public class CustomListView : SupportFragment
     {
-        LayoutInflater InflaterMain;
         SwipeRefreshLayout _swipeRefresh;
         ListView _lvw;
         FrameLayout mFragmentContainer;
@@ -32,7 +32,6 @@ namespace NPCCMobileApplications.Droid
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            InflaterMain = inflater;
             View view = inflater.Inflate(Resource.Layout.CustomListView, container, false);
 
             mFragmentContainer = this.Activity.FindViewById<FrameLayout>(Resource.Id.fragmentContainer);
@@ -63,33 +62,17 @@ namespace NPCCMobileApplications.Droid
         }
 
         void first_fill(){
-            List<lsCustoms> lstObjs = new List<lsCustoms>
-            {
-                new lsCustoms{propVal1="Nepal", propVal2="Nepal",propVal3=Resource.Drawable.icon },
-                new lsCustoms{propVal1="Solomon Sea", propVal2="May 7, 2015",propVal3=Resource.Drawable.icon }
-            };
-
-
-
+            DBRepository dBRepository = new DBRepository();
+            dBRepository.CreateTable();
+            dBRepository.RefreshSpool();
+            List<Spools> lstObjs = dBRepository.GetSpools();
             _lvw.Adapter = new CustomViewAdapter(this.Activity, lstObjs);
         }
 
         void fill_list()
         {
-            List<lsCustoms> lstObjs = new List<lsCustoms>
-            {
-                new lsCustoms{propVal1="Nepal", propVal2="Nepal",propVal3=Resource.Drawable.icon },
-                new lsCustoms{propVal1="Solomon Sea", propVal2="May 7, 2015",propVal3=Resource.Drawable.icon },
-                new lsCustoms{propVal1="Papua New Guinea", propVal2="May 5, 2015",propVal3=Resource.Drawable.icon },
-                new lsCustoms{propVal1="Nepal", propVal2="April 25, 2015",propVal3=Resource.Drawable.icon },
-                new lsCustoms{propVal1="Taiwan", propVal2="April 20, 2015",propVal3=Resource.Drawable.icon },
-                new lsCustoms{propVal1="Papua New Guinea", propVal2="March 29, 2015",propVal3=Resource.Drawable.icon },
-                new lsCustoms{propVal1="Flores Sea", propVal2="Febdruary 27, 2015",propVal3=Resource.Drawable.icon },
-                new lsCustoms{propVal1="Mid-Atlantic range", propVal2="Febdruary 13, 2015",propVal3=Resource.Drawable.icon }
-            };
-
-
-
+            DBRepository dBRepository = new DBRepository();
+            List<Spools> lstObjs = dBRepository.GetSpools();
             _lvw.Adapter = new CustomViewAdapter(this.Activity, lstObjs);
             _swipeRefresh.Refreshing = false;
         }

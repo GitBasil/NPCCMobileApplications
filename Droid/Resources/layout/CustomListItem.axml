@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/relativeLayout1">
-        <ImageView
+        <FFImageLoading.Views.ImageViewAsync
             android:src="@android:drawable/ic_menu_gallery"
             android:layout_width="80.0dp"
             android:layout_height="80.0dp"

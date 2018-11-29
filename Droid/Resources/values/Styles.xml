@@ -3,12 +3,15 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/darkBlue</item>
         <item name="colorPrimaryDark">@color/darkBlue</item>
-        <item name="colorAccent">@color/lightBlue</item>
+        <item name="colorAccent">@color/darkBlue</item>
         <item name="drawerArrowStyle">@style/MyDrawerArrowStyle</item>
         <item name="android:textColorPrimary">@color/darkBlue</item>
-        <item name="android:textColorSecondary">@color/lightBlue</item>
+        <item name="android:textColorSecondary">@color/darkBlue</item>
          <item name="actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>
         <item name="android:actionMenuTextColor">@color/darkBlue</item>
+        <item name="android:statusBarColor">@color/darkBlue</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="ThemeLogin" parent="Theme.AppCompat.Light.NoActionBar">
@@ -41,14 +44,6 @@
         <item name="DialogSpotCount">4</item>
     </style>
     
-    
-    
-    
-    
-    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

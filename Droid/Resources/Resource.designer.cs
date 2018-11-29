@@ -5431,14 +5431,11 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0c0181
 			public const int AppTheme = 2131493249;
 			
-			// aapt resource value: 0x7f0c0188
-			public const int AppTheme_AppBarOverlay = 2131493256;
-			
 			// aapt resource value: 0x7f0c0187
-			public const int AppTheme_NoActionBar = 2131493255;
+			public const int AppTheme_AppBarOverlay = 2131493255;
 			
-			// aapt resource value: 0x7f0c0189
-			public const int AppTheme_PopupOverlay = 2131493257;
+			// aapt resource value: 0x7f0c0188
+			public const int AppTheme_PopupOverlay = 2131493256;
 			
 			// aapt resource value: 0x7f0c009a
 			public const int Base_AlertDialog_AppCompat = 2131493018;
@@ -6232,8 +6229,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0c00f8
 			public const int TextAppearance_Widget_AppCompat_Toolbar_Title = 2131493112;
 			
-			// aapt resource value: 0x7f0c018a
-			public const int TextLabel = 2131493258;
+			// aapt resource value: 0x7f0c0189
+			public const int TextLabel = 2131493257;
 			
 			// aapt resource value: 0x7f0c00f9
 			public const int Theme_AppCompat = 2131493113;

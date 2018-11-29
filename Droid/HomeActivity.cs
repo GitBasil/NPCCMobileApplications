@@ -13,7 +13,7 @@ using Calligraphy;
 
 namespace NPCCMobileApplications.Droid
 {
-    [Activity(Theme = "@style/AppTheme.NoActionBar")]
+    [Activity(Theme = "@style/AppTheme")]
     public class HomeActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         private FrameLayout mFragmentContainer;
@@ -33,6 +33,8 @@ namespace NPCCMobileApplications.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
 
             SetContentView(Resource.Layout.Home);
 

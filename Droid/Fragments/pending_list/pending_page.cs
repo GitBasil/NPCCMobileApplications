@@ -66,7 +66,7 @@ namespace NPCCMobileApplications.Droid
             dBRepository.CreateTable();
             await dBRepository.RefreshSpoolAsync();
             List<Spools> lstObjs = dBRepository.GetSpools();
-            _lvw.Adapter = new CustomViewAdapter(this.Activity, lstObjs);
+            _lvw.Adapter = new PendingListAdapter(this.Activity, lstObjs);
             _swipeRefresh.Refreshing = false;
         }
 
@@ -75,7 +75,7 @@ namespace NPCCMobileApplications.Droid
             DBRepository dBRepository = new DBRepository();
             List<Spools> lstObjs = dBRepository.GetSpools();
             if (lstObjs.Count == 0)  refresh_listAsync();
-            _lvw.Adapter = new CustomViewAdapter(this.Activity, lstObjs);
+            _lvw.Adapter = new PendingListAdapter(this.Activity, lstObjs);
             _swipeRefresh.Refreshing = false;
         }
     }

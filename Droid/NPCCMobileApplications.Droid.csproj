@@ -179,7 +179,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InitialActivity.cs" />
     <Compile Include="LoginActivity.cs" />
-    <Compile Include="HomeActivity.cs" />
     <Compile Include="Fragments\contact.cs" />
     <Compile Include="Fragments\landing_page.cs" />
     <Compile Include="Fragments\webview_test.cs" />
@@ -198,9 +197,9 @@
     <Compile Include="Fragments\showData.cs" />
     <Compile Include="Fragments\GenericCustomList.cs" />
     <Compile Include="Fragments\assignment_page.cs" />
-    <Compile Include="Fragments\pending_list\lsPendingList.cs" />
     <Compile Include="Fragments\pending_list\PendingListAdapter.cs" />
     <Compile Include="Fragments\pending_list\pending_page.cs" />
+    <Compile Include="HomeActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

@@ -1,7 +1,19 @@
-﻿using Android.OS;
-using Android.Views;
+﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
+using Android.Graphics;
+using Android.OS;
+using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
+using Android.Util;
+using Android.Views;
+using Android.Widget;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace NPCCMobileApplications.Droid
@@ -32,10 +44,11 @@ namespace NPCCMobileApplications.Droid
 
             adapter = new ViewPagerAdapter(this.Activity.SupportFragmentManager);
             adapter.AddFragment(new pending_page(), new Java.Lang.String("pending"));
-            adapter.AddFragment(new QrCode_test(), new Java.Lang.String("partial completed"));
-            adapter.AddFragment(new Webview_test(), new Java.Lang.String("completed"));
+            adapter.AddFragment(new pending_page(), new Java.Lang.String("partial completed"));
+            adapter.AddFragment(new pending_page(), new Java.Lang.String("completed"));
 
             viewPager.Adapter = adapter;
+            viewPager.OffscreenPageLimit = 3;
             tabLayout.SetupWithViewPager(viewPager);
             common_functions.npcc_apply_font(view.FindViewById<TabLayout>(Resource.Id.tabLayout_id));
             return view;

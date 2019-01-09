@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -43,14 +43,13 @@ namespace NPCCMobileApplications.Droid
 
             _lvw.ItemClick += _lvw_ItemClick;
 
-            first_fill();
+            fill_listAsync();
 
             return view;
         }
-
         void _swipeRefresh_Refresh(object sender, EventArgs e)
         {
-            fill_list();
+            refresh_listAsync();
         }
 
         void _lvw_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -61,19 +60,21 @@ namespace NPCCMobileApplications.Droid
             common_functions.npcc_show_fragment(act, mFragmentContainer, mshowData);
         }
 
-        void first_fill()
+        async void refresh_listAsync()
         {
             DBRepository dBRepository = new DBRepository();
             dBRepository.CreateTable();
-            dBRepository.RefreshSpoolAsync();
+            await dBRepository.RefreshSpoolAsync();
             List<Spools> lstObjs = dBRepository.GetSpools();
             _lvw.Adapter = new CustomViewAdapter(this.Activity, lstObjs);
+            _swipeRefresh.Refreshing = false;
         }
 
-        void fill_list()
+         void fill_listAsync()
         {
             DBRepository dBRepository = new DBRepository();
             List<Spools> lstObjs = dBRepository.GetSpools();
+            if (lstObjs.Count == 0)  refresh_listAsync();
             _lvw.Adapter = new CustomViewAdapter(this.Activity, lstObjs);
             _swipeRefresh.Refreshing = false;
         }

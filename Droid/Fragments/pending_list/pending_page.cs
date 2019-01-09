@@ -18,7 +18,7 @@ using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace NPCCMobileApplications.Droid
 {
-    public class CustomListView : SupportFragment
+    public class pending_page : SupportFragment
     {
         SwipeRefreshLayout _swipeRefresh;
         ListView _lvw;
@@ -61,7 +61,8 @@ namespace NPCCMobileApplications.Droid
             common_functions.npcc_show_fragment(act, mFragmentContainer, mshowData);
         }
 
-        void first_fill(){
+        void first_fill()
+        {
             DBRepository dBRepository = new DBRepository();
             dBRepository.CreateTable();
             dBRepository.RefreshSpoolAsync();

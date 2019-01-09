@@ -5,7 +5,13 @@
 	<item android:title="PAPERLESS">
     <menu>
         <group android:checkableBehavior="single">
-
+                
+            <item
+                android:id="@+id/assignment_page"
+                android:checked="false"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Assignment" />
+                
             <item
                 android:id="@+id/landing_page"
                 android:checked="false"

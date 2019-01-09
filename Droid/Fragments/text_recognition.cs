@@ -99,25 +99,27 @@ namespace NPCCMobileApplications.Droid
             string found="";
             if(items.Size() != 0){
                 textView.Post(() => {
-                    //StringBuilder strBuilder = new StringBuilder();
+                    StringBuilder strBuilder = new StringBuilder();
                 for (int i = 0; i < items.Size();i++)
                     {
-                        Match match = regex.Match(((TextBlock)items.ValueAt(i)).Value);
-                        if (match.Success)
-                        {
-                            found = match.Value;
-                            cameraSource.Stop();
-                        } 
-                        //else
+                        //Match match = regex.Match(((TextBlock)items.ValueAt(i)).Value);
+                        //if (match.Success)
                         //{
-                        //    strBuilder.Append(((TextBlock)items.ValueAt(i)).Value);
-                        //    strBuilder.Append("\n");
-                        //}
+                        //    found = match.Value;
+                        //    cameraSource.Stop();
+                        //} 
+                        ////else
+                        ////{
+                        ////    strBuilder.Append(((TextBlock)items.ValueAt(i)).Value);
+                        ////    strBuilder.Append("\n");
+                        ////}
+                         strBuilder.Append(((TextBlock)items.ValueAt(i)).Value);
+                         strBuilder.Append("\n");
                     }
-                    if(found != "")
-                        textView.Text = found;
+                    //if (found != "")
+                        //textView.Text = found;
 
-                    //textView.Text = strBuilder.ToString();
+                    textView.Text = strBuilder.ToString();
                     //else
                 });
             }

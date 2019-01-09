@@ -10,12 +10,12 @@ using NPCCMobileApplications.Library;
 
 namespace NPCCMobileApplications.Droid
 {
-    public class CustomViewAdapter : BaseAdapter<Spools>
+    public class PendingListAdapter : BaseAdapter<Spools>
     {
         List<Spools> _lstObjs;
         Activity _context;
 
-        public CustomViewAdapter(Activity currentContext, List<Spools> lstObj) : base()
+        public PendingListAdapter(Activity currentContext, List<Spools> lstObj) : base()
         {
             this._lstObjs = lstObj;
             this._context = currentContext;

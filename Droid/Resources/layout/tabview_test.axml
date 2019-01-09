@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabGravity="fill"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
         android:id="@+id/tabLayout_id"
         app:tabTextColor="@color/bgColor"
         app:tabIndicatorColor="@color/Red"

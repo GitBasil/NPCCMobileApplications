@@ -19,6 +19,7 @@ namespace NPCCMobileApplications.Droid
         private FrameLayout mFragmentContainer;
         private DrawerLayout drawer;
 
+        private assignment_page mAssignment_page;
         private landing_page mlanding_page;
         private contact mcontact;
         private Webview_test mWebview_test;
@@ -55,7 +56,7 @@ namespace NPCCMobileApplications.Droid
 
 
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
-            navigationView.SetCheckedItem(Resource.Id.landing_page);
+            navigationView.SetCheckedItem(Resource.Id.assignment_page);
 
             navigationView.SetNavigationItemSelectedListener(this);
 
@@ -63,8 +64,8 @@ namespace NPCCMobileApplications.Droid
             //Fragment
             mFragmentContainer = FindViewById<FrameLayout>(Resource.Id.fragmentContainer);
 
-            mlanding_page = new landing_page();
-            ShowFragment(mlanding_page);
+            mAssignment_page = new assignment_page();
+            ShowFragment(mAssignment_page);
         }
 
         private void ShowFragment(SupportFragment fragment)
@@ -95,46 +96,61 @@ namespace NPCCMobileApplications.Droid
                     StartActivity(typeof(LoginActivity));
                     Finish();
                     return true;
+
+                case Resource.Id.assignment_page:
+                    mAssignment_page = new assignment_page();
+                    ShowFragment(mAssignment_page);
+                    drawer.CloseDrawer(GravityCompat.Start);
+                    return true;
+
                 case Resource.Id.landing_page:
                     mlanding_page = new landing_page();
                     ShowFragment(mlanding_page);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
+
                 case Resource.Id.helpDesk:
                     mcontact = new contact();
                     ShowFragment(mcontact);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
+
                 case Resource.Id.Webview_test:
                     mWebview_test = new Webview_test();
                     ShowFragment(mWebview_test);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
+
                 case Resource.Id.Pdfview_test:
                     mPdfview_test = new Pdfview_test();
                     ShowFragment(mPdfview_test);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
+
                 case Resource.Id.tabview_test:
                     mtabview_test = new tabview_test();
                     ShowFragment(mtabview_test);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
+
                 case Resource.Id.QrCode_test:
                     mQrCode_test = new QrCode_test();
                     ShowFragment(mQrCode_test);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
+
                 case Resource.Id.QrCodeScan_test:
                     mQrCodeScan_test = new QrCodeScan_test();
                     ShowFragment(mQrCodeScan_test);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
+
                 case Resource.Id.customListView_test:
                     mCustomListView = new CustomListView();
                     ShowFragment(mCustomListView);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
+
                 case Resource.Id.text_recognition:
                     mtext_recognition = new text_recognition();
                     ShowFragment(mtext_recognition);

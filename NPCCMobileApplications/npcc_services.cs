@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Android.Graphics;
 using Newtonsoft.Json;
@@ -17,9 +19,9 @@ namespace NPCCMobileApplications.Library
         {
 
             var oauthToken = await SecureStorage.GetAsync("oauth_token");
-
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", oauthToken);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
+            Console.WriteLine(client.DefaultRequestHeaders.Authorization);
             client.BaseAddress = new Uri(url);
 
             try
@@ -51,8 +53,6 @@ namespace NPCCMobileApplications.Library
             }
             catch (HttpRequestException e)
             {
-                System.Diagnostics.Debug.WriteLine(e);
-
                 inf_mobile_exception_managerAsync(e.Message);
 
                 return default(WebServiceResault);
@@ -106,28 +106,6 @@ namespace NPCCMobileApplications.Library
             {
                 var fileSize = webResponse.Headers.Get("Content-Length");
                 return long.Parse(fileSize);
-            }
-        }
-
-        public static Bitmap GetImageBitmapFromUrl(string url)
-        {
-            Bitmap imageBitmap = null;
-
-            using (var webClient = new WebClient())
-            {
-                webClient.DownloadDataCompleted += WebClient_DownloadDataCompleted;
-                webClient.DownloadDataAsync(new Uri(url));
-            }
-
-            return imageBitmap;
-        }
-
-        static void WebClient_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
-        {
-            Bitmap imageBitmap = null;
-            if (e.Result != null && e.Result.Length > 0)
-            {
-                imageBitmap = BitmapFactory.DecodeByteArray(e.Result, 0, e.Result.Length);
             }
         }
 

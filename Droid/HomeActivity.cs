@@ -10,6 +10,8 @@ using Xamarin.Essentials;
 using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Content;
 using Calligraphy;
+using FFImageLoading;
+using NPCCMobileApplications.Library;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -34,6 +36,11 @@ namespace NPCCMobileApplications.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration()
+            {
+                HttpClient = npcc_authentication.GetAuthenticatedHttpClientAsync().Result
+            });
 
             Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
 

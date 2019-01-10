@@ -173,6 +173,7 @@
     <Reference Include="Xamarin.Android.Support.Design">
       <HintPath>..\packages\Xamarin.Android.Support.Design.28.0.0\lib\monoandroid81\Xamarin.Android.Support.Design.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -255,6 +256,7 @@
     <AndroidResource Include="Resources\layout\showData.axml" />
     <AndroidResource Include="Resources\drawable\loadingimg.gif" />
     <AndroidResource Include="Resources\drawable\notfound.png" />
+    <AndroidResource Include="Resources\layout\SpoolListItem.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

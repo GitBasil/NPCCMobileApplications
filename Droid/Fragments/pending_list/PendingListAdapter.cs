@@ -35,9 +35,11 @@ namespace NPCCMobileApplications.Droid
             View view = convertView;
             if (view == null)
             {
-                view = _context.LayoutInflater.Inflate(Resource.Layout.CustomListItem, null);
-                view.FindViewById<TextView>(Resource.Id.lblVal1).Text = _lstObjs.ToArray()[position].cSpoolNo;
-                view.FindViewById<TextView>(Resource.Id.lblVal2).Text = _lstObjs.ToArray()[position].cStationName;
+                view = _context.LayoutInflater.Inflate(Resource.Layout.SpoolListItem, null);
+                view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text ="Spool: " + _lstObjs.ToArray()[position].cSpoolNo;
+                view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text ="Project: " +  _lstObjs.ToArray()[position].iProjNo.ToString();
+                view.FindViewById<TextView>(Resource.Id.lblcEngrDrwgCode).Text ="ISO: " +  _lstObjs.ToArray()[position].cEngrDrwgCode;
+                view.FindViewById<TextView>(Resource.Id.lblcNpccDrwgCode).Text ="ISO: " + _lstObjs.ToArray()[position].cNpccDrwgCode;
                 ImageViewAsync imageView = view.FindViewById<ImageViewAsync>(Resource.Id.imgView);
 
                 ImageService.Instance
@@ -48,7 +50,7 @@ namespace NPCCMobileApplications.Droid
                             //.Transform(new GrayscaleTransformation())
                             //.Retry(3, 200)
                             //.DownSample(300, 300)
-                            .Into(imageView);
+                            .IntoAsync(imageView);
             }
 
 

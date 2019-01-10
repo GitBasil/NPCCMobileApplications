@@ -58,7 +58,7 @@ namespace NPCCMobileApplications.Droid
             var SelObjId = e.Position;
 
             showData mshowData = new showData();
-            common_functions.npcc_show_fragment(act, mFragmentContainer, mshowData);
+            common_functions.npcc_show_fragment(act, mFragmentContainer, mshowData, this);
         }
 
         void first_fill(){

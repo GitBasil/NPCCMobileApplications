@@ -52,8 +52,7 @@ namespace NPCCMobileApplications.Droid
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            CustomListView mCustomListView = new CustomListView();
-            common_functions.npcc_show_fragment(act,mFragmentContainer,mCustomListView);
+            act.SupportFragmentManager.PopBackStack();
             return base.OnOptionsItemSelected(item);
         }
 

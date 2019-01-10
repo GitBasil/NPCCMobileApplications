@@ -11,6 +11,7 @@ namespace NPCCMobileApplications.Droid
 {
     public static class common_functions
     {
+        static SupportFragment mCurrentFragment;
         public static void npcc_apply_font(ViewGroup vg)
         {
             Typeface tf = Typeface.CreateFromAsset(Application.Context.Assets, "fonts/npcc_font.ttf");
@@ -32,11 +33,16 @@ namespace NPCCMobileApplications.Droid
         }
 
 
-        public static void npcc_show_fragment(AppCompatActivity act, FrameLayout mFragmentContainer, SupportFragment fragment)
+        public static void npcc_show_fragment(AppCompatActivity act, FrameLayout mFragmentContainer, SupportFragment fragment, SupportFragment oldFragment)
         {
             var trans = act.SupportFragmentManager.BeginTransaction();
             trans.SetCustomAnimations(Resource.Animation.abc_fade_in, Resource.Animation.abc_fade_out);
-            trans.Replace(mFragmentContainer.Id, fragment).Commit();
+            trans.Add(mFragmentContainer.Id, fragment,"ShowData");
+            //fragment.View.BringToFront();
+            trans.Hide(oldFragment);
+            trans.Show(fragment);
+            trans.AddToBackStack(null);
+            trans.Commit();
         }
     }
 }

@@ -21,7 +21,6 @@ namespace NPCCMobileApplications.Library
             var oauthToken = await SecureStorage.GetAsync("oauth_token");
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
-            Console.WriteLine(client.DefaultRequestHeaders.Authorization);
             client.BaseAddress = new Uri(url);
 
             try

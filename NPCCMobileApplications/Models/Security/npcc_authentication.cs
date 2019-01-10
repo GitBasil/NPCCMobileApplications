@@ -38,7 +38,7 @@ namespace NPCCMobileApplications.Library
             return mac;
         }
 
-        public async Task<inf_login_info> Login(string username, string password)
+        public  async Task<inf_login_info> Login(string username, string password)
         {
             if (IsBusy)
                 return null;
@@ -63,6 +63,30 @@ namespace NPCCMobileApplications.Library
             {
                 IsBusy = false;
             }
+        }
+
+        public static async Task<string> getTokenAsync()
+        {
+            var oauthToken = await SecureStorage.GetAsync("oauth_token");
+
+            return oauthToken;
+        }
+
+        //public static async Task<HttpClient> GetAuthenticatedHttpClientAsync()
+        //{
+        //    var oauthToken = await SecureStorage.GetAsync("oauth_token");
+        //    HttpClient client = new HttpClient();
+        //    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
+        //    return client;
+        //}
+
+        public static async Task<HttpClient> GetAuthenticatedHttpClientAsync()
+        {
+            string oauthToken = await SecureStorage.GetAsync("oauth_token");
+            Console.WriteLine(oauthToken);
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.TryAddWithoutValidation("Authentication", "Bearer " + oauthToken);
+            return client;
         }
 
         public async Task<bool> IsAuthenticatedAsync()

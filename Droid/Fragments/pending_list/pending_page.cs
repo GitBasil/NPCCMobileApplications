@@ -73,6 +73,7 @@ namespace NPCCMobileApplications.Droid
          void fill_listAsync()
         {
             DBRepository dBRepository = new DBRepository();
+            dBRepository.CreateTable();
             List<Spools> lstObjs = dBRepository.GetSpools();
             if (lstObjs.Count == 0)  refresh_listAsync();
             _lvw.Adapter = new PendingListAdapter(this.Activity, lstObjs);

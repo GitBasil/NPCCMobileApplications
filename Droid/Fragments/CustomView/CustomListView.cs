@@ -57,7 +57,8 @@ namespace NPCCMobileApplications.Droid
         {
             var SelObjId = e.Position;
 
-            showData mshowData = new showData();
+            Spools selectedSp = (Spools)_lvw.GetItemAtPosition(e.Position);
+            showData mshowData = new showData(selectedSp);
             common_functions.npcc_show_fragment(act, mFragmentContainer, mshowData, this);
         }
 

@@ -8,6 +8,10 @@ using Android.Runtime;
 using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Widget;
 using Android.Graphics;
+using NPCCMobileApplications.Library;
+using FFImageLoading.Views;
+using FFImageLoading;
+using FFImageLoading.Transformations;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -17,11 +21,16 @@ namespace NPCCMobileApplications.Droid
         SupportToolbar mToolbar;
         AppCompatActivity act;
         FrameLayout mFragmentContainer;
-
+        Spools _spl;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             HasOptionsMenu = true;
+        }
+
+        public showData(Spools spl)
+        {
+            _spl = spl;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -40,7 +49,24 @@ namespace NPCCMobileApplications.Droid
             mToolbar.NavigationIcon.SetColorFilter(Color.ParseColor("#FFFFFF"), PorterDuff.Mode.SrcAtop);
 
 
-            return base.OnCreateView(inflater, container, savedInstanceState);
+            view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = "Spool: " + _spl.cSpoolNo;
+            view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text = "Project: " + _spl.iProjNo.ToString();
+            view.FindViewById<TextView>(Resource.Id.lblcEngrDrwgCode).Text = "ISO: " + _spl.cEngrDrwgCode;
+            view.FindViewById<TextView>(Resource.Id.lblcNpccDrwgCode).Text = "ISO: " + _spl.cNpccDrwgCode;
+            ImageViewAsync imageView = view.FindViewById<ImageViewAsync>(Resource.Id.imgView);
+
+            ImageService.Instance
+                        .LoadUrl(_spl.icon)
+                        .LoadingPlaceholder("loadingimg", FFImageLoading.Work.ImageSource.CompiledResource)
+                        .ErrorPlaceholder("notfound", FFImageLoading.Work.ImageSource.CompiledResource)
+                        //.Transform(new CircleTransformation())
+                        //.Transform(new GrayscaleTransformation())
+                        //.Retry(3, 200)
+                        //.DownSample(300, 300)
+                        .IntoAsync(imageView);
+
+
+            return view;
         }
 
 

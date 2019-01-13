@@ -1,9 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
-              android:orientation="vertical" 
-              android:layout_width="match_parent" 
-              android:layout_height="match_parent">
-    <TextView android:id="@+id/sdTextView"
-              android:layout_width="match_parent" 
-              android:layout_height="wrap_content"/>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FFImageLoading.Views.ImageViewAsync
+        android:id="@+id/imgView"
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="match_parent"
+         android:layout_height="238dp"
+        android:padding="7dp"
+        android:scaleType="centerInside"
+        android:layout_marginRight="10dp" />
+    <TextView
+        android:id="@+id/lblcSpoolNo"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:text="lblcSpoolNo"/>
+    <TextView
+        android:id="@+id/lbliProjNo"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:text="lbliProjNo"/>
+    <TextView
+        android:id="@+id/lblcEngrDrwgCode"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+        android:text="lblcEngrDrwgCode"/>
+    <TextView
+        android:id="@+id/lblcNpccDrwgCode"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|bottom"
+         android:text="lblcNpccDrwgCode" />
 </LinearLayout>

@@ -12,6 +12,8 @@ using Android.Content;
 using Calligraphy;
 using FFImageLoading;
 using NPCCMobileApplications.Library;
+using FFImageLoading.Views;
+using FFImageLoading.Transformations;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -62,11 +64,25 @@ namespace NPCCMobileApplications.Droid
             };
 
 
+
+
+
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetCheckedItem(Resource.Id.assignment_page);
 
             navigationView.SetNavigationItemSelectedListener(this);
 
+            navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.lblUsername).Text += "Basil Tariq";
+            ImageViewAsync imageView = navigationView.GetHeaderView(0).FindViewById<ImageViewAsync>(Resource.Id.imgUser);
+            ImageService.Instance
+                        .LoadUrl("https://webapps.npcc.ae/ApplicationWebServices/API/Paperless/SpoolImage")
+                        .LoadingPlaceholder("loadingimg", FFImageLoading.Work.ImageSource.CompiledResource)
+                        .ErrorPlaceholder("notfound", FFImageLoading.Work.ImageSource.CompiledResource)
+                        .Transform(new CircleTransformation())
+                        //.Transform(new GrayscaleTransformation())
+                        //.Retry(3, 200)
+                        //.DownSample(300, 300)
+                        .IntoAsync(imageView); 
 
             //Fragment
             mFragmentContainer = FindViewById<FrameLayout>(Resource.Id.fragmentContainer);

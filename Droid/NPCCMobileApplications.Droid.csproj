@@ -239,7 +239,6 @@
     <AndroidResource Include="Resources\drawable\npccbackground.png" />
     <AndroidResource Include="Resources\drawable\wlogo.png" />
     <AndroidResource Include="Resources\drawable\wslogo.png" />
-    <AndroidResource Include="Resources\drawable\bg.png" />
     <AndroidResource Include="Resources\layout\contact.axml" />
     <AndroidResource Include="Resources\layout\landing_page.axml" />
     <AndroidResource Include="Resources\layout\webview_test.axml" />
@@ -257,6 +256,7 @@
     <AndroidResource Include="Resources\drawable\loadingimg.gif" />
     <AndroidResource Include="Resources\drawable\notfound.png" />
     <AndroidResource Include="Resources\layout\SpoolListItem.axml" />
+    <AndroidResource Include="Resources\drawable\bg.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

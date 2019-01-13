@@ -37,6 +37,7 @@ namespace NPCCMobileApplications.Droid
         {
             var trans = act.SupportFragmentManager.BeginTransaction();
             trans.SetCustomAnimations(Resource.Animation.abc_fade_in, Resource.Animation.abc_fade_out);
+            //trans.Replace(mFragmentContainer.Id, fragment).Commit();
             trans.Add(mFragmentContainer.Id, fragment,"ShowData");
             //fragment.View.BringToFront();
             trans.Hide(oldFragment);

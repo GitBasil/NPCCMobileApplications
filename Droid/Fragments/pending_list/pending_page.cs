@@ -13,6 +13,7 @@ using Android.Support.V7.App;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Java.Interop;
 using NPCCMobileApplications.Library;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
@@ -24,6 +25,7 @@ namespace NPCCMobileApplications.Droid
         ListView _lvw;
         FrameLayout mFragmentContainer;
         AppCompatActivity act;
+        List<Spools> lstObjs;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -58,7 +60,11 @@ namespace NPCCMobileApplications.Droid
         {
             var SelObjId = e.Position;
 
-            showData mshowData = new showData();
+            Spools selectedSp = lstObjs[e.Position];
+
+            showData mshowData = new showData(selectedSp);
+
+
             common_functions.npcc_show_fragment(act, mFragmentContainer, mshowData, this);
         }
 
@@ -90,7 +96,7 @@ namespace NPCCMobileApplications.Droid
             DBRepository dBRepository = new DBRepository();
             dBRepository.CreateTable();
             await dBRepository.RefreshSpoolAsync();
-            List<Spools> lstObjs = dBRepository.GetSpools();
+            lstObjs = dBRepository.GetSpools();
             _lvw.Adapter = new PendingListAdapter(this.Activity, lstObjs);
             _swipeRefresh.Refreshing = false;
         }
@@ -99,7 +105,7 @@ namespace NPCCMobileApplications.Droid
         {
             DBRepository dBRepository = new DBRepository();
             dBRepository.CreateTable();
-            List<Spools> lstObjs = dBRepository.GetSpools();
+            lstObjs = dBRepository.GetSpools();
             if (lstObjs.Count == 0) refresh_listAsync();
             _lvw.Adapter = new PendingListAdapter(this.Activity, lstObjs);
             _swipeRefresh.Refreshing = false;

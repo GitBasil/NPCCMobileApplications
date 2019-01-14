@@ -4,7 +4,6 @@ using Android.App;
 using Android.Views;
 using Android.Widget;
 using FFImageLoading;
-using FFImageLoading.Transformations;
 using FFImageLoading.Views;
 using NPCCMobileApplications.Library;
 
@@ -40,6 +39,8 @@ namespace NPCCMobileApplications.Droid
                 view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text ="Project: " +  _lstObjs.ToArray()[position].iProjNo.ToString();
                 view.FindViewById<TextView>(Resource.Id.lblcEngrDrwgCode).Text ="ISO: " +  _lstObjs.ToArray()[position].cEngrDrwgCode;
                 view.FindViewById<TextView>(Resource.Id.lblcNpccDrwgCode).Text ="ISO: " + _lstObjs.ToArray()[position].cNpccDrwgCode;
+
+
                 ImageViewAsync imageView = view.FindViewById<ImageViewAsync>(Resource.Id.imgView);
 
                 ImageService.Instance
@@ -57,6 +58,7 @@ namespace NPCCMobileApplications.Droid
 
             return view;
         }
+
 
     }
 }

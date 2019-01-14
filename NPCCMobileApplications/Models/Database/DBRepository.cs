@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using SQLite;
+using SQLiteNetExtensions.Extensions;
 using static NPCCMobileApplications.Library.npcc_types;
 
 namespace NPCCMobileApplications.Library
@@ -22,6 +24,8 @@ namespace NPCCMobileApplications.Library
             {
                 var cn = new SQLiteConnection(dbPath);
                 cn.CreateTable<Spools>();
+                cn.CreateTable<SpoolItem>();
+                cn.CreateTable<UserInfo>();
                 return true;
             }
             catch (Exception ex)
@@ -29,6 +33,44 @@ namespace NPCCMobileApplications.Library
                 return false;
             }
         }
+
+        #region UserInfo
+
+        public async Task<bool> RefreshUserInfoAsync()
+        {
+            try
+            {
+                string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/UserImage";
+                UserInfo lstObjs = await npcc_services.inf_CallWebServiceAsync<UserInfo, string>(inf_method.Get, url);
+                var cn = new SQLiteConnection(dbPath);
+                cn.DeleteAll<UserInfo>();
+                cn.Insert(lstObjs);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                npcc_services.inf_mobile_exception_managerAsync(ex.Message);
+                return false;
+            }
+        }
+
+        public UserInfo GetUserInfo()
+        {
+            try
+            {
+                var cn = new SQLiteConnection(dbPath);
+                UserInfo lstObjs = cn.Table<UserInfo>().FirstOrDefault();
+                return lstObjs;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region Spools
 
         public async Task<bool> RefreshSpoolAsync()
         {
@@ -38,7 +80,7 @@ namespace NPCCMobileApplications.Library
                 List<Spools> lstObjs = await npcc_services.inf_CallWebServiceAsync<List<Spools>, string>(inf_method.Get, url);
                 var cn = new SQLiteConnection(dbPath);
                 cn.DeleteAll<Spools>();
-                cn.InsertAll(lstObjs);
+                cn.InsertAllWithChildren(lstObjs);
                 return true;
             }
             catch (Exception ex)
@@ -104,5 +146,8 @@ namespace NPCCMobileApplications.Library
                 return false;
             }
         }
+
+        #endregion
+
     }
 }

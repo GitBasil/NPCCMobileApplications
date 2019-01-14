@@ -1,10 +1,11 @@
 ﻿using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using NPCCMobileApplications.Library;
 
 namespace NPCCMobileApplications.Droid
 {
-    [Activity(MainLauncher = true, Theme = "@style/SplashTheme")]
+    [Activity(MainLauncher = true, Theme = "@style/SplashTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class InitialActivity : Activity
     {
         public npcc_authentication oauth;

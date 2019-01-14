@@ -108,5 +108,14 @@ namespace NPCCMobileApplications.Library
             }
         }
 
+        public static Task<Stream> GetStreamFromImageByte(byte[] imageInBytes)
+        {
+            TaskCompletionSource<Stream> tcs = new TaskCompletionSource<Stream>();
+
+            tcs.TrySetResult(new MemoryStream(imageInBytes));
+
+            return tcs.Task;
+        }
+
     }
 }

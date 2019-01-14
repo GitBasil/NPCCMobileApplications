@@ -6,6 +6,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -17,7 +18,7 @@ using static NPCCMobileApplications.Library.npcc_types;
 
 namespace NPCCMobileApplications.Droid
 {
-    [Activity(Theme = "@style/ThemeLogin")]
+    [Activity(Theme = "@style/ThemeLogin", ScreenOrientation = ScreenOrientation.Portrait)]
     public class LoginActivity : Activity
     {
         Button btnLogin;
@@ -54,8 +55,11 @@ namespace NPCCMobileApplications.Droid
                     await SecureStorage.SetAsync("oauth_token", lg.Token);
                     //We have successfully authenticated a the user,
                     //Now fire our OnLoginSuccess Event.
+                    DBRepository dBRepository = new DBRepository();
+                    dBRepository.CreateTable();
+                    bool b = await dBRepository.RefreshUserInfoAsync();
+
                     StartActivity(typeof(HomeActivity));
-                    npcc_services.inf_mobile_exception_managerAsync("testing");
                     Finish();
                 }
                 else

@@ -14,10 +14,15 @@ using FFImageLoading;
 using NPCCMobileApplications.Library;
 using FFImageLoading.Views;
 using FFImageLoading.Transformations;
+using static NPCCMobileApplications.Library.npcc_types;
+using System.Threading.Tasks;
+using System.IO;
+using System.Threading;
+using Android.Content.PM;
 
 namespace NPCCMobileApplications.Droid
 {
-    [Activity(Theme = "@style/AppTheme")]
+    [Activity(Theme = "@style/AppTheme", ScreenOrientation = ScreenOrientation.Portrait)]
     public class HomeActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         private FrameLayout mFragmentContainer;
@@ -33,16 +38,11 @@ namespace NPCCMobileApplications.Droid
         private QrCodeScan_test mQrCodeScan_test;
         private CustomListView mCustomListView;
         private text_recognition mtext_recognition;
-
+        private UserInfo lstObjs;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration()
-            {
-                HttpClient = npcc_authentication.GetAuthenticatedHttpClientAsync().Result
-            });
 
             Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
 
@@ -63,26 +63,23 @@ namespace NPCCMobileApplications.Droid
                 }
             };
 
-
-
-
-
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetCheckedItem(Resource.Id.assignment_page);
 
             navigationView.SetNavigationItemSelectedListener(this);
 
-            navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.lblUsername).Text += "Basil Tariq";
+
+            DBRepository dBRepository = new DBRepository();
+            lstObjs = dBRepository.GetUserInfo();
+
+            navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.lblUsername).Text += lstObjs.fullname;
             ImageViewAsync imageView = navigationView.GetHeaderView(0).FindViewById<ImageViewAsync>(Resource.Id.imgUser);
             ImageService.Instance
-                        .LoadUrl("https://webapps.npcc.ae/ApplicationWebServices/API/Paperless/SpoolImage")
-                        .LoadingPlaceholder("loadingimg", FFImageLoading.Work.ImageSource.CompiledResource)
-                        .ErrorPlaceholder("notfound", FFImageLoading.Work.ImageSource.CompiledResource)
-                        .Transform(new CircleTransformation())
-                        //.Transform(new GrayscaleTransformation())
-                        //.Retry(3, 200)
-                        //.DownSample(300, 300)
-                        .IntoAsync(imageView); 
+                .LoadStream((token) => { return npcc_services.GetStreamFromImageByte(lstObjs.img); })
+                .LoadingPlaceholder("loadingimg", FFImageLoading.Work.ImageSource.CompiledResource)
+                .ErrorPlaceholder("notfound", FFImageLoading.Work.ImageSource.CompiledResource)
+                .Transform(new CircleTransformation())
+                .IntoAsync(imageView); 
 
             //Fragment
             mFragmentContainer = FindViewById<FrameLayout>(Resource.Id.fragmentContainer);

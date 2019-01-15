@@ -95,7 +95,7 @@ namespace NPCCMobileApplications.Library
             try
             {
                 var cn = new SQLiteConnection(dbPath);
-                var Spools = cn.Table<Spools>().ToList();
+                var Spools = cn.GetAllWithChildren<Spools>();
                 return Spools;
             }
             catch (Exception ex)

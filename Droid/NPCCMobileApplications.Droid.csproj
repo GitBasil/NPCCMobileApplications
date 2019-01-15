@@ -177,6 +177,9 @@
     <Reference Include="SQLiteNetExtensions">
       <HintPath>..\packages\SQLiteNetExtensions.2.1.0\lib\netstandard1.1\SQLiteNetExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.28.0.0\lib\monoandroid81\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -195,15 +198,17 @@
     <Compile Include="class\App.cs" />
     <Compile Include="class\common_functions.cs" />
     <Compile Include="Fragments\CustomView\CustomListView.cs" />
-    <Compile Include="Fragments\CustomView\CustomViewAdapter.cs" />
     <Compile Include="Fragments\CustomView\lsCustoms.cs" />
     <Compile Include="Fragments\text_recognition.cs" />
     <Compile Include="Fragments\showData.cs" />
     <Compile Include="Fragments\GenericCustomList.cs" />
-    <Compile Include="Fragments\assignment_page.cs" />
-    <Compile Include="Fragments\pending_list\PendingListAdapter.cs" />
-    <Compile Include="Fragments\pending_list\pending_page.cs" />
+    <Compile Include="Fragments\assignment\pending_page.cs" />
     <Compile Include="HomeActivity.cs" />
+    <Compile Include="class\adapters\PendingListAdapter.cs" />
+    <Compile Include="class\adapters\CustomViewAdapter.cs" />
+    <Compile Include="Fragments\assignment\assignment_page.cs" />
+    <Compile Include="class\adapters\SpoolItemAdapter.cs" />
+    <Compile Include="class\adapters\SpoolsCardViewAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -260,6 +265,9 @@
     <AndroidResource Include="Resources\drawable\notfound.png" />
     <AndroidResource Include="Resources\layout\SpoolListItem.axml" />
     <AndroidResource Include="Resources\drawable\bg.jpg" />
+    <AndroidResource Include="Resources\layout\SpoolItemView.axml" />
+    <AndroidResource Include="Resources\layout\assignment.axml" />
+    <AndroidResource Include="Resources\layout\spoolcardView.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
@@ -267,7 +275,8 @@
     <Folder Include="class\" />
     <Folder Include="Assets\fonts\" />
     <Folder Include="Fragments\CustomView\" />
-    <Folder Include="Fragments\pending_list\" />
+    <Folder Include="Fragments\assignment\" />
+    <Folder Include="class\adapters\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPCCMobileApplications\NPCCMobileApplications.Library.csproj">
@@ -310,4 +319,5 @@
   <Import Project="..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.28.0.0\build\monoandroid81\Xamarin.Android.Support.Animated.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.28.0.0\build\monoandroid81\Xamarin.Android.Support.Animated.Vector.Drawable.targets')" />
   <Import Project="..\packages\Xamarin.Android.Support.v7.AppCompat.28.0.0\build\monoandroid81\Xamarin.Android.Support.v7.AppCompat.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.AppCompat.28.0.0\build\monoandroid81\Xamarin.Android.Support.v7.AppCompat.targets')" />
   <Import Project="..\packages\Xamarin.Android.Support.Design.28.0.0\build\monoandroid81\Xamarin.Android.Support.Design.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Design.28.0.0\build\monoandroid81\Xamarin.Android.Support.Design.targets')" />
+  <Import Project="..\packages\Xamarin.Android.Support.v7.CardView.28.0.0\build\monoandroid81\Xamarin.Android.Support.v7.CardView.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.CardView.28.0.0\build\monoandroid81\Xamarin.Android.Support.v7.CardView.targets')" />
 </Project>

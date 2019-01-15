@@ -3,25 +3,24 @@ using Android.OS;
 using Android.Views;
 using Android.Support.V7.App;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
-using static Android.Views.View;
-using Android.Runtime;
 using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Widget;
 using Android.Graphics;
 using NPCCMobileApplications.Library;
-using FFImageLoading.Views;
 using FFImageLoading;
-using FFImageLoading.Transformations;
+using FFImageLoading.Views;
 
 namespace NPCCMobileApplications.Droid
 {
-    public class showData : Android.Support.V4.App.Fragment
+    public class showData : SupportFragment
     {
         LayoutInflater InflaterMain;
         SupportToolbar mToolbar;
         AppCompatActivity act;
         FrameLayout mFragmentContainer;
         Spools _spl;
+        ListView SpoolItemListView;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -48,6 +47,8 @@ namespace NPCCMobileApplications.Droid
             act.SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             mToolbar.NavigationIcon.SetColorFilter(Color.ParseColor("#FFFFFF"), PorterDuff.Mode.SrcAtop);
 
+            SpoolItemListView = view.FindViewById<ListView>(Resource.Id.SpoolItemListView);
+            SpoolItemListView.Adapter = new SpoolItemAdapter(this.Activity, _spl.SpoolItem);
 
             view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = "Spool: " + _spl.cSpoolNo;
             view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text = "Project: " + _spl.iProjNo.ToString();

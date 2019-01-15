@@ -63,7 +63,6 @@ namespace NPCCMobileApplications.Library
         public string cMatType { get; set; }
         public string cVocab { get; set; }
         public string cClassCode { get; set; }
-        public string cMatDesc { get; set; }
         public string cColorCode { get; set; }
     }
 

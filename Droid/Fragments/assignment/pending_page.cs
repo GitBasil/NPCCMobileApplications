@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -22,10 +23,11 @@ namespace NPCCMobileApplications.Droid
     public class pending_page : SupportFragment
     {
         SwipeRefreshLayout _swipeRefresh;
-        ListView _lvw;
         FrameLayout mFragmentContainer;
         AppCompatActivity act;
         List<Spools> lstObjs;
+        private RecyclerView rv;
+        private SpoolsCardViewAdapter adapter;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -34,18 +36,17 @@ namespace NPCCMobileApplications.Droid
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View view = inflater.Inflate(Resource.Layout.CustomListView, container, false);
+            View view = inflater.Inflate(Resource.Layout.assignment, container, false);
 
             mFragmentContainer = this.Activity.FindViewById<FrameLayout>(Resource.Id.fragmentContainer);
             act = (AppCompatActivity)this.Activity;
 
             _swipeRefresh = view.FindViewById<SwipeRefreshLayout>(Resource.Id.swiperefresh);
-            _lvw = view.FindViewById<ListView>(Resource.Id.customListView);
+            rv = view.FindViewById<RecyclerView>(Resource.Id.mRecylcerID);
+            rv.SetLayoutManager(new GridLayoutManager(act, 2));
+            rv.SetItemAnimator(new DefaultItemAnimator());
+
             _swipeRefresh.Refresh += _swipeRefresh_Refresh;
-
-            RegisterForContextMenu(_lvw);
-
-            _lvw.ItemClick += _lvw_ItemClick;
 
             fill_listAsync();
 
@@ -56,16 +57,30 @@ namespace NPCCMobileApplications.Droid
             refresh_listAsync();
         }
 
-        void _lvw_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        async void refresh_listAsync()
         {
-            var SelObjId = e.Position;
+            DBRepository dBRepository = new DBRepository();
+            dBRepository.CreateTable();
+            await dBRepository.RefreshSpoolAsync();
+            lstObjs = dBRepository.GetSpools();
 
-            Spools selectedSp = lstObjs[e.Position];
+            adapter = new SpoolsCardViewAdapter(act, this, lstObjs);
+            rv.SetAdapter(adapter);
 
-            showData mshowData = new showData(selectedSp);
+            _swipeRefresh.Refreshing = false;
+        }
 
+        void fill_listAsync()
+        {
+            DBRepository dBRepository = new DBRepository();
+            dBRepository.CreateTable();
+            lstObjs = dBRepository.GetSpools();
+            if (lstObjs.Count == 0) refresh_listAsync();
 
-            common_functions.npcc_show_fragment(act, mFragmentContainer, mshowData, this);
+            adapter = new SpoolsCardViewAdapter(act, this, lstObjs);
+            rv.SetAdapter(adapter);
+
+            _swipeRefresh.Refreshing = false;
         }
 
         public override void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
@@ -89,26 +104,6 @@ namespace NPCCMobileApplications.Droid
 
             Toast.MakeText(Context, string.Format("Selected {0} for item {1}", menuItemName, listItemName), ToastLength.Short).Show();
             return true;
-        }
-
-        async void refresh_listAsync()
-        {
-            DBRepository dBRepository = new DBRepository();
-            dBRepository.CreateTable();
-            await dBRepository.RefreshSpoolAsync();
-            lstObjs = dBRepository.GetSpools();
-            _lvw.Adapter = new PendingListAdapter(this.Activity, lstObjs);
-            _swipeRefresh.Refreshing = false;
-        }
-
-        void fill_listAsync()
-        {
-            DBRepository dBRepository = new DBRepository();
-            dBRepository.CreateTable();
-            lstObjs = dBRepository.GetSpools();
-            if (lstObjs.Count == 0) refresh_listAsync();
-            _lvw.Adapter = new PendingListAdapter(this.Activity, lstObjs);
-            _swipeRefresh.Refreshing = false;
         }
     }
 

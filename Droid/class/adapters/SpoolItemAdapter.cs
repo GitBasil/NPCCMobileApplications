@@ -36,16 +36,18 @@ namespace NPCCMobileApplications.Droid
             if (view == null)
             {
                 view = _context.LayoutInflater.Inflate(Resource.Layout.SpoolItemView, null);
-                view.SetBackgroundColor(Android.Graphics.Color.ParseColor("#" + _lstObjs.ToArray()[position].cColorCode.Split("~")[0]));
+
+                View rectangle_at_the_top = view.FindViewById<View>(Resource.Id.rectangle_at_the_top);
+                rectangle_at_the_top.SetBackgroundColor(Android.Graphics.Color.ParseColor("#" + _lstObjs.ToArray()[position].cColorCode.Split("~")[0]));
 
                 TextView cMatType = view.FindViewById<TextView>(Resource.Id.cMatType);
-                cMatType.Text = "cMatType: " + _lstObjs.ToArray()[position].cMatType;
+                cMatType.Text = "Material: " + _lstObjs.ToArray()[position].cMatType;
 
                 TextView cVocab = view.FindViewById<TextView>(Resource.Id.cVocab);
-                cVocab.Text = "cVocab: " + _lstObjs.ToArray()[position].cVocab;
+                cVocab.Text = "Vocab: " + _lstObjs.ToArray()[position].cVocab;
 
                 TextView cClassCode = view.FindViewById<TextView>(Resource.Id.cClassCode);
-                cClassCode.Text = "cClassCode: " + _lstObjs.ToArray()[position].cClassCode;
+                cClassCode.Text = "Class: " + _lstObjs.ToArray()[position].cClassCode;
             }
 
 

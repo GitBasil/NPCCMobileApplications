@@ -274,6 +274,8 @@
     <AndroidResource Include="Resources\drawable\border.xml" />
     <AndroidResource Include="Resources\drawable\back15001500.png" />
     <AndroidResource Include="Resources\drawable\showData.axml" />
+    <AndroidResource Include="Resources\layout\showData.axml" />
+    <AndroidResource Include="Resources\drawable\shadow.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

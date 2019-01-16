@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              android:background="@drawable/shadow"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
     
     <View android:id="@+id/rectangle_at_the_top"
     android:layout_width="match_parent"
@@ -10,17 +11,28 @@
     android:layout_alignParentTop="true"
     android:visibility="visible"/>
     
-     <TextView
+    <LinearLayout
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:id="@+id/cVocab" />
-    <TextView
+        <View style="@style/dividerHorizontal" />
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:id="@+id/cMatType" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/imgView"
-        android:id="@+id/cClassCode" />
+        <View style="@style/dividerHorizontal" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imgView"
+            android:padding="5dp"
+            android:id="@+id/cClassCode" />
+    </LinearLayout>
 </LinearLayout>

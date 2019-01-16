@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.Graphics;
 using NPCCMobileApplications.Library;
 using Com.Bumptech.Glide;
+using Com.Bumptech.Glide.Request;
 
 namespace NPCCMobileApplications.Droid
 {

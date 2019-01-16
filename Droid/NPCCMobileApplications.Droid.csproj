@@ -213,7 +213,6 @@
     <Compile Include="class\adapters\SpoolItemAdapter.cs" />
     <Compile Include="class\adapters\SpoolsCardViewAdapter.cs" />
     <Compile Include="class\clsScaleImage.cs" />
-    <Compile Include="class\TouchImageView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -265,7 +264,6 @@
     <AndroidResource Include="Resources\layout\CustomListView.axml" />
     <AndroidResource Include="Resources\layout\CustomListItem.axml" />
     <AndroidResource Include="Resources\layout\text_recognition.axml" />
-    <AndroidResource Include="Resources\layout\showData.axml" />
     <AndroidResource Include="Resources\drawable\loadingimg.gif" />
     <AndroidResource Include="Resources\drawable\notfound.png" />
     <AndroidResource Include="Resources\layout\SpoolListItem.axml" />
@@ -274,6 +272,8 @@
     <AndroidResource Include="Resources\layout\assignment.axml" />
     <AndroidResource Include="Resources\layout\spoolcardView.axml" />
     <AndroidResource Include="Resources\drawable\border.xml" />
+    <AndroidResource Include="Resources\drawable\back15001500.png" />
+    <AndroidResource Include="Resources\drawable\showData.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

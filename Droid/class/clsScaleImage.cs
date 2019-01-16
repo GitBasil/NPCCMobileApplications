@@ -70,8 +70,8 @@ namespace NPCCMobileApplications.Droid
             m_Matrix = new Matrix();
             if (Drawable != null)
             {
-                m_IntrinsicWidth = Drawable.IntrinsicWidth;
-                m_IntrinsicHeight = Drawable.IntrinsicHeight;
+                m_IntrinsicWidth = Drawable.IntrinsicWidth/2;
+                m_IntrinsicHeight = Drawable.IntrinsicHeight/2;
                 this.SetOnTouchListener(this);
             }
             m_GestureDetector = new GestureDetector(m_Context, new clsScaleImage(this));

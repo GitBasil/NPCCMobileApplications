@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:background="@drawable/bg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+        <NPCCMobileApplications.Droid.ScaleImageView
+            android:id="@+id/imgView"
+            android:src="@drawable/back15001500"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/white"
+            android:scaleType="matrix" />
+        <View style="@style/dividerHorizontal" />
+        <LinearLayout
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:background="@drawable/border"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/lblcSpoolNo"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|bottom"
+            android:text="lblcSpoolNo"/>
+        <TextView
+            android:id="@+id/lbliProjNo"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|bottom"
+            android:text="lbliProjNo"/>
+        <TextView
+            android:id="@+id/lblcEngrDrwgCode"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|bottom"
+            android:text="lblcEngrDrwgCode"/>
+        <TextView
+            android:id="@+id/lblcNpccDrwgCode"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|bottom"
+             android:text="lblcNpccDrwgCode" />
+            <ListView
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/SpoolItemListView" />
+    </LinearLayout>
+</LinearLayout>

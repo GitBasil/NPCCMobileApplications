@@ -7,8 +7,7 @@ using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Widget;
 using Android.Graphics;
 using NPCCMobileApplications.Library;
-using FFImageLoading;
-using FFImageLoading.Views;
+using Com.Bumptech.Glide;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -54,19 +53,12 @@ namespace NPCCMobileApplications.Droid
             view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text = "Project: " + _spl.iProjNo.ToString();
             view.FindViewById<TextView>(Resource.Id.lblcEngrDrwgCode).Text = "ISO: " + _spl.cEngrDrwgCode;
             view.FindViewById<TextView>(Resource.Id.lblcNpccDrwgCode).Text = "ISO: " + _spl.cNpccDrwgCode;
-            ImageViewAsync imageView = view.FindViewById<ImageViewAsync>(Resource.Id.imgView);
 
-            ImageService.Instance
-                        .LoadUrl(_spl.icon)
-                        .LoadingPlaceholder("loadingimg", FFImageLoading.Work.ImageSource.CompiledResource)
-                        .ErrorPlaceholder("notfound", FFImageLoading.Work.ImageSource.CompiledResource)
-                        //.Transform(new CircleTransformation())
-                        //.Transform(new GrayscaleTransformation())
-                        //.Retry(3, 200)
-                        //.DownSample(300, 300)
-                        .IntoAsync(imageView);
-
-
+            ScaleImageView imageView = view.FindViewById<ScaleImageView>(Resource.Id.imgView);
+            Glide
+             .With(this)
+             .Load(_spl.icon)
+             .Into(imageView);
             return view;
         }
 

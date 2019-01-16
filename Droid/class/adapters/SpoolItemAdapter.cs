@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Android.App;
 using Android.Views;
 using Android.Widget;
@@ -35,10 +36,16 @@ namespace NPCCMobileApplications.Droid
             if (view == null)
             {
                 view = _context.LayoutInflater.Inflate(Resource.Layout.SpoolItemView, null);
-                view.FindViewById<TextView>(Resource.Id.cMatType).Text = "cMatType: " + _lstObjs.ToArray()[position].cMatType;
-                view.FindViewById<TextView>(Resource.Id.cVocab).Text = "cVocab: " + _lstObjs.ToArray()[position].cVocab;
-                view.FindViewById<TextView>(Resource.Id.cClassCode).Text = "cClassCode: " + _lstObjs.ToArray()[position].cClassCode;
-                  
+                view.SetBackgroundColor(Android.Graphics.Color.ParseColor("#" + _lstObjs.ToArray()[position].cColorCode.Split("~")[0]));
+
+                TextView cMatType = view.FindViewById<TextView>(Resource.Id.cMatType);
+                cMatType.Text = "cMatType: " + _lstObjs.ToArray()[position].cMatType;
+
+                TextView cVocab = view.FindViewById<TextView>(Resource.Id.cVocab);
+                cVocab.Text = "cVocab: " + _lstObjs.ToArray()[position].cVocab;
+
+                TextView cClassCode = view.FindViewById<TextView>(Resource.Id.cClassCode);
+                cClassCode.Text = "cClassCode: " + _lstObjs.ToArray()[position].cClassCode;
             }
 
 

@@ -6,9 +6,10 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardPreventCornerOverlap="false"
-        android:layout_margin="5dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="4dp"
         card_view:cardElevation="1dp"
+        app:cardPreventCornerOverlap="false"
         card_view:cardUseCompatPadding="true"
         card_view:cardCornerRadius="3dp">
         <RelativeLayout

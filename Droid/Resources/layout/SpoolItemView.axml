@@ -3,6 +3,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    
+    <View android:id="@+id/rectangle_at_the_top"
+    android:layout_width="match_parent"
+    android:layout_height="10dp"
+    android:layout_alignParentTop="true"
+    android:visibility="visible"/>
+    
      <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -11,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/cMatType" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/imgView"
-            android:id="@+id/cClassCode" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imgView"
+        android:id="@+id/cClassCode" />
 </LinearLayout>

@@ -32,7 +32,6 @@ namespace NPCCMobileApplications.Droid
         private landing_page mlanding_page;
         private contact mcontact;
         private Webview_test mWebview_test;
-        private Pdfview_test mPdfview_test;
         private tabview_test mtabview_test;
         private QrCode_test mQrCode_test;
         private QrCodeScan_test mQrCodeScan_test;
@@ -86,6 +85,7 @@ namespace NPCCMobileApplications.Droid
 
             mAssignment_page = new assignment_page();
             ShowFragment(mAssignment_page);
+
         }
 
         private void ShowFragment(SupportFragment fragment)
@@ -138,12 +138,6 @@ namespace NPCCMobileApplications.Droid
                 case Resource.Id.Webview_test:
                     mWebview_test = new Webview_test();
                     ShowFragment(mWebview_test);
-                    drawer.CloseDrawer(GravityCompat.Start);
-                    return true;
-
-                case Resource.Id.Pdfview_test:
-                    mPdfview_test = new Pdfview_test();
-                    ShowFragment(mPdfview_test);
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
 

@@ -192,7 +192,6 @@
     <Compile Include="Fragments\contact.cs" />
     <Compile Include="Fragments\landing_page.cs" />
     <Compile Include="Fragments\webview_test.cs" />
-    <Compile Include="Fragments\Pdfview_test.cs" />
     <Compile Include="class\PDFLongRunningThread.cs" />
     <Compile Include="Fragments\tabview_test.cs" />
     <Compile Include="Fragments\QrCode_test.cs" />
@@ -213,6 +212,7 @@
     <Compile Include="class\adapters\SpoolItemAdapter.cs" />
     <Compile Include="class\adapters\SpoolsCardViewAdapter.cs" />
     <Compile Include="class\clsScaleImage.cs" />
+    <Compile Include="Fragments\Pdfview_test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -273,9 +273,9 @@
     <AndroidResource Include="Resources\layout\spoolcardView.axml" />
     <AndroidResource Include="Resources\drawable\border.xml" />
     <AndroidResource Include="Resources\drawable\back15001500.png" />
-    <AndroidResource Include="Resources\drawable\showData.axml" />
     <AndroidResource Include="Resources\layout\showData.axml" />
     <AndroidResource Include="Resources\drawable\shadow.xml" />
+    <AndroidResource Include="Resources\drawable\img_661_669.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

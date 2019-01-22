@@ -8,14 +8,17 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V7.App;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Com.Joanzapata.Pdfview;
 using Dmax.Dialog;
 using NPCCMobileApplications.Library;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -28,15 +31,23 @@ namespace NPCCMobileApplications.Droid
         RelativeLayout ProgressCont;
         TextView proTextView;
         string pdfLink;
+        AppCompatActivity act;
+        SupportToolbar mToolbar;
 
         DocBroadcastReceiver receiver;
         private static Pdfview_test ins;
 
+        private string _link;
+        public Pdfview_test(string link)
+        {
+            _link = link;
+        }
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             receiver = new DocBroadcastReceiver();
             ins = this;
+            HasOptionsMenu = true;
         }
 
         public static Pdfview_test getInstace()
@@ -80,6 +91,13 @@ namespace NPCCMobileApplications.Droid
             InflaterMain = inflater;
             view = inflater.Inflate(Resource.Layout.Pdfview_test, container, false);
 
+            act = (AppCompatActivity)this.Activity;
+
+            mToolbar = act.FindViewById<SupportToolbar>(Resource.Id.toolbar);
+            act.SetSupportActionBar(mToolbar);
+
+            act.SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            mToolbar.NavigationIcon.SetColorFilter(Color.ParseColor("#FFFFFF"), PorterDuff.Mode.SrcAtop);
 
             pdfView = view.FindViewById<PDFView>(Resource.Id.pdfview);
 
@@ -89,11 +107,8 @@ namespace NPCCMobileApplications.Droid
 
             proTextView = view.FindViewById<TextView>(Resource.Id.proTextView);
 
-            pdfLink = "https://edms.npcc.ae/NDMS/PublicDocuPreview.aspx?ORIG=P&ID-SFNY-STP-18-VER-00001.pdf&DocuVersID=5057633&SID=O";
-            //pdfLink = "http://todobanderas.com/documents/completeflagsoftheworld.pdf";
-        
             Intent downloadIntent = new Intent(this.Activity, typeof(PDFLongRunningThread));
-            downloadIntent.PutExtra("file_to_download", pdfLink);
+            downloadIntent.PutExtra("file_to_download", _link);
         
             this.Activity.RegisterReceiver(receiver, new IntentFilter("PDFDownloading"));
             this.Activity.StartService(downloadIntent);
@@ -101,10 +116,18 @@ namespace NPCCMobileApplications.Droid
             return view;
         }
 
-        public override void OnDestroy()
+
+        public override void OnDestroyView()
         {
-            base.OnDestroy();
+            base.OnDestroyView();
             this.Activity.UnregisterReceiver(receiver);
+            act.SupportActionBar.SetDisplayHomeAsUpEnabled(false);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            act.SupportFragmentManager.PopBackStack();
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

@@ -82,29 +82,6 @@ namespace NPCCMobileApplications.Droid
 
             _swipeRefresh.Refreshing = false;
         }
-
-        public override void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
-        {
-            if (v.Id == Resource.Id.customListView)
-            {
-                var info = (AdapterView.AdapterContextMenuInfo)menuInfo;
-                var menuItems = Resources.GetStringArray(Resource.Array.menu);
-                for (var i = 0; i < menuItems.Length; i++)
-                    menu.Add(Menu.None, i, i, menuItems[i]);
-            }
-        }
-
-        public override bool OnContextItemSelected(IMenuItem item)
-        {
-            var info = (AdapterView.AdapterContextMenuInfo)item.MenuInfo;
-            var menuItemIndex = item.ItemId;
-            var menuItems = Resources.GetStringArray(Resource.Array.menu);
-            var menuItemName = menuItems[menuItemIndex];
-            var listItemName = info.Position.ToString();
-
-            Toast.MakeText(Context, string.Format("Selected {0} for item {1}", menuItemName, listItemName), ToastLength.Short).Show();
-            return true;
-        }
     }
 
 }

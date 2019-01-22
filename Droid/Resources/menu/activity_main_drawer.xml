@@ -24,12 +24,6 @@
                 android:icon="@drawable/ic_menu_send"
                 android:title="Webview Test" />
                 
-                <item
-                android:id="@+id/Pdfview_test"
-                android:checked="false"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Pdfview Test" />
-                
                  <item
                 android:id="@+id/tabview_test"
                 android:checked="false"

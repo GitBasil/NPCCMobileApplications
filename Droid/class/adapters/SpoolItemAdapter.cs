@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using Android.App;
+using Android.Graphics.Drawables;
 using Android.Views;
 using Android.Widget;
 using FFImageLoading;
@@ -37,17 +38,21 @@ namespace NPCCMobileApplications.Droid
             {
                 view = _context.LayoutInflater.Inflate(Resource.Layout.SpoolItemView, null);
 
+                GradientDrawable drawable = (GradientDrawable)view.Background;
+                drawable.SetStroke(3, Android.Graphics.Color.ParseColor("#" + _lstObjs.ToArray()[position].cColorCode.Split("~")[0]));
+
                 View rectangle_at_the_top = view.FindViewById<View>(Resource.Id.rectangle_at_the_top);
                 rectangle_at_the_top.SetBackgroundColor(Android.Graphics.Color.ParseColor("#" + _lstObjs.ToArray()[position].cColorCode.Split("~")[0]));
 
                 TextView cMatType = view.FindViewById<TextView>(Resource.Id.cMatType);
-                cMatType.Text = "Material: " + _lstObjs.ToArray()[position].cMatType;
+                cMatType.Text = _lstObjs.ToArray()[position].cMatType;
 
                 TextView cVocab = view.FindViewById<TextView>(Resource.Id.cVocab);
-                cVocab.Text = "Vocab: " + _lstObjs.ToArray()[position].cVocab;
+                cVocab.Text = _lstObjs.ToArray()[position].cVocab;
 
                 TextView cClassCode = view.FindViewById<TextView>(Resource.Id.cClassCode);
-                cClassCode.Text = "Class: " + _lstObjs.ToArray()[position].cClassCode;
+                cClassCode.Text = _lstObjs.ToArray()[position].cClassCode;
+
             }
 
 

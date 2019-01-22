@@ -1,38 +1,92 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:background="@drawable/shadow"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    
-    <View android:id="@+id/rectangle_at_the_top"
+android:orientation="vertical"
+android:background="@drawable/border"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+     <View android:id="@+id/rectangle_at_the_top"
     android:layout_width="match_parent"
     android:layout_height="10dp"
     android:layout_alignParentTop="true"
     android:visibility="visible"/>
-    
     <LinearLayout
-    android:orientation="vertical"
-    android:background="@color/white"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-         <TextView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+            
+            <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:padding="5dp"
+            android:gravity="right"
+            android:textStyle="bold"
+            android:text="Vocab" />
+            
+            <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:gravity="left"
             android:id="@+id/cVocab" />
+            
+        </LinearLayout>
         <View style="@style/dividerHorizontal" />
-        <TextView
+         <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:id="@+id/cMatType" />
-        <View style="@style/dividerHorizontal" />
-        <TextView
-            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            
+            <TextView
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/imgView"
             android:padding="5dp"
+            android:gravity="right"
+            android:textStyle="bold"
+            android:text="Class" />
+            
+            <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:gravity="left"
             android:id="@+id/cClassCode" />
+            
+        </LinearLayout>
+        <View style="@style/dividerHorizontal" />
+       <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+            
+            <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="right"
+            android:textStyle="bold"
+            android:text="Material" />
+            
+            <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:id="@+id/cMatType" />
+            
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

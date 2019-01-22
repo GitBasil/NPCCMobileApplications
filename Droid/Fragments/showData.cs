@@ -50,10 +50,10 @@ namespace NPCCMobileApplications.Droid
             SpoolItemListView = view.FindViewById<ListView>(Resource.Id.SpoolItemListView);
             SpoolItemListView.Adapter = new SpoolItemAdapter(this.Activity, _spl.SpoolItem);
 
-            view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = "Spool: " + _spl.cSpoolNo;
-            view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text = "Project: " + _spl.iProjNo.ToString();
-            view.FindViewById<TextView>(Resource.Id.lblcEngrDrwgCode).Text = "ISO: " + _spl.cEngrDrwgCode;
-            view.FindViewById<TextView>(Resource.Id.lblcNpccDrwgCode).Text = "ISO: " + _spl.cNpccDrwgCode;
+            view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = _spl.cSpoolNo;
+            view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text = _spl.iProjNo.ToString();
+            view.FindViewById<TextView>(Resource.Id.lblcEngrDrwgCode).Text = _spl.cEngrDrwgCode;
+            view.FindViewById<TextView>(Resource.Id.lblcNpccDrwgCode).Text = _spl.cNpccDrwgCode;
 
             ScaleImageView imageView = view.FindViewById<ScaleImageView>(Resource.Id.imgView);
             Glide
@@ -63,10 +63,9 @@ namespace NPCCMobileApplications.Droid
             return view;
         }
 
-
-        public override void OnDestroy()
+        public override void OnDestroyView()
         {
-            base.OnDestroy();
+            base.OnDestroyView();
             act.SupportActionBar.SetDisplayHomeAsUpEnabled(false);
         }
 

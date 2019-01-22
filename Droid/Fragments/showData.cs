@@ -56,10 +56,13 @@ namespace NPCCMobileApplications.Droid
             view.FindViewById<TextView>(Resource.Id.lblcNpccDrwgCode).Text = _spl.cNpccDrwgCode;
 
             ScaleImageView imageView = view.FindViewById<ScaleImageView>(Resource.Id.imgView);
+
             Glide
              .With(this)
+             .AsBitmap()
              .Load(_spl.icon)
              .Into(imageView);
+
             return view;
         }
 

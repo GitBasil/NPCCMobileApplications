@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout android:orientation="vertical" android:background="@@drawable/bg" android:layout_width="match_parent" android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
-    <NPCCMobileApplications.Droid.ScaleImageView android:id="@+id/imgView" android:src="@drawable/img_661_669" android:layout_width="match_parent" android:layout_height="250dp" android:background="@drawable/bg" android:scaleType="matrix" />
+    <NPCCMobileApplications.Droid.ScaleImageView android:id="@+id/imgView" android:layout_width="match_parent" android:layout_height="250dp" android:background="@drawable/bg" />
     <View style="@style/dividerHorizontal" android:id="@+id/spImg" android:layout_below="@id/imgView" />
     <LinearLayout android:orientation="vertical" android:padding="5dp" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="match_parent" android:layout_below="@id/spImg" android:layout_marginBottom="0.0dp">
         <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">

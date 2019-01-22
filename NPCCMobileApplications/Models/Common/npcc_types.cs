@@ -30,5 +30,11 @@ namespace NPCCMobileApplications.Library
             InvalidRequestType = 2
 
         }
+
+        public enum inf_pdf_type
+        {
+            ISO = 0
+
+        }
     }
 }

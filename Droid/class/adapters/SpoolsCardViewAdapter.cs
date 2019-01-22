@@ -91,7 +91,7 @@ namespace NPCCMobileApplications.Droid
             public ImageViewAsync imageView;
             public Button btnDetails;
             public Button btnAssign;
-            public TextView textViewOptions;
+            public Button textViewOptions;
 
             public MyViewHolder(View itemView)
                 : base(itemView)
@@ -103,7 +103,7 @@ namespace NPCCMobileApplications.Droid
                 imageView = itemView.FindViewById<ImageViewAsync>(Resource.Id.imgView);
                 btnDetails = itemView.FindViewById<Button>(Resource.Id.btnDetails);
                 btnAssign = itemView.FindViewById<Button>(Resource.Id.btnAssign);
-                textViewOptions = itemView.FindViewById<TextView>(Resource.Id.textViewOptions);
+                textViewOptions = itemView.FindViewById<Button>(Resource.Id.textViewOptions);
             }
 
         }

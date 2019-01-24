@@ -28,13 +28,18 @@ namespace NPCCMobileApplications.Library
             ErrorOccurred = 0,
             InvalidToken = 1,
             InvalidRequestType = 2
-
         }
 
         public enum inf_pdf_type
         {
             ISO = 0
+        }
 
+        public enum inf_assignment_type
+        {
+            Pending = 0,
+            UnderProgress = 1,
+            Completed = 2
         }
     }
 }

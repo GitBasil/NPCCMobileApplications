@@ -30,8 +30,7 @@ namespace NPCCMobileApplications.Library
         public string cTransmittal { get; set; }
         public DateTime dTransmittal { get; set; }
         public int iDrwgSrl { get; set; }
-        public string cNpccDrwgCode { get; set; }
-        public string cEngrDrwgCode { get; set; }
+        public string cISO { get; set; }
         public int iStationId { get; set; }
         public string cStationName { get; set; }
         public int iItemSno { get; set; }

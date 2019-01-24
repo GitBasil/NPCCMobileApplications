@@ -22,10 +22,13 @@ namespace NPCCMobileApplications.Library
         {
             try
             {
-                var cn = new SQLiteConnection(dbPath);
-                cn.CreateTable<Spools>();
-                cn.CreateTable<SpoolItem>();
-                cn.CreateTable<UserInfo>();
+                using (var cn = new SQLiteConnection(dbPath))
+                {
+                    cn.CreateTable<Spools>();
+                    cn.CreateTable<SpoolItem>();
+                    cn.CreateTable<UserInfo>();
+                }
+
                 return true;
             }
             catch (Exception ex)
@@ -42,9 +45,12 @@ namespace NPCCMobileApplications.Library
             {
                 string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/UserImage";
                 UserInfo lstObjs = await npcc_services.inf_CallWebServiceAsync<UserInfo, string>(inf_method.Get, url);
-                var cn = new SQLiteConnection(dbPath);
-                cn.DeleteAll<UserInfo>();
-                cn.Insert(lstObjs);
+                using (var cn = new SQLiteConnection(dbPath))
+                {
+                    cn.DeleteAll<UserInfo>();
+                    cn.Insert(lstObjs);
+                }
+
                 return true;
             }
             catch (Exception ex)
@@ -58,12 +64,17 @@ namespace NPCCMobileApplications.Library
         {
             try
             {
-                var cn = new SQLiteConnection(dbPath);
-                UserInfo lstObjs = cn.Table<UserInfo>().FirstOrDefault();
+                UserInfo lstObjs;
+                using (var cn = new SQLiteConnection(dbPath))
+                {
+                    lstObjs = cn.Table<UserInfo>().FirstOrDefault();
+                }
+
                 return lstObjs;
             }
             catch (Exception ex)
             {
+                npcc_services.inf_mobile_exception_managerAsync(ex.Message);
                 return null;
             }
         }
@@ -78,9 +89,11 @@ namespace NPCCMobileApplications.Library
             {
                 string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/pendinglist";
                 List<Spools> lstObjs = await npcc_services.inf_CallWebServiceAsync<List<Spools>, string>(inf_method.Get, url);
-                var cn = new SQLiteConnection(dbPath);
-                cn.DeleteAll<Spools>();
-                cn.InsertAllWithChildren(lstObjs);
+                using (var cn = new SQLiteConnection(dbPath))
+                {
+                    cn.DeleteAll<Spools>();
+                    cn.InsertAllWithChildren(lstObjs);
+                }
                 return true;
             }
             catch (Exception ex)
@@ -94,12 +107,17 @@ namespace NPCCMobileApplications.Library
         {
             try
             {
-                var cn = new SQLiteConnection(dbPath);
-                var Spools = cn.GetAllWithChildren<Spools>();
+                List<Spools> Spools;
+                using (var cn = new SQLiteConnection(dbPath))
+                {
+                    Spools = cn.GetAllWithChildren<Spools>();
+                }
+
                 return Spools;
             }
             catch (Exception ex)
             {
+                npcc_services.inf_mobile_exception_managerAsync(ex.Message);
                 return null;
             }
         }
@@ -107,8 +125,11 @@ namespace NPCCMobileApplications.Library
         public Spools GetSpool(int id)
         {
             //var emp = cn.Get<Spools>(id);
-            var cn = new SQLiteConnection(dbPath);
-            var spl = cn.Table<Spools>().Where(x => x.Id == id).FirstOrDefault();
+            Spools spl;
+            using (var cn = new SQLiteConnection(dbPath))
+            {
+                spl = cn.Table<Spools>().Where(x => x.Id == id).FirstOrDefault();
+            }
             return spl;
         }
 
@@ -116,16 +137,19 @@ namespace NPCCMobileApplications.Library
         {
             try
             {
-                var cn = new SQLiteConnection(dbPath);
-                var spl = cn.Get<Spools>(id);
-                spl.cSpoolNo = nSpool.cSpoolNo;
-                spl.cStationName = nSpool.cStationName;
-                spl.icon = nSpool.icon;
-                cn.Update(spl);
+                using (var cn = new SQLiteConnection(dbPath))
+                {
+                    Spools spl = cn.Get<Spools>(id);
+                    spl.cSpoolNo = nSpool.cSpoolNo;
+                    spl.cStationName = nSpool.cStationName;
+                    spl.icon = nSpool.icon;
+                    cn.Update(spl);
+                }
                 return true;
             }
             catch (Exception ex)
             {
+                npcc_services.inf_mobile_exception_managerAsync(ex.Message);
                 return false;
             }
 
@@ -135,14 +159,15 @@ namespace NPCCMobileApplications.Library
         {
             try
             {
-                var cn = new SQLiteConnection(dbPath);
-                //cn.Delete<Spools>(id);
-                var spl = cn.Get<Spools>(id);
-                cn.Delete(spl);
+                using (var cn = new SQLiteConnection(dbPath)) {
+                    var spl = cn.Get<Spools>(id);
+                    cn.Delete(spl);
+                }
                 return true;
             }
             catch (Exception ex)
             {
+                npcc_services.inf_mobile_exception_managerAsync(ex.Message);
                 return false;
             }
         }

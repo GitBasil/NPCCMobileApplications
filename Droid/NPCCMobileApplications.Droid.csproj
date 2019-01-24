@@ -180,9 +180,6 @@
     <Reference Include="Xamarin.Essentials">
       <HintPath>..\packages\Xamarin.Essentials.1.0.1\lib\monoandroid81\Xamarin.Essentials.dll</HintPath>
     </Reference>
-    <Reference Include="Glide">
-      <HintPath>..\packages\Glide.Xamarin.4.1.1\lib\MonoAndroid10\Glide.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -204,15 +201,15 @@
     <Compile Include="Fragments\text_recognition.cs" />
     <Compile Include="Fragments\showData.cs" />
     <Compile Include="Fragments\GenericCustomList.cs" />
-    <Compile Include="Fragments\assignment\pending_page.cs" />
+    <Compile Include="Fragments\assignment\assignment_lists.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="class\adapters\PendingListAdapter.cs" />
     <Compile Include="class\adapters\CustomViewAdapter.cs" />
     <Compile Include="Fragments\assignment\assignment_page.cs" />
     <Compile Include="class\adapters\SpoolItemAdapter.cs" />
     <Compile Include="class\adapters\SpoolsCardViewAdapter.cs" />
-    <Compile Include="class\clsScaleImage.cs" />
     <Compile Include="Fragments\Pdfview_test.cs" />
+    <Compile Include="class\clsScaleImage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

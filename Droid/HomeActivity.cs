@@ -10,8 +10,8 @@ using Xamarin.Essentials;
 using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Content;
 using Calligraphy;
-using FFImageLoading;
 using NPCCMobileApplications.Library;
+using FFImageLoading;
 using FFImageLoading.Views;
 using FFImageLoading.Transformations;
 using static NPCCMobileApplications.Library.npcc_types;
@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
 using Android.Content.PM;
+using System;
 
 namespace NPCCMobileApplications.Droid
 {

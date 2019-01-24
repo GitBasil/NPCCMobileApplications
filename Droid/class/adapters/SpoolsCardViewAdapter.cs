@@ -44,8 +44,7 @@ namespace NPCCMobileApplications.Droid
             MyViewHolder h = holder as MyViewHolder;
             h.lblcSpoolNo.Text ="Spool: " + _lsObjs[position].cSpoolNo;
             h.lbliProjNo.Text = "Project: " + _lsObjs[position].iProjNo.ToString();
-            h.lblcEngrDrwgCode.Text = "ISO: " + _lsObjs[position].cEngrDrwgCode;
-            h.lblcNpccDrwgCode.Text = "ISO: " + _lsObjs[position].cNpccDrwgCode;
+            h.lblcISO.Text = "ISO: " + _lsObjs[position].cISO;
             h.btnDetails.Click += BtnDetails_Click;
 
             h.textViewOptions.SetOnClickListener(new ExtraMenuActions(_currentContext, _fragment, mFragmentContainer, _spl.iProjectId, _spl.cTransmittal, _spl.iDrwgSrl));
@@ -79,15 +78,18 @@ namespace NPCCMobileApplications.Droid
 
         public override int ItemCount
         {
-            get { return _lsObjs.Count; }
+
+            get {
+                int c = 0;
+                if (_lsObjs != null) c = _lsObjs.Count;
+                return c; }
         }
 
         internal class MyViewHolder : RecyclerView.ViewHolder
         {
             public TextView lblcSpoolNo;
             public TextView lbliProjNo;
-            public TextView lblcEngrDrwgCode;
-            public TextView lblcNpccDrwgCode;
+            public TextView lblcISO;
             public ImageViewAsync imageView;
             public Button btnDetails;
             public Button btnAssign;
@@ -98,8 +100,7 @@ namespace NPCCMobileApplications.Droid
             {
                 lblcSpoolNo = itemView.FindViewById<TextView>(Resource.Id.lblcSpoolNo);
                 lbliProjNo=itemView.FindViewById<TextView>(Resource.Id.lbliProjNo);
-                lblcEngrDrwgCode=itemView.FindViewById<TextView>(Resource.Id.lblcEngrDrwgCode);
-                lblcNpccDrwgCode=itemView.FindViewById<TextView>(Resource.Id.lblcNpccDrwgCode);
+                lblcISO = itemView.FindViewById<TextView>(Resource.Id.lblcISO);
                 imageView = itemView.FindViewById<ImageViewAsync>(Resource.Id.imgView);
                 btnDetails = itemView.FindViewById<Button>(Resource.Id.btnDetails);
                 btnAssign = itemView.FindViewById<Button>(Resource.Id.btnAssign);

@@ -37,8 +37,7 @@ namespace NPCCMobileApplications.Droid
                 view = _context.LayoutInflater.Inflate(Resource.Layout.SpoolListItem, null);
                 view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text ="Spool: " + _lstObjs.ToArray()[position].cSpoolNo;
                 view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text ="Project: " +  _lstObjs.ToArray()[position].iProjNo.ToString();
-                view.FindViewById<TextView>(Resource.Id.lblcEngrDrwgCode).Text ="ISO: " +  _lstObjs.ToArray()[position].cEngrDrwgCode;
-                view.FindViewById<TextView>(Resource.Id.lblcNpccDrwgCode).Text ="ISO: " + _lstObjs.ToArray()[position].cNpccDrwgCode;
+                view.FindViewById<TextView>(Resource.Id.lblcEngrDrwgCode).Text ="ISO: " +  _lstObjs.ToArray()[position].cISO;
 
 
                 ImageViewAsync imageView = view.FindViewById<ImageViewAsync>(Resource.Id.imgView);

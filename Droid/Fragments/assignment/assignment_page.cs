@@ -26,6 +26,9 @@ namespace NPCCMobileApplications.Droid
         private TabLayout tabLayout;
         private ViewPager viewPager;
         private ViewPagerAdapter adapter;
+        assignment_lists _PendingLists;
+        assignment_lists _UnderProgressLists;
+        assignment_lists _CompletedLists;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -43,15 +46,38 @@ namespace NPCCMobileApplications.Droid
             viewPager = view.FindViewById<ViewPager>(Resource.Id.viewPager_id);
 
             adapter = new ViewPagerAdapter(this.Activity.SupportFragmentManager);
-            adapter.AddFragment(new pending_page(), new Java.Lang.String("pending"));
-            adapter.AddFragment(new pending_page(), new Java.Lang.String("partial completed"));
-            adapter.AddFragment(new pending_page(), new Java.Lang.String("completed"));
+
+            _PendingLists = new assignment_lists(Library.npcc_types.inf_assignment_type.Pending);
+            _UnderProgressLists = new assignment_lists(Library.npcc_types.inf_assignment_type.UnderProgress);
+            _CompletedLists = new assignment_lists(Library.npcc_types.inf_assignment_type.Completed);
+
+            adapter.AddFragment(_PendingLists, new Java.Lang.String("pending"));
+            adapter.AddFragment(_UnderProgressLists, new Java.Lang.String("under progress"));
+            adapter.AddFragment(_CompletedLists, new Java.Lang.String("completed"));
 
             viewPager.Adapter = adapter;
             viewPager.OffscreenPageLimit = 3;
             tabLayout.SetupWithViewPager(viewPager);
+            tabLayout.Post(_PendingLists.fill_listAsync);
+            tabLayout.TabSelected += TabLayout_TabSelected;
+
             common_functions.npcc_apply_font(view.FindViewById<TabLayout>(Resource.Id.tabLayout_id));
             return view;
         }
+
+        void TabLayout_TabSelected(object sender, TabLayout.TabSelectedEventArgs e)
+        {
+            switch (e.Tab.Text)
+            {
+                case "under progress":
+                    _UnderProgressLists.ins.fill_listAsync();
+                    break;
+                case "completed":
+                    _CompletedLists.ins.fill_listAsync();
+                    break;
+            }
+
+        }
+
     }
 }

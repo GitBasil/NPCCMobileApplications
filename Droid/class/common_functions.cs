@@ -5,6 +5,7 @@ using Android.Graphics;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using FFImageLoading;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace NPCCMobileApplications.Droid
@@ -44,6 +45,17 @@ namespace NPCCMobileApplications.Droid
             trans.Show(fragment);
             trans.AddToBackStack(null);
             trans.Commit();
+        }
+
+        public static async void npcc_setScaleImageView(AppCompatActivity act,View view, string url, ScaleImageView imageView)
+        {
+            var image = await ImageService.Instance
+                        .LoadUrl(url)
+                        .AsBitmapDrawableAsync();
+
+            act.RunOnUiThread(() => {
+                imageView.SetImageBitmap(image.Bitmap);
+            });
         }
     }
 }

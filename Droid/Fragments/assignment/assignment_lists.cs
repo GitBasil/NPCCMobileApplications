@@ -20,7 +20,7 @@ using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace NPCCMobileApplications.Droid
 {
-    public class pending_page : SupportFragment
+    public class assignment_lists : SupportFragment
     {
         SwipeRefreshLayout _swipeRefresh;
         FrameLayout mFragmentContainer;
@@ -28,6 +28,15 @@ namespace NPCCMobileApplications.Droid
         List<Spools> lstObjs;
         private RecyclerView rv;
         private SpoolsCardViewAdapter adapter;
+        private npcc_types.inf_assignment_type _assignment_Type;
+
+        public assignment_lists ins { get; set; }
+
+        public assignment_lists(npcc_types.inf_assignment_type assignment_Type)
+        {
+            _assignment_Type = assignment_Type;
+            ins = this;
+        }
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -48,40 +57,51 @@ namespace NPCCMobileApplications.Droid
 
             _swipeRefresh.Refresh += _swipeRefresh_Refresh;
 
-            fill_listAsync();
-
             return view;
         }
+        
         void _swipeRefresh_Refresh(object sender, EventArgs e)
         {
             refresh_listAsync();
         }
 
-        async void refresh_listAsync()
+        void refresh_listAsync()
         {
             DBRepository dBRepository = new DBRepository();
             dBRepository.CreateTable();
-            await dBRepository.RefreshSpoolAsync();
-            lstObjs = dBRepository.GetSpools();
-
-            adapter = new SpoolsCardViewAdapter(act, this, lstObjs);
-            rv.SetAdapter(adapter);
-
-            _swipeRefresh.Refreshing = false;
+            Task.Run(async () => { 
+                await dBRepository.RefreshSpoolAsync();
+            }).ContinueWith(fn => {
+                act.RunOnUiThread(() => {
+                    lstObjs = dBRepository.GetSpools();
+                    adapter = new SpoolsCardViewAdapter(act, this, lstObjs);
+                    rv.SetAdapter(adapter);
+                    _swipeRefresh.Refreshing = false;
+                });
+            });
         }
 
-        void fill_listAsync()
+        public void fill_listAsync()
         {
-            DBRepository dBRepository = new DBRepository();
-            dBRepository.CreateTable();
-            lstObjs = dBRepository.GetSpools();
-            if (lstObjs.Count == 0) refresh_listAsync();
+            if(rv.GetAdapter() == null)
+            {
+                DBRepository dBRepository = new DBRepository();
+                dBRepository.CreateTable();
+                lstObjs = dBRepository.GetSpools();
+                if (lstObjs.Count == 0)
+                {
+                    _swipeRefresh.Refreshing = true;
+                    refresh_listAsync();
+                }
+                else
+                {
+                    adapter = new SpoolsCardViewAdapter(act, this, lstObjs);
+                    rv.SetAdapter(adapter);
 
-            adapter = new SpoolsCardViewAdapter(act, this, lstObjs);
-            rv.SetAdapter(adapter);
+                    _swipeRefresh.Refreshing = false;
+                }
+            }
 
-            _swipeRefresh.Refreshing = false;
         }
     }
-
 }

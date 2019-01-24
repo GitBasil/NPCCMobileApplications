@@ -56,12 +56,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lblcEngrDrwgCode" 
-                    android:textColor="#555" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblcNpccDrwgCode" 
+                    android:id="@+id/lblcISO" 
                     android:textColor="#555" />
             </LinearLayout>
             <View style="@style/dividerHorizontal" android:id="@+id/spDt" android:layout_below="@id/lnDetails" />

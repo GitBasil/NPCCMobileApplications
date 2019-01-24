@@ -7,8 +7,6 @@ using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Widget;
 using Android.Graphics;
 using NPCCMobileApplications.Library;
-using Com.Bumptech.Glide;
-using Com.Bumptech.Glide.Request;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -52,16 +50,10 @@ namespace NPCCMobileApplications.Droid
 
             view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = _spl.cSpoolNo;
             view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text = _spl.iProjNo.ToString();
-            view.FindViewById<TextView>(Resource.Id.lblcEngrDrwgCode).Text = _spl.cEngrDrwgCode;
-            view.FindViewById<TextView>(Resource.Id.lblcNpccDrwgCode).Text = _spl.cNpccDrwgCode;
+            view.FindViewById<TextView>(Resource.Id.lblcISO).Text = _spl.cISO;
 
             ScaleImageView imageView = view.FindViewById<ScaleImageView>(Resource.Id.imgView);
-
-            Glide
-             .With(this)
-             .AsBitmap()
-             .Load(_spl.icon)
-             .Into(imageView);
+            common_functions.npcc_setScaleImageView(act, view, _spl.icon, imageView);
 
             return view;
         }

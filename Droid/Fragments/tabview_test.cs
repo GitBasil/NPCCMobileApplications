@@ -45,9 +45,9 @@ namespace NPCCMobileApplications.Droid
             adapter.AddFragment(GenericCustomList.NewInstance(Resource.Layout.QrCode_test), new Java.Lang.String("landing_page"));
             adapter.AddFragment(new contact(), new Java.Lang.String("contact"));
             adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
-            adapter.AddFragment(new pending_page(), new Java.Lang.String("CustomListView"));
+            adapter.AddFragment(new assignment_lists(Library.npcc_types.inf_assignment_type.Pending), new Java.Lang.String("CustomListView"));
             adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
-            adapter.AddFragment(new pending_page(), new Java.Lang.String("CustomListView"));
+            adapter.AddFragment(new assignment_lists(Library.npcc_types.inf_assignment_type.Completed), new Java.Lang.String("CustomListView"));
             adapter.AddFragment(new QrCode_test(), new Java.Lang.String("QrCode_test"));
             adapter.AddFragment(new Webview_test(), new Java.Lang.String("Webview_test"));
 

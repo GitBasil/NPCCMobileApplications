@@ -53,8 +53,7 @@ namespace NPCCMobileApplications.Droid
         {
             //documentPath = Path.Combine((Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads)).Path, filename);
             documentPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), filename);
-            Console.WriteLine(documentPath);
-            Console.WriteLine(link);
+            if (File.Exists(documentPath)) File.Delete(documentPath);
             client = new WebClient();
             uri = new Uri(link);
             client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");

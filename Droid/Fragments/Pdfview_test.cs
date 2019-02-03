@@ -18,6 +18,7 @@ using Android.Widget;
 using Com.Joanzapata.Pdfview;
 using Dmax.Dialog;
 using NPCCMobileApplications.Library;
+using Syncfusion.SfPdfViewer.Android;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace NPCCMobileApplications.Droid
@@ -26,11 +27,11 @@ namespace NPCCMobileApplications.Droid
     {
         LayoutInflater InflaterMain;
         View view;
-        PDFView pdfView;
+        //PDFView pdfView;
+        SfPdfViewer pdfViewer;
         ProgressBar progress_bar;
         RelativeLayout ProgressCont;
         TextView proTextView;
-        string pdfLink;
         AppCompatActivity act;
         SupportToolbar mToolbar;
 
@@ -48,6 +49,7 @@ namespace NPCCMobileApplications.Droid
             receiver = new DocBroadcastReceiver();
             ins = this;
             HasOptionsMenu = true;
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjM3NThAMzEzNjJlMzQyZTMwVHJuMEhDdmh3djJBWnFSUTY3RjRPRlhVY3p6TWhuZk9rY3Nta2RPL0E2MD0=");
         }
 
         public static Pdfview_test getInstace()
@@ -61,17 +63,24 @@ namespace NPCCMobileApplications.Droid
             ProgressCont.Visibility = ViewStates.Gone;
 
             ins.Activity.RunOnUiThread(() => {
-                Java.IO.File filePath = new Java.IO.File(path);
-                // Check whether the file is exist in the download directory 
-                if (filePath.Exists())
+                //Java.IO.File filePath = new Java.IO.File(path);
+                //// Check whether the file is exist in the download directory 
+                //if (filePath.Exists())
+                //{
+                //    pdfView.FromFile(filePath).Load();
+                //}
+                //else
+                //{
+                //    // throw exception if the file is not found in the appropriate directory 
+                //    throw new FileNotFoundException("File not found" + filePath.AbsolutePath.ToString());
+                //}
+                if (File.Exists(path))
                 {
-                    pdfView.FromFile(filePath).Load();
+                    using (Stream PdfStream = File.Open(path, FileMode.Open)) {
+                        pdfViewer.LoadDocument(PdfStream);
+                    }
                 }
-                else
-                {
-                    // throw exception if the file is not found in the appropriate directory 
-                    throw new FileNotFoundException("File not found" + filePath.AbsolutePath.ToString());
-                }
+
             });
         }
 
@@ -99,7 +108,8 @@ namespace NPCCMobileApplications.Droid
             act.SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             mToolbar.NavigationIcon.SetColorFilter(Color.ParseColor("#FFFFFF"), PorterDuff.Mode.SrcAtop);
 
-            pdfView = view.FindViewById<PDFView>(Resource.Id.pdfview);
+            //pdfView = view.FindViewById<PDFView>(Resource.Id.pdfview);
+            pdfViewer = view.FindViewById<SfPdfViewer>(Resource.Id.pdfviewercontrol);
 
             progress_bar = view.FindViewById<ProgressBar>(Resource.Id.progress_bar);
 
@@ -116,12 +126,17 @@ namespace NPCCMobileApplications.Droid
             return view;
         }
 
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);
+            if(hidden)
+            act.SupportActionBar.SetDisplayHomeAsUpEnabled(false);
+        }
 
         public override void OnDestroyView()
         {
             base.OnDestroyView();
             this.Activity.UnregisterReceiver(receiver);
-            act.SupportActionBar.SetDisplayHomeAsUpEnabled(false);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

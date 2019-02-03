@@ -7,6 +7,7 @@ using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Widget;
 using Android.Graphics;
 using NPCCMobileApplications.Library;
+using Android.Support.V4.App;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -18,6 +19,7 @@ namespace NPCCMobileApplications.Droid
         FrameLayout mFragmentContainer;
         Spools _spl;
         ListView SpoolItemListView;
+        Button textViewOptions;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -51,6 +53,9 @@ namespace NPCCMobileApplications.Droid
             view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = _spl.cSpoolNo;
             view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text = _spl.iProjNo.ToString();
             view.FindViewById<TextView>(Resource.Id.lblcISO).Text = _spl.cISO;
+            textViewOptions = view.FindViewById<Button>(Resource.Id.textViewOptions);
+
+            textViewOptions.SetOnClickListener(new ExtraMenuActions(act, this, mFragmentContainer, _spl.iProjectId, _spl.cTransmittal, _spl.iDrwgSrl));
 
             ScaleImageView imageView = view.FindViewById<ScaleImageView>(Resource.Id.imgView);
             common_functions.npcc_setScaleImageView(act, view, _spl.icon, imageView);
@@ -70,6 +75,17 @@ namespace NPCCMobileApplications.Droid
             return base.OnOptionsItemSelected(item);
         }
 
-
+        public override void OnHiddenChanged(bool hidden)
+        {
+            base.OnHiddenChanged(hidden);
+            if(!hidden)
+            {
+                HasOptionsMenu = true;
+                act.SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+                act.SupportActionBar.SetDisplayShowHomeEnabled(true);
+                mToolbar.NavigationIcon.SetColorFilter(Color.ParseColor("#FFFFFF"), PorterDuff.Mode.SrcAtop);
+            }
+        }
     }
 }
+

@@ -1,28 +1,60 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@@drawable/bg" android:layout_width="match_parent" android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
-    <NPCCMobileApplications.Droid.ScaleImageView android:id="@+id/imgView" android:layout_width="match_parent" android:layout_height="250dp" android:background="@drawable/bg" />
-    <View style="@style/dividerHorizontal" android:id="@+id/spImg" android:layout_below="@id/imgView" />
-    <LinearLayout android:orientation="vertical" android:padding="5dp" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="match_parent" android:layout_below="@id/spImg" android:layout_marginBottom="0.0dp">
-        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
-                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
-                    <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="Spool" />
-                    <TextView android:id="@+id/lblcSpoolNo" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lblcSpoolNo" />
-                </LinearLayout>
-                <View style="@style/dividerHorizontal" />
-                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
-                    <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="Project" />
-                    <TextView android:id="@+id/lbliProjNo" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lbliProjNo" />
-                </LinearLayout>
-                <View style="@style/dividerHorizontal" />
-                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
-                    <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="ISO" />
-                    <TextView android:id="@+id/lblcISO" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lblcEngrDrwgCode" />
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="2" 
+    android:orientation="vertical" 
+    android:background="@drawable/bg" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent">
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <Button
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:text="&#8942;"
+                android:background="@android:color/transparent"
+                android:id="@+id/textViewOptions"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/darkBlue"
+                android:textAppearance="?android:textAppearanceLarge"/>
+            <NPCCMobileApplications.Droid.ScaleImageView 
+                android:id="@+id/imgView" 
+                android:layout_width="match_parent" 
+                android:layout_height="match_parent"
+                android:background="@drawable/bg" />
+            <View style="@style/dividerHorizontal" android:id="@+id/spImg" />
+        </RelativeLayout>
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical" 
+            android:layout_weight="1" 
+            android:padding="5dp" 
+            android:background="@color/white">
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+                    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+                        <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="Spool" />
+                        <TextView android:id="@+id/lblcSpoolNo" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lblcSpoolNo" />
+                    </LinearLayout>
+                    <View style="@style/dividerHorizontal" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+                        <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="Project" />
+                        <TextView android:id="@+id/lbliProjNo" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lbliProjNo" />
+                    </LinearLayout>
+                    <View style="@style/dividerHorizontal" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+                        <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="ISO" />
+                        <TextView android:id="@+id/lblcISO" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lblcEngrDrwgCode" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:background="@drawable/border" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ListView android:minWidth="25px" android:minHeight="25px" android:background="@drawable/bg" android:divider="@color/white" android:dividerHeight="6.0sp" android:layout_width="match_parent" android:layout_height="match_parent" android:fadingEdge="none" android:id="@+id/SpoolItemListView" />
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:background="@drawable/border" android:layout_width="match_parent" android:layout_height="wrap_content">
-            <ListView android:minWidth="25px" android:minHeight="25px" android:background="@drawable/bg" android:divider="@color/white" android:dividerHeight="6.0sp" android:layout_width="match_parent" android:layout_height="match_parent" android:fadingEdge="none" android:id="@+id/SpoolItemListView" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

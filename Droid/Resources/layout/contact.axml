@@ -63,6 +63,7 @@
         android:elevation="4dp"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
+        android:id="@+id/btnSubmit"
         android:text="Submit"
         android:textColor="#fff" />
 </LinearLayout>

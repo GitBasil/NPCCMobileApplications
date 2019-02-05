@@ -15,6 +15,7 @@ using NPCCMobileApplications.Library;
 using static Android.Views.View;
 using static NPCCMobileApplications.Library.npcc_types;
 using SupportFragment = Android.Support.V4.App.Fragment;
+using LayoutParams = Android.Views.ViewGroup.LayoutParams;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -45,7 +46,7 @@ namespace NPCCMobileApplications.Droid
             h.lbliProjNo.Text = "Project: " + _lsObjs[position].iProjNo.ToString();
             h.lblcISO.Text = "ISO: " + _lsObjs[position].cISO;
             h.btnDetails.Click += BtnDetails_Click;
-
+            h.btnAssign.Click += BtnAssign_Click;
             h.textViewOptions.SetOnClickListener(new ExtraMenuActions(_currentContext, _fragment, mFragmentContainer, _spl.iProjectId, _spl.cTransmittal, _spl.iDrwgSrl));
 
             ImageService.Instance
@@ -54,6 +55,12 @@ namespace NPCCMobileApplications.Droid
                             .ErrorPlaceholder("notfound", FFImageLoading.Work.ImageSource.CompiledResource)
                             .Transform(new CircleTransformation())
                             .IntoAsync(h.imageView);
+        }
+
+        void BtnAssign_Click(object sender, EventArgs e)
+        {
+            var dialog = new Assign();
+            dialog.Show(_currentContext.FragmentManager, "Assign");
         }
 
 

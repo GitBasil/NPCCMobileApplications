@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="25px"
+    android:minHeight="25px">
+        <SearchableSpinner.Droid.Controls.SpinnerSearch
+        android:id="@+id/spnTest"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    <!--
+        <SearchableSpinner.Droid.Controls.MultiSpinnerSearch
+        android:id="@+id/spnMultTest"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />-->
+    
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="4dp"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:id="@+id/btnSubmit"
+        android:text="Assign"
+        android:textColor="#fff" />
+</LinearLayout>

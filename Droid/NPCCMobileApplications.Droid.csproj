@@ -198,6 +198,9 @@
     <Reference Include="Syncfusion.SfPdfViewer.Android">
       <HintPath>..\packages\Syncfusion.Xamarin.SfPdfViewer.Android.16.4.0.48\lib\MonoAndroid10\Syncfusion.SfPdfViewer.Android.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfPopupLayout.Android">
+      <HintPath>..\packages\Syncfusion.Xamarin.SfPopupLayout.Android.16.4.0.48\lib\MonoAndroid10\Syncfusion.SfPopupLayout.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -229,6 +232,7 @@
     <Compile Include="Fragments\Pdfview_test.cs" />
     <Compile Include="class\clsScaleImage.cs" />
     <Compile Include="class\ExtraMenuActions.cs" />
+    <Compile Include="class\dialogs\Assign.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -292,6 +296,8 @@
     <AndroidResource Include="Resources\layout\showData.axml" />
     <AndroidResource Include="Resources\drawable\shadow.xml" />
     <AndroidResource Include="Resources\drawable\img_661_669.jpg" />
+    <AndroidResource Include="Resources\layout\fraglayout.axml" />
+    <AndroidResource Include="Resources\layout\Assign.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
@@ -301,6 +307,7 @@
     <Folder Include="Fragments\CustomView\" />
     <Folder Include="Fragments\assignment\" />
     <Folder Include="class\adapters\" />
+    <Folder Include="class\dialogs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPCCMobileApplications\NPCCMobileApplications.Library.csproj">

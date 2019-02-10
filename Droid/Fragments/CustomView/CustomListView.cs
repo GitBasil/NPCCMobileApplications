@@ -65,15 +65,15 @@ namespace NPCCMobileApplications.Droid
         void first_fill(){
             DBRepository dBRepository = new DBRepository();
             dBRepository.CreateTable();
-            dBRepository.RefreshSpoolAsync();
-            List<Spools> lstObjs = dBRepository.GetSpools();
+            dBRepository.RefreshSpoolAsync(npcc_types.inf_assignment_type.Pending);
+            List<Spools> lstObjs = dBRepository.GetSpools(npcc_types.inf_assignment_type.Pending);
             _lvw.Adapter = new CustomViewAdapter(this.Activity, lstObjs);
         }
 
         void fill_list()
         {
             DBRepository dBRepository = new DBRepository();
-            List<Spools> lstObjs = dBRepository.GetSpools();
+            List<Spools> lstObjs = dBRepository.GetSpools(npcc_types.inf_assignment_type.Pending);
             _lvw.Adapter = new CustomViewAdapter(this.Activity, lstObjs);
             _swipeRefresh.Refreshing = false;
         }

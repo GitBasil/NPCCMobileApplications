@@ -45,6 +45,7 @@ namespace NPCCMobileApplications.Library
                 }
 
                 response.EnsureSuccessStatusCode();
+
                 var jsonResult = response.Content.ReadAsStringAsync().Result;
                 WebServiceResault result = JsonConvert.DeserializeObject<WebServiceResault>(jsonResult);
 

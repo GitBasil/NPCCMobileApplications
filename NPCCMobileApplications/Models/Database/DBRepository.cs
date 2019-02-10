@@ -83,17 +83,65 @@ namespace NPCCMobileApplications.Library
 
         #region Spools
 
-        public async Task<bool> RefreshSpoolAsync()
+        public async Task<bool> RefreshSpoolAsync(inf_assignment_type assignment_Type)
         {
             try
             {
-                string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/pendinglist";
-                List<Spools> lstObjs = await npcc_services.inf_CallWebServiceAsync<List<Spools>, string>(inf_method.Get, url);
-                using (var cn = new SQLiteConnection(dbPath))
+                string url;
+                List<Spools> lstObjs;
+                inf_spool_list_type obj_spool_list_type = new inf_spool_list_type();
+                switch (assignment_Type)
                 {
-                    cn.DeleteAll<Spools>();
-                    cn.InsertAllWithChildren(lstObjs);
+                    case inf_assignment_type.Pending:
+                        obj_spool_list_type.assignment_type = inf_assignment_type.Pending;
+
+                        url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/SpoolsList";
+                        lstObjs = await npcc_services.inf_CallWebServiceAsync<List<Spools>, inf_spool_list_type>(inf_method.Post, url, obj_spool_list_type);
+                        using (var cn = new SQLiteConnection(dbPath))
+                        {
+                            cn.DeleteAll(cn.GetAllWithChildren<Spools>(x => x.cStatus == "P"));
+                            cn.InsertAllWithChildren(lstObjs);
+                        }
+
+                        break;
+                    case inf_assignment_type.UnderFabrication:
+                        obj_spool_list_type.assignment_type = inf_assignment_type.UnderFabrication;
+
+                        url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/SpoolsList";
+                        lstObjs = await npcc_services.inf_CallWebServiceAsync<List<Spools>, inf_spool_list_type>(inf_method.Post, url, obj_spool_list_type);
+                        using (var cn = new SQLiteConnection(dbPath))
+                        {
+                            cn.DeleteAll(cn.GetAllWithChildren<Spools>(x => x.cStatus == "F"));
+                            cn.InsertAllWithChildren(lstObjs);
+                        }
+
+                        break;
+                    case inf_assignment_type.UnderWelding:
+                        obj_spool_list_type.assignment_type = inf_assignment_type.UnderWelding;
+
+                        url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/SpoolsList";
+                        lstObjs = await npcc_services.inf_CallWebServiceAsync<List<Spools>, inf_spool_list_type>(inf_method.Post, url, obj_spool_list_type);
+                        using (var cn = new SQLiteConnection(dbPath))
+                        {
+                            cn.DeleteAll(cn.GetAllWithChildren<Spools>(x => x.cStatus == "W"));
+                            cn.InsertAllWithChildren(lstObjs);
+                        }
+
+                        break;
+                    case inf_assignment_type.Completed:
+                        obj_spool_list_type.assignment_type = inf_assignment_type.Completed;
+
+                        url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/SpoolsList";
+                        lstObjs = await npcc_services.inf_CallWebServiceAsync<List<Spools>, inf_spool_list_type>(inf_method.Post, url, obj_spool_list_type);
+                        using (var cn = new SQLiteConnection(dbPath))
+                        {
+                            cn.DeleteAll(cn.GetAllWithChildren<Spools>(x => x.cStatus == "C"));
+                            cn.InsertAllWithChildren(lstObjs);
+                        }
+
+                        break;
                 }
+
                 return true;
             }
             catch (Exception ex)
@@ -103,17 +151,44 @@ namespace NPCCMobileApplications.Library
             }
         }
 
-        public List<Spools> GetSpools()
+        public List<Spools> GetSpools(inf_assignment_type assignment_Type)
         {
             try
             {
-                List<Spools> Spools;
-                using (var cn = new SQLiteConnection(dbPath))
+                List<Spools> lstObjs;
+                switch (assignment_Type)
                 {
-                    Spools = cn.GetAllWithChildren<Spools>();
-                }
+                    case inf_assignment_type.Pending:
+                        using (var cn = new SQLiteConnection(dbPath))
+                        {
+                            lstObjs = cn.GetAllWithChildren<Spools>(x => x.cStatus == "P");
+                        }
 
-                return Spools;
+                        return lstObjs;
+                    case inf_assignment_type.UnderFabrication:
+                        using (var cn = new SQLiteConnection(dbPath))
+                        {
+                            lstObjs = cn.GetAllWithChildren<Spools>(x => x.cStatus == "F");
+                        }
+                        return lstObjs;
+                    case inf_assignment_type.UnderWelding:
+                        using (var cn = new SQLiteConnection(dbPath))
+                        {
+                            lstObjs = cn.GetAllWithChildren<Spools>(x => x.cStatus == "W");
+                        }
+
+                        return lstObjs;
+                    case inf_assignment_type.Completed:
+                        using (var cn = new SQLiteConnection(dbPath))
+                        {
+                            lstObjs = cn.GetAllWithChildren<Spools>(x => x.cStatus == "C");
+                        }
+
+                        return lstObjs;
+                    default:
+                        return null;
+
+                }
             }
             catch (Exception ex)
             {
@@ -133,17 +208,13 @@ namespace NPCCMobileApplications.Library
             return spl;
         }
 
-        public bool UpdateSpool(int id, Spools nSpool)
+        public bool UpdateSpool(Spools nSpool)
         {
             try
             {
                 using (var cn = new SQLiteConnection(dbPath))
                 {
-                    Spools spl = cn.Get<Spools>(id);
-                    spl.cSpoolNo = nSpool.cSpoolNo;
-                    spl.cStationName = nSpool.cStationName;
-                    spl.icon = nSpool.icon;
-                    cn.Update(spl);
+                    cn.Update(nSpool);
                 }
                 return true;
             }

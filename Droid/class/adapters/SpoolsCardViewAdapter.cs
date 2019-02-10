@@ -21,18 +21,21 @@ namespace NPCCMobileApplications.Droid
 {
     public class SpoolsCardViewAdapter : RecyclerView.Adapter
     {
-        private readonly List<Spools> _lsObjs;
+        public List<Spools> _lsObjs { get; set; }
         private AppCompatActivity _currentContext;
         private Spools _spl;
         private SupportFragment _fragment;
         FrameLayout mFragmentContainer;
+        SpoolsCardViewAdapter _ins;
+        npcc_types.inf_assignment_type _assignment_Type;
 
-
-        public SpoolsCardViewAdapter(AppCompatActivity currentContext, SupportFragment fragment, List<Spools> lsObjs)
+        public SpoolsCardViewAdapter(AppCompatActivity currentContext, SupportFragment fragment, List<Spools> lsObjs, npcc_types.inf_assignment_type assignment_Type)
         {
+            _ins = this;
             this._lsObjs = lsObjs;
             _currentContext = currentContext;
             _fragment = fragment;
+            _assignment_Type = assignment_Type;
             mFragmentContainer = currentContext.FindViewById<FrameLayout>(Resource.Id.fragmentContainer);
         }
 
@@ -40,32 +43,52 @@ namespace NPCCMobileApplications.Droid
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             _spl = _lsObjs[position];
-
             MyViewHolder h = holder as MyViewHolder;
-            h.lblcSpoolNo.Text ="Spool: " + _lsObjs[position].cSpoolNo;
-            h.lbliProjNo.Text = "Project: " + _lsObjs[position].iProjNo.ToString();
-            h.lblcISO.Text = "ISO: " + _lsObjs[position].cISO;
+            h.lblcSpoolNo.Text ="Spool: " + _spl.cSpoolNo;
+            h.lbliProjNo.Text = "Project: " + _spl.iProjNo.ToString();
+            h.lblcISO.Text = "ISO: " + _spl.cISO;
+            h.btnDetails.Tag = position;
             h.btnDetails.Click += BtnDetails_Click;
-            h.btnAssign.Click += BtnAssign_Click;
-            h.textViewOptions.SetOnClickListener(new ExtraMenuActions(_currentContext, _fragment, mFragmentContainer, _spl.iProjectId, _spl.cTransmittal, _spl.iDrwgSrl));
-
+            h.btnAssign.Tag = position;
             ImageService.Instance
-                            .LoadUrl(_lsObjs.ToArray()[position].icon)
+                            .LoadUrl(_spl.icon)
                             .LoadingPlaceholder("loadingimg", FFImageLoading.Work.ImageSource.CompiledResource)
                             .ErrorPlaceholder("notfound", FFImageLoading.Work.ImageSource.CompiledResource)
                             .Transform(new CircleTransformation())
                             .IntoAsync(h.imageView);
+            h.textViewOptions.SetOnClickListener(new ExtraMenuActions(_currentContext, _fragment, mFragmentContainer, _spl.iProjectId, _spl.cTransmittal, _spl.iDrwgSrl));
+
+            switch (_assignment_Type)
+            {
+                case inf_assignment_type.Pending:
+                    h.btnAssign.Click += BtnAssign_Click;
+                    break;
+                case inf_assignment_type.UnderFabrication:
+                    h.btnAssign.Visibility = ViewStates.Gone;
+                    break;
+                case inf_assignment_type.UnderWelding:
+                    h.btnAssign.Visibility = ViewStates.Gone;
+                    break;
+                case inf_assignment_type.Completed:
+                    h.btnAssign.Visibility = ViewStates.Gone;
+                    break;
+            }
+
+
+
         }
 
         void BtnAssign_Click(object sender, EventArgs e)
         {
-            var dialog = new Assign();
+            _spl = _lsObjs[(int)((Button)sender).Tag];
+            var dialog = new Assign(_spl, _ins, (int)((Button)sender).Tag);
             dialog.Show(_currentContext.FragmentManager, "Assign");
         }
 
 
         void BtnDetails_Click(object sender, EventArgs e)
         {
+            _spl = _lsObjs[(int)((Button)sender).Tag];
             showData mshowData = new showData(_spl);
             common_functions.npcc_show_fragment(_currentContext, mFragmentContainer, mshowData, _fragment);
         }

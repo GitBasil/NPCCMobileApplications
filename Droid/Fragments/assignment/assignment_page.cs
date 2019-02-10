@@ -27,7 +27,8 @@ namespace NPCCMobileApplications.Droid
         private ViewPager viewPager;
         private ViewPagerAdapter adapter;
         assignment_lists _PendingLists;
-        assignment_lists _UnderProgressLists;
+        assignment_lists _UnderFabricationLists;
+        assignment_lists _UnderWeldingLists;
         assignment_lists _CompletedLists;
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -48,15 +49,17 @@ namespace NPCCMobileApplications.Droid
             adapter = new ViewPagerAdapter(this.Activity.SupportFragmentManager);
 
             _PendingLists = new assignment_lists(Library.npcc_types.inf_assignment_type.Pending);
-            _UnderProgressLists = new assignment_lists(Library.npcc_types.inf_assignment_type.UnderProgress);
+            _UnderFabricationLists = new assignment_lists(Library.npcc_types.inf_assignment_type.UnderFabrication);
+            _UnderWeldingLists = new assignment_lists(Library.npcc_types.inf_assignment_type.UnderWelding);
             _CompletedLists = new assignment_lists(Library.npcc_types.inf_assignment_type.Completed);
 
             adapter.AddFragment(_PendingLists, new Java.Lang.String("pending"));
-            adapter.AddFragment(_UnderProgressLists, new Java.Lang.String("under progress"));
-            adapter.AddFragment(_CompletedLists, new Java.Lang.String("completed"));
+            adapter.AddFragment(_UnderFabricationLists, new Java.Lang.String("Under Fabrication"));
+            adapter.AddFragment(_UnderWeldingLists, new Java.Lang.String("Under Welding"));
+            adapter.AddFragment(_CompletedLists, new Java.Lang.String("Completed"));
 
             viewPager.Adapter = adapter;
-            viewPager.OffscreenPageLimit = 3;
+            viewPager.OffscreenPageLimit = 4;
             tabLayout.SetupWithViewPager(viewPager);
             tabLayout.Post(_PendingLists.fill_listAsync);
             tabLayout.TabSelected += TabLayout_TabSelected;
@@ -69,10 +72,13 @@ namespace NPCCMobileApplications.Droid
         {
             switch (e.Tab.Text)
             {
-                case "under progress":
-                    _UnderProgressLists.ins.fill_listAsync();
+                case "Under Fabrication":
+                    _UnderFabricationLists.ins.fill_listAsync();
                     break;
-                case "completed":
+                case "Under Welding":
+                    _UnderWeldingLists.ins.fill_listAsync();
+                    break;
+                case "Completed":
                     _CompletedLists.ins.fill_listAsync();
                     break;
             }

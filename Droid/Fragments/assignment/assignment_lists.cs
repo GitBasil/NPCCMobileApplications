@@ -70,11 +70,11 @@ namespace NPCCMobileApplications.Droid
             DBRepository dBRepository = new DBRepository();
             dBRepository.CreateTable();
             Task.Run(async () => { 
-                await dBRepository.RefreshSpoolAsync();
+                await dBRepository.RefreshSpoolAsync(_assignment_Type);
             }).ContinueWith(fn => {
                 act.RunOnUiThread(() => {
-                    lstObjs = dBRepository.GetSpools();
-                    adapter = new SpoolsCardViewAdapter(act, this, lstObjs);
+                    lstObjs = dBRepository.GetSpools(_assignment_Type);
+                    adapter = new SpoolsCardViewAdapter(act, this, lstObjs, _assignment_Type);
                     rv.SetAdapter(adapter);
                     _swipeRefresh.Refreshing = false;
                 });
@@ -83,23 +83,20 @@ namespace NPCCMobileApplications.Droid
 
         public void fill_listAsync()
         {
-            if(rv.GetAdapter() == null)
+            DBRepository dBRepository = new DBRepository();
+            dBRepository.CreateTable();
+            lstObjs = dBRepository.GetSpools(_assignment_Type);
+            if (lstObjs != null && lstObjs.Count == 0)
             {
-                DBRepository dBRepository = new DBRepository();
-                dBRepository.CreateTable();
-                lstObjs = dBRepository.GetSpools();
-                if (lstObjs.Count == 0)
-                {
-                    _swipeRefresh.Refreshing = true;
-                    refresh_listAsync();
-                }
-                else
-                {
-                    adapter = new SpoolsCardViewAdapter(act, this, lstObjs);
-                    rv.SetAdapter(adapter);
+                _swipeRefresh.Refreshing = true;
+                refresh_listAsync();
+            }
+            else
+            {
+                adapter = new SpoolsCardViewAdapter(act, this, lstObjs, _assignment_Type);
+                rv.SetAdapter(adapter);
 
-                    _swipeRefresh.Refreshing = false;
-                }
+                _swipeRefresh.Refreshing = false;
             }
 
         }

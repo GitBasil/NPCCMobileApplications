@@ -23,4 +23,21 @@ namespace NPCCMobileApplications.Library
         public string username { get; set; }
         public string password { get; set; }
     }
+
+    public class inf_userinfo
+    {
+        public string cUsername { get; set; }
+        public string cFullName { get; set; }
+    }
+
+    public class inf_assignment
+    {
+        public string cFabricatorUser { get; set; }
+        public int iAssignmentId { get; set; }
+    }
+
+    public class inf_spool_list_type
+    {
+        public inf_assignment_type assignment_type { get; set; }
+    }
 }

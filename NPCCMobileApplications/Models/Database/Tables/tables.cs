@@ -37,6 +37,7 @@ namespace NPCCMobileApplications.Library
         public string cSpoolNo { get; set; }
         public string cRevNo { get; set; }
         public string cForemanUser { get; set; }
+        public string cStatus { get; set; }
         public string icon { get; set; }
 
         public static explicit operator Spools(Java.Lang.Object v)

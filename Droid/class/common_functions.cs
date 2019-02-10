@@ -1,6 +1,7 @@
 ﻿
 using System;
 using Android.App;
+using Android.Content;
 using Android.Graphics;
 using Android.Support.V7.App;
 using Android.Views;
@@ -12,7 +13,6 @@ namespace NPCCMobileApplications.Droid
 {
     public static class common_functions
     {
-        static SupportFragment mCurrentFragment;
         public static void npcc_apply_font(ViewGroup vg)
         {
             Typeface tf = Typeface.CreateFromAsset(Application.Context.Assets, "fonts/npcc_font.ttf");
@@ -56,6 +56,25 @@ namespace NPCCMobileApplications.Droid
             act.RunOnUiThread(() => {
                 imageView.SetImageBitmap(image.Bitmap);
             });
+        }
+
+        public static void DisplayToast(String message, Context context)
+        {
+            // Construct the toast, set the view and display
+            Toast toast;
+            LayoutInflater inflater = (LayoutInflater)context.GetSystemService(Context.LayoutInflaterService);
+            View view = inflater.Inflate(Resource.Layout.toast_layout, null);
+
+            // Fill in the message into the textview
+            TextView text = (TextView)view.FindViewById(Resource.Id.text);
+            text.Text = message;
+            toast = new Toast(context)
+            {
+                View = view,
+                Duration = ToastLength.Long
+            };
+            //toast.SetGravity(GravityFlags.Bottom,0,20);
+            toast.Show();
         }
     }
 }

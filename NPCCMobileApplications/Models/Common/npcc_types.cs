@@ -38,8 +38,9 @@ namespace NPCCMobileApplications.Library
         public enum inf_assignment_type
         {
             Pending = 0,
-            UnderProgress = 1,
-            Completed = 2
+            UnderFabrication = 1,
+            UnderWelding = 2,
+            Completed = 3
         }
     }
 }

@@ -232,7 +232,7 @@
     <Compile Include="Fragments\Pdfview_test.cs" />
     <Compile Include="class\clsScaleImage.cs" />
     <Compile Include="class\ExtraMenuActions.cs" />
-    <Compile Include="class\dialogs\Assign.cs" />
+    <Compile Include="Fragments\assignment\dialogs\Assign.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -298,6 +298,8 @@
     <AndroidResource Include="Resources\drawable\img_661_669.jpg" />
     <AndroidResource Include="Resources\layout\fraglayout.axml" />
     <AndroidResource Include="Resources\layout\Assign.axml" />
+    <AndroidResource Include="Resources\layout\toast_layout.axml" />
+    <AndroidResource Include="Resources\drawable\buttonshape.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
@@ -307,7 +309,7 @@
     <Folder Include="Fragments\CustomView\" />
     <Folder Include="Fragments\assignment\" />
     <Folder Include="class\adapters\" />
-    <Folder Include="class\dialogs\" />
+    <Folder Include="Fragments\assignment\dialogs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPCCMobileApplications\NPCCMobileApplications.Library.csproj">

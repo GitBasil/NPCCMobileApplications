@@ -110,6 +110,7 @@ namespace NPCCMobileApplications.Droid
 
                     break;
                 case "Fabricator":
+                    _spl = _lsObjs[(int)((Button)sender).Tag];
                     //set alert for executing the task
                     Android.App.AlertDialog.Builder alert = new Android.App.AlertDialog.Builder(_currentContext);
                     alert.SetTitle("Confirm Complete");

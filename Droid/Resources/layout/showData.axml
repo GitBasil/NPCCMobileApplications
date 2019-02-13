@@ -37,12 +37,7 @@
             android:background="@color/white">
             <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
                 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
-                    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
-                        <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="Spool" />
-                        <TextView android:id="@+id/lblcSpoolNo" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lblcSpoolNo" />
-                    </LinearLayout>
-                    <View style="@style/dividerHorizontal" />
-                    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
                         <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="Project" />
                         <TextView android:id="@+id/lbliProjNo" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lbliProjNo" />
                     </LinearLayout>
@@ -50,6 +45,21 @@
                     <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
                         <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="ISO" />
                         <TextView android:id="@+id/lblcISO" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lblcEngrDrwgCode" />
+                    </LinearLayout>
+                    <View style="@style/dividerHorizontal" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+                        <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="Spool No." />
+                        <TextView android:id="@+id/lblcSpoolNo" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lblcSpoolNo" />
+                    </LinearLayout>
+                    <View style="@style/dividerHorizontal" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+                        <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="Spool Size" />
+                        <TextView android:id="@+id/lblcSpoolSize" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lblcSpoolNo" />
+                    </LinearLayout>
+                    <View style="@style/dividerHorizontal" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center">
+                        <TextView android:layout_width="100dp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="right" android:textStyle="bold" android:text="Spool Material" />
+                        <TextView android:id="@+id/lblcSpoolMaterial" android:layout_width="0dp" android:layout_height="wrap_content" android:padding="5dp" android:layout_weight="1" android:gravity="left" android:text="lblcSpoolNo" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

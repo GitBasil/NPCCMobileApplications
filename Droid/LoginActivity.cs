@@ -56,6 +56,7 @@ namespace NPCCMobileApplications.Droid
                     //We have successfully authenticated a the user,
                     //Now fire our OnLoginSuccess Event.
                     DBRepository dBRepository = new DBRepository();
+                    dBRepository.DropTable();
                     dBRepository.CreateTable();
                     bool b = await dBRepository.RefreshUserInfoAsync();
 

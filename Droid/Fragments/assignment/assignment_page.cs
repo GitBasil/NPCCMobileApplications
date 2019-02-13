@@ -14,6 +14,8 @@ using Android.Support.V4.View;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using FFImageLoading;
+using NPCCMobileApplications.Library;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace NPCCMobileApplications.Droid
@@ -48,41 +50,60 @@ namespace NPCCMobileApplications.Droid
 
             adapter = new ViewPagerAdapter(this.Activity.SupportFragmentManager);
 
-            _PendingLists = new assignment_lists(Library.npcc_types.inf_assignment_type.Pending);
-            _UnderFabricationLists = new assignment_lists(Library.npcc_types.inf_assignment_type.UnderFabrication);
-            _UnderWeldingLists = new assignment_lists(Library.npcc_types.inf_assignment_type.UnderWelding);
-            _CompletedLists = new assignment_lists(Library.npcc_types.inf_assignment_type.Completed);
+            DBRepository dBRepository = new DBRepository();
+            UserInfo user = dBRepository.GetUserInfo();
+            switch (user.group)
+            {
+                case "Foreman":
+                    _PendingLists = new assignment_lists(Library.npcc_types.inf_assignment_type.Pending);
+                    _UnderFabricationLists = new assignment_lists(Library.npcc_types.inf_assignment_type.UnderFabrication);
+                    _UnderWeldingLists = new assignment_lists(Library.npcc_types.inf_assignment_type.UnderWelding);
+                    _CompletedLists = new assignment_lists(Library.npcc_types.inf_assignment_type.Completed);
 
-            adapter.AddFragment(_PendingLists, new Java.Lang.String("pending"));
-            adapter.AddFragment(_UnderFabricationLists, new Java.Lang.String("Under Fabrication"));
-            adapter.AddFragment(_UnderWeldingLists, new Java.Lang.String("Under Welding"));
-            adapter.AddFragment(_CompletedLists, new Java.Lang.String("Completed"));
+                    adapter.AddFragment(_PendingLists, new Java.Lang.String("pending"));
+                    adapter.AddFragment(_UnderFabricationLists, new Java.Lang.String("Under Fabrication"));
+                    adapter.AddFragment(_UnderWeldingLists, new Java.Lang.String("Under Welding"));
+                    adapter.AddFragment(_CompletedLists, new Java.Lang.String("Completed"));
 
+                    viewPager.OffscreenPageLimit = 4;
+                    break;
+                case "Fabricator":
+                case "Welder":
+                    _PendingLists = new assignment_lists(Library.npcc_types.inf_assignment_type.Pending);
+                    adapter.AddFragment(_PendingLists, new Java.Lang.String("pending"));
+
+                    viewPager.OffscreenPageLimit = 1;
+
+                    break;
+            }
             viewPager.Adapter = adapter;
-            viewPager.OffscreenPageLimit = 4;
             tabLayout.SetupWithViewPager(viewPager);
-            tabLayout.Post(_PendingLists.fill_listAsync);
+            tabLayout.Post(_PendingLists.fill_list);
             tabLayout.TabSelected += TabLayout_TabSelected;
 
             common_functions.npcc_apply_font(view.FindViewById<TabLayout>(Resource.Id.tabLayout_id));
+
+            ImageService.Instance.InvalidateCacheAsync(FFImageLoading.Cache.CacheType.All);
+
             return view;
         }
 
         void TabLayout_TabSelected(object sender, TabLayout.TabSelectedEventArgs e)
         {
+            ImageService.Instance.SetExitTasksEarly(true);
             switch (e.Tab.Text)
             {
                 case "Under Fabrication":
-                    _UnderFabricationLists.ins.fill_listAsync();
+                    _UnderFabricationLists.ins.fill_list();
                     break;
                 case "Under Welding":
-                    _UnderWeldingLists.ins.fill_listAsync();
+                    _UnderWeldingLists.ins.fill_list();
                     break;
                 case "Completed":
-                    _CompletedLists.ins.fill_listAsync();
+                    _CompletedLists.ins.fill_list();
                     break;
             }
-
+            ImageService.Instance.SetExitTasksEarly(false);
         }
 
     }

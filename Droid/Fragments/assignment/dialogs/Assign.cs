@@ -86,6 +86,13 @@ namespace NPCCMobileApplications.Droid
                     _spl.cStatus = "F";
                     dBRepository.UpdateSpool(_spl);
 
+                    common_functions.DisplayToast("Task assigned successfully!!", Context);
+                } else if (assignRes == 2)
+                {
+                    DBRepository dBRepository = new DBRepository();
+                    _spl.cStatus = "F";
+                    dBRepository.UpdateSpool(_spl);
+
                     _ins._lsObjs.RemoveAt(_position);
                     _ins.NotifyItemRemoved(_position);
                     _ins.NotifyItemRangeChanged(_position, _ins._lsObjs.Count);

@@ -16,6 +16,7 @@ using static Android.Views.View;
 using static NPCCMobileApplications.Library.npcc_types;
 using SupportFragment = Android.Support.V4.App.Fragment;
 using LayoutParams = Android.Views.ViewGroup.LayoutParams;
+using System.Threading.Tasks;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -28,6 +29,7 @@ namespace NPCCMobileApplications.Droid
         FrameLayout mFragmentContainer;
         SpoolsCardViewAdapter _ins;
         npcc_types.inf_assignment_type _assignment_Type;
+        int assignRes;
 
         public SpoolsCardViewAdapter(AppCompatActivity currentContext, SupportFragment fragment, List<Spools> lsObjs, npcc_types.inf_assignment_type assignment_Type)
         {
@@ -44,12 +46,15 @@ namespace NPCCMobileApplications.Droid
         {
             _spl = _lsObjs[position];
             MyViewHolder h = holder as MyViewHolder;
-            h.lblcSpoolNo.Text ="Spool: " + _spl.cSpoolNo;
+            h.lblcSpoolNo.Text = "Spool: " + _spl.cSpoolNo;
+            h.lblcSpoolSize.Text = "Size: " + _spl.cSpoolSize;
+            h.lblcSpoolMaterial.Text = "Material: " + _spl.cSpoolMaterial;
             h.lbliProjNo.Text = "Project: " + _spl.iProjNo.ToString();
             h.lblcISO.Text = "ISO: " + _spl.cISO;
             h.btnDetails.Tag = position;
             h.btnDetails.Click += BtnDetails_Click;
-            h.btnAssign.Tag = position;
+            h.btnAssignment.Tag = position;
+
             ImageService.Instance
                             .LoadUrl(_spl.icon)
                             .LoadingPlaceholder("loadingimg", FFImageLoading.Work.ImageSource.CompiledResource)
@@ -58,31 +63,95 @@ namespace NPCCMobileApplications.Droid
                             .IntoAsync(h.imageView);
             h.textViewOptions.SetOnClickListener(new ExtraMenuActions(_currentContext, _fragment, mFragmentContainer, _spl.iProjectId, _spl.cTransmittal, _spl.iDrwgSrl));
 
-            switch (_assignment_Type)
+            DBRepository dBRepository = new DBRepository();
+            UserInfo user = dBRepository.GetUserInfo();
+            switch(user.group)
             {
-                case inf_assignment_type.Pending:
-                    h.btnAssign.Click += BtnAssign_Click;
+                case "Foreman":
+                    switch (_assignment_Type)
+                    {
+                        case inf_assignment_type.Pending:
+                            h.btnAssignment.Text = "Assign";
+                            h.btnAssignment.Click += BtnAssign_Click;
+                            break;
+                        case inf_assignment_type.UnderFabrication:
+                            h.btnAssignment.Text = "Re-Assign";
+                            h.btnAssignment.Click += BtnAssign_Click;
+                            break;
+                        case inf_assignment_type.UnderWelding:
+                            h.btnAssignment.Visibility = ViewStates.Gone;
+                            break;
+                        case inf_assignment_type.Completed:
+                            h.btnAssignment.Visibility = ViewStates.Gone;
+                            break;
+                    }
                     break;
-                case inf_assignment_type.UnderFabrication:
-                    h.btnAssign.Visibility = ViewStates.Gone;
+                case "Fabricator":
+                    h.btnAssignment.Text = "Complete";
+                    h.btnAssignment.Click += BtnAssign_Click;
                     break;
-                case inf_assignment_type.UnderWelding:
-                    h.btnAssign.Visibility = ViewStates.Gone;
-                    break;
-                case inf_assignment_type.Completed:
-                    h.btnAssign.Visibility = ViewStates.Gone;
+                case "Welder":
+                    h.btnAssignment.Text = "Fill Weld Log";
+                    h.btnAssignment.Click += BtnAssign_Click;
                     break;
             }
-
-
-
         }
 
         void BtnAssign_Click(object sender, EventArgs e)
         {
-            _spl = _lsObjs[(int)((Button)sender).Tag];
-            var dialog = new Assign(_spl, _ins, (int)((Button)sender).Tag);
-            dialog.Show(_currentContext.FragmentManager, "Assign");
+            DBRepository dBRepository = new DBRepository();
+            UserInfo user = dBRepository.GetUserInfo();
+            switch (user.group)
+            {
+                case "Foreman":
+                    _spl = _lsObjs[(int)((Button)sender).Tag];
+                    var dialog = new Assign(_spl, _ins, (int)((Button)sender).Tag);
+                    dialog.Show(_currentContext.FragmentManager, "Assign");
+
+                    break;
+                case "Fabricator":
+                    //set alert for executing the task
+                    Android.App.AlertDialog.Builder alert = new Android.App.AlertDialog.Builder(_currentContext);
+                    alert.SetTitle("Confirm Complete");
+                    alert.SetMessage("Are you sure you want to complete this task.");
+                    alert.SetPositiveButton("Yes", (senderAlert, args) => {
+                        string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/FabricatorComplete";
+
+                        inf_assignment objAssignment = new inf_assignment();
+                        objAssignment.iAssignmentId = _spl.iAssignmentId;
+
+                        Task.Run(async () => {
+                            assignRes = await npcc_services.inf_CallWebServiceAsync<int, inf_assignment>(inf_method.Post, url, objAssignment);
+                        }).ContinueWith(fn => {
+                            if (assignRes == 1)
+                            {
+                                _spl.cStatus = "W";
+                                dBRepository.UpdateSpool(_spl);
+                                _currentContext.RunOnUiThread(() =>
+                                {
+                                    _ins._lsObjs.RemoveAt((int)((Button)sender).Tag);
+                                    _ins.NotifyItemRemoved((int)((Button)sender).Tag);
+                                    _ins.NotifyItemRangeChanged((int)((Button)sender).Tag, _ins._lsObjs.Count);
+                                });
+                                common_functions.DisplayToast("Task assigned successfully!!", _currentContext);
+                            }
+                            else
+                            {
+                                common_functions.DisplayToast("Error occurred while assigning the task, contact system admin!!", _currentContext);
+                            }
+                        });
+
+
+                    });
+
+                    alert.SetNegativeButton("No", (senderAlert, args) => {
+                    });
+
+                    Dialog d = alert.Create();
+                    d.Show();
+
+                    break;
+            }
         }
 
 
@@ -117,22 +186,26 @@ namespace NPCCMobileApplications.Droid
         internal class MyViewHolder : RecyclerView.ViewHolder
         {
             public TextView lblcSpoolNo;
+            public TextView lblcSpoolSize;
+            public TextView lblcSpoolMaterial;
             public TextView lbliProjNo;
             public TextView lblcISO;
             public ImageViewAsync imageView;
             public Button btnDetails;
-            public Button btnAssign;
+            public Button btnAssignment;
             public Button textViewOptions;
 
             public MyViewHolder(View itemView)
                 : base(itemView)
             {
                 lblcSpoolNo = itemView.FindViewById<TextView>(Resource.Id.lblcSpoolNo);
+                lblcSpoolSize = itemView.FindViewById<TextView>(Resource.Id.lblcSpoolSize);
+                lblcSpoolMaterial = itemView.FindViewById<TextView>(Resource.Id.lblcSpoolMaterial);
                 lbliProjNo=itemView.FindViewById<TextView>(Resource.Id.lbliProjNo);
                 lblcISO = itemView.FindViewById<TextView>(Resource.Id.lblcISO);
                 imageView = itemView.FindViewById<ImageViewAsync>(Resource.Id.imgView);
                 btnDetails = itemView.FindViewById<Button>(Resource.Id.btnDetails);
-                btnAssign = itemView.FindViewById<Button>(Resource.Id.btnAssign);
+                btnAssignment = itemView.FindViewById<Button>(Resource.Id.btnAssignment);
                 textViewOptions = itemView.FindViewById<Button>(Resource.Id.textViewOptions);
             }
 

@@ -51,6 +51,8 @@ namespace NPCCMobileApplications.Droid
             SpoolItemListView.Adapter = new SpoolItemAdapter(this.Activity, _spl.SpoolItem);
 
             view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = _spl.cSpoolNo;
+            view.FindViewById<TextView>(Resource.Id.lblcSpoolSize).Text = _spl.cSpoolSize;
+            view.FindViewById<TextView>(Resource.Id.lblcSpoolMaterial).Text = _spl.cSpoolMaterial;
             view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text = _spl.iProjNo.ToString();
             view.FindViewById<TextView>(Resource.Id.lblcISO).Text = _spl.cISO;
             textViewOptions = view.FindViewById<Button>(Resource.Id.textViewOptions);

@@ -11,7 +11,7 @@
                 android:checked="false"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Assignment" />
-                
+                <!--
             <item
                 android:id="@+id/landing_page"
                 android:checked="false"
@@ -52,7 +52,7 @@
                 android:id="@+id/text_recognition"
                 android:checked="false"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Text Recognition by Camera" />
+                android:title="Text Recognition by Camera" />-->
         </group>
 
     </menu>
@@ -62,7 +62,7 @@
 <item android:title="PROFILE">
     <menu>
         <group android:checkableBehavior="single">
-            <item
+            <!--<item
                 android:id="@+id/profile"
                 android:checked="false"
                 android:icon="@drawable/ic_menu_share"
@@ -72,28 +72,18 @@
                 android:checked="false"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Settings" />
-
+-->
+                <item
+            android:id="@+id/helpDesk"
+            android:checked="false"
+            android:icon="@drawable/ic_menu_send"
+            android:title="HelpDesk "></item>
             <item
                 android:id="@+id/logout"
                 android:checked="false"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Log Out" />
-        </group>
-    </menu>
-</item>
-
-
-<item android:title="HELPDESK">
-
-    <menu>
-
-        <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/helpDesk"
-            android:checked="false"
-            android:icon="@drawable/ic_menu_send"
-            android:title="HelpDesk "></item>
-
+                
         </group>
     </menu>
 </item>

@@ -233,6 +233,7 @@
     <Compile Include="class\clsScaleImage.cs" />
     <Compile Include="class\ExtraMenuActions.cs" />
     <Compile Include="Fragments\assignment\dialogs\Assign.cs" />
+    <Compile Include="class\adapters\CustomScrollListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

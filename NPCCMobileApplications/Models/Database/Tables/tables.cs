@@ -35,6 +35,8 @@ namespace NPCCMobileApplications.Library
         public string cStationName { get; set; }
         public int iItemSno { get; set; }
         public string cSpoolNo { get; set; }
+        public string cSpoolSize { get; set; }
+        public string cSpoolMaterial { get; set; }
         public string cRevNo { get; set; }
         public string cForemanUser { get; set; }
         public string cStatus { get; set; }
@@ -71,6 +73,7 @@ namespace NPCCMobileApplications.Library
     {
         public string username { get; set; }
         public string fullname { get; set; }
+        public string group { get; set; }
         public byte[] img { get; set; }
 
         public static explicit operator UserInfo(Java.Lang.Object v)

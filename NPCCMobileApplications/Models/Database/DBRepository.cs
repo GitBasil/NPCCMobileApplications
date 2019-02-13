@@ -37,13 +37,33 @@ namespace NPCCMobileApplications.Library
             }
         }
 
+        public bool DropTable()
+        {
+            try
+            {
+                using (var cn = new SQLiteConnection(dbPath))
+                {
+                    cn.DropTable<Spools>();
+                    cn.DropTable<SpoolItem>();
+                    cn.DropTable<UserInfo>();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
         #region UserInfo
 
         public async Task<bool> RefreshUserInfoAsync()
         {
             try
             {
-                string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/UserImage";
+                string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/UserInfo";
                 UserInfo lstObjs = await npcc_services.inf_CallWebServiceAsync<UserInfo, string>(inf_method.Get, url);
                 using (var cn = new SQLiteConnection(dbPath))
                 {
@@ -90,13 +110,19 @@ namespace NPCCMobileApplications.Library
                 string url;
                 List<Spools> lstObjs;
                 inf_spool_list_type obj_spool_list_type = new inf_spool_list_type();
+                DBRepository dBRepository = new DBRepository();
+                UserInfo user = dBRepository.GetUserInfo();
+                obj_spool_list_type.group = user.group;
+
                 switch (assignment_Type)
                 {
                     case inf_assignment_type.Pending:
+                        Console.WriteLine("####################");
                         obj_spool_list_type.assignment_type = inf_assignment_type.Pending;
 
                         url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/SpoolsList";
                         lstObjs = await npcc_services.inf_CallWebServiceAsync<List<Spools>, inf_spool_list_type>(inf_method.Post, url, obj_spool_list_type);
+                        Console.WriteLine("####################" + lstObjs.Count + "#########" + obj_spool_list_type.group);
                         using (var cn = new SQLiteConnection(dbPath))
                         {
                             cn.DeleteAll(cn.GetAllWithChildren<Spools>(x => x.cStatus == "P"));

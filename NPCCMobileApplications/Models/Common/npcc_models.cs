@@ -39,5 +39,6 @@ namespace NPCCMobileApplications.Library
     public class inf_spool_list_type
     {
         public inf_assignment_type assignment_type { get; set; }
+        public string group { get; set; }
     }
 }

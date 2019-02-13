@@ -41,14 +41,7 @@
                 android:id="@+id/lnDetails" 
                 android:layout_below="@id/spImg"
                 android:padding="16dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:id="@+id/lblcSpoolNo" 
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-                <TextView
+                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/lbliProjNo" 
@@ -57,6 +50,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/lblcISO" 
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lblcSpoolNo" 
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+               <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lblcSpoolSize" 
+                    android:textColor="#555" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lblcSpoolMaterial" 
                     android:textColor="#555" />
             </LinearLayout>
             <View style="@style/dividerHorizontal" android:id="@+id/spDt" android:layout_below="@id/lnDetails" />
@@ -76,8 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/btnDetails"
-                    android:text="Assign"
-                    android:id="@+id/btnAssign"
+                    android:id="@+id/btnAssignment"
                     android:layout_weight="1"
                     android:theme="@style/PrimaryFlatButton" />
             </RelativeLayout>

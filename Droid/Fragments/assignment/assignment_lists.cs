@@ -14,6 +14,7 @@ using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using FFImageLoading;
 using Java.Interop;
 using NPCCMobileApplications.Library;
 using SupportFragment = Android.Support.V4.App.Fragment;
@@ -54,7 +55,7 @@ namespace NPCCMobileApplications.Droid
             rv = view.FindViewById<RecyclerView>(Resource.Id.mRecylcerID);
             rv.SetLayoutManager(new GridLayoutManager(act, 2));
             rv.SetItemAnimator(new DefaultItemAnimator());
-
+            rv.AddOnScrollListener(new CustomScrollListener());
             _swipeRefresh.Refresh += _swipeRefresh_Refresh;
 
             return view;
@@ -81,7 +82,7 @@ namespace NPCCMobileApplications.Droid
             });
         }
 
-        public void fill_listAsync()
+        public void fill_list()
         {
             DBRepository dBRepository = new DBRepository();
             dBRepository.CreateTable();

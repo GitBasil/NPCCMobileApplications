@@ -49,13 +49,22 @@ namespace NPCCMobileApplications.Droid
 
         public static async void npcc_setScaleImageView(AppCompatActivity act,View view, string url, ScaleImageView imageView)
         {
-            var image = await ImageService.Instance
+            try
+            {
+                var image = await ImageService.Instance
                         .LoadUrl(url)
                         .AsBitmapDrawableAsync();
 
-            act.RunOnUiThread(() => {
-                imageView.SetImageBitmap(image.Bitmap);
-            });
+                act.RunOnUiThread(() => {
+                    imageView.SetImageBitmap(image.Bitmap);
+                });
+            }
+            catch (Exception ex)
+            {
+                act.RunOnUiThread(() => {
+                    imageView.SetImageResource(Resource.Drawable.notfound);
+                });
+            }
         }
 
         public static void DisplayToast(String message, Context context)

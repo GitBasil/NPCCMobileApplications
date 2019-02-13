@@ -30,14 +30,14 @@ namespace NPCCMobileApplications.Droid
         private DrawerLayout drawer;
 
         private assignment_page mAssignment_page;
-        private landing_page mlanding_page;
         private contact mcontact;
-        private Webview_test mWebview_test;
-        private tabview_test mtabview_test;
-        private QrCode_test mQrCode_test;
-        private QrCodeScan_test mQrCodeScan_test;
-        private CustomListView mCustomListView;
-        private text_recognition mtext_recognition;
+        //private landing_page mlanding_page;
+        //private Webview_test mWebview_test;
+        //private tabview_test mtabview_test;
+        //private QrCode_test mQrCode_test;
+        //private QrCodeScan_test mQrCodeScan_test;
+        //private CustomListView mCustomListView;
+        //private text_recognition mtext_recognition;
         private UserInfo lstObjs;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -124,11 +124,6 @@ namespace NPCCMobileApplications.Droid
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
 
-                case Resource.Id.landing_page:
-                    mlanding_page = new landing_page();
-                    ShowFragment(mlanding_page);
-                    drawer.CloseDrawer(GravityCompat.Start);
-                    return true;
 
                 case Resource.Id.helpDesk:
                     mcontact = new contact();
@@ -136,41 +131,47 @@ namespace NPCCMobileApplications.Droid
                     drawer.CloseDrawer(GravityCompat.Start);
                     return true;
 
-                case Resource.Id.Webview_test:
-                    mWebview_test = new Webview_test();
-                    ShowFragment(mWebview_test);
-                    drawer.CloseDrawer(GravityCompat.Start);
-                    return true;
+                    //case Resource.Id.landing_page:
+                    //mlanding_page = new landing_page();
+                    //ShowFragment(mlanding_page);
+                    //drawer.CloseDrawer(GravityCompat.Start);
+                    //return true;
 
-                case Resource.Id.tabview_test:
-                    mtabview_test = new tabview_test();
-                    ShowFragment(mtabview_test);
-                    drawer.CloseDrawer(GravityCompat.Start);
-                    return true;
+                    //case Resource.Id.Webview_test:
+                    //    mWebview_test = new Webview_test();
+                    //    ShowFragment(mWebview_test);
+                    //    drawer.CloseDrawer(GravityCompat.Start);
+                    //    return true;
 
-                case Resource.Id.QrCode_test:
-                    mQrCode_test = new QrCode_test();
-                    ShowFragment(mQrCode_test);
-                    drawer.CloseDrawer(GravityCompat.Start);
-                    return true;
+                    //case Resource.Id.tabview_test:
+                    //    mtabview_test = new tabview_test();
+                    //    ShowFragment(mtabview_test);
+                    //    drawer.CloseDrawer(GravityCompat.Start);
+                    //    return true;
 
-                case Resource.Id.QrCodeScan_test:
-                    mQrCodeScan_test = new QrCodeScan_test();
-                    ShowFragment(mQrCodeScan_test);
-                    drawer.CloseDrawer(GravityCompat.Start);
-                    return true;
+                    //case Resource.Id.QrCode_test:
+                    //    mQrCode_test = new QrCode_test();
+                    //    ShowFragment(mQrCode_test);
+                    //    drawer.CloseDrawer(GravityCompat.Start);
+                    //    return true;
 
-                case Resource.Id.customListView_test:
-                    mCustomListView = new CustomListView();
-                    ShowFragment(mCustomListView);
-                    drawer.CloseDrawer(GravityCompat.Start);
-                    return true;
+                    //case Resource.Id.QrCodeScan_test:
+                    //    mQrCodeScan_test = new QrCodeScan_test();
+                    //    ShowFragment(mQrCodeScan_test);
+                    //    drawer.CloseDrawer(GravityCompat.Start);
+                    //    return true;
 
-                case Resource.Id.text_recognition:
-                    mtext_recognition = new text_recognition();
-                    ShowFragment(mtext_recognition);
-                    drawer.CloseDrawer(GravityCompat.Start);
-                    return true;
+                    //case Resource.Id.customListView_test:
+                    //    mCustomListView = new CustomListView();
+                    //    ShowFragment(mCustomListView);
+                    //    drawer.CloseDrawer(GravityCompat.Start);
+                    //    return true;
+
+                    //case Resource.Id.text_recognition:
+                    //mtext_recognition = new text_recognition();
+                    //ShowFragment(mtext_recognition);
+                    //drawer.CloseDrawer(GravityCompat.Start);
+                    //return true;
 
             }
 

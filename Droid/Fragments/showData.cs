@@ -8,6 +8,8 @@ using Android.Widget;
 using Android.Graphics;
 using NPCCMobileApplications.Library;
 using Android.Support.V4.App;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace NPCCMobileApplications.Droid
 {
@@ -48,7 +50,8 @@ namespace NPCCMobileApplications.Droid
             mToolbar.NavigationIcon.SetColorFilter(Color.ParseColor("#FFFFFF"), PorterDuff.Mode.SrcAtop);
 
             SpoolItemListView = view.FindViewById<ListView>(Resource.Id.SpoolItemListView);
-            SpoolItemListView.Adapter = new SpoolItemAdapter(this.Activity, _spl.SpoolItem);
+            List<SpoolItem> lstSplItm = _spl.SpoolItem.OrderBy(o => o.cMatType, new common_functions.EmptyStringsAreLast()).ThenBy(b=>b.cClassCode).ToList();
+            SpoolItemListView.Adapter = new SpoolItemAdapter(this.Activity, lstSplItm);
 
             view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = _spl.cSpoolNo;
             view.FindViewById<TextView>(Resource.Id.lblcSpoolSize).Text = _spl.cSpoolSize;

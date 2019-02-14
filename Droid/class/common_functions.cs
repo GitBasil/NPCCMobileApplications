@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
@@ -84,6 +85,25 @@ namespace NPCCMobileApplications.Droid
             };
             //toast.SetGravity(GravityFlags.Bottom,0,20);
             toast.Show();
+        }
+
+        public class EmptyStringsAreLast : IComparer<string>
+        {
+            public int Compare(string x, string y)
+            {
+                if ((String.IsNullOrEmpty(y) && !String.IsNullOrEmpty(x)) || (y == "[-]" && x != "[-]"))
+                {
+                    return -1;
+                }
+                else if ((!String.IsNullOrEmpty(y) && String.IsNullOrEmpty(x)) || (y != "[-]" && x == "[-]"))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return String.Compare(x, y);
+                }
+            }
         }
     }
 }

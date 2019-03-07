@@ -152,6 +152,11 @@ namespace NPCCMobileApplications.Droid
                     d.Show();
 
                     break;
+                case "Welder":
+                    _spl = _lsObjs[(int)((Button)sender).Tag];
+                    FillWeldLog mFillWeldLog = new FillWeldLog(_spl);
+                    common_functions.npcc_show_fragment(_currentContext, mFragmentContainer, mFillWeldLog, _fragment);
+                    break;
             }
         }
 

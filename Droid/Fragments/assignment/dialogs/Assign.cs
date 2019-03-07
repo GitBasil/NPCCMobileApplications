@@ -51,7 +51,7 @@ namespace NPCCMobileApplications.Droid
                 string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/GetFabricatorsList?iStationId=" + _spl.iStationId;
                 lstFabUsers = await npcc_services.inf_CallWebServiceAsync<List<inf_userinfo>, string>(inf_method.Get, url);
             }).ContinueWith(fn => {
-
+                if(lstFabUsers != null)
                 act.RunOnUiThread(() => {
                     var items = new List<SpinnerItem>();
                     foreach(inf_userinfo fabUser in lstFabUsers)

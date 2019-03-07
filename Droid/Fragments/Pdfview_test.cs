@@ -116,7 +116,7 @@ namespace NPCCMobileApplications.Droid
             ProgressCont = view.FindViewById<RelativeLayout>(Resource.Id.ProgressCont);
 
             proTextView = view.FindViewById<TextView>(Resource.Id.proTextView);
-
+            proTextView.Text = "Loading The File Please Wait...";
             Intent downloadIntent = new Intent(this.Activity, typeof(PDFLongRunningThread));
             downloadIntent.PutExtra("file_to_download", _link);
         

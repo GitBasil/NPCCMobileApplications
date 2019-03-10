@@ -4782,8 +4782,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b003e
 			public const int META = 2131427390;
 			
-			// aapt resource value: 0x7f0b0134
-			public const int ProgressCont = 2131427636;
+			// aapt resource value: 0x7f0b013a
+			public const int ProgressCont = 2131427642;
 			
 			// aapt resource value: 0x7f0b003f
 			public const int SHIFT = 2131427391;
@@ -4791,11 +4791,11 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0040
 			public const int SYM = 2131427392;
 			
-			// aapt resource value: 0x7f0b014d
-			public const int SpoolItemListView = 2131427661;
+			// aapt resource value: 0x7f0b014e
+			public const int SpoolItemListView = 2131427662;
 			
-			// aapt resource value: 0x7f0b0120
-			public const int action0 = 2131427616;
+			// aapt resource value: 0x7f0b0126
+			public const int action0 = 2131427622;
 			
 			// aapt resource value: 0x7f0b00a1
 			public const int action_bar = 2131427489;
@@ -4818,17 +4818,17 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b007f
 			public const int action_bar_title = 2131427455;
 			
-			// aapt resource value: 0x7f0b011d
-			public const int action_container = 2131427613;
+			// aapt resource value: 0x7f0b0123
+			public const int action_container = 2131427619;
 			
 			// aapt resource value: 0x7f0b00a2
 			public const int action_context_bar = 2131427490;
 			
-			// aapt resource value: 0x7f0b0124
-			public const int action_divider = 2131427620;
+			// aapt resource value: 0x7f0b012a
+			public const int action_divider = 2131427626;
 			
-			// aapt resource value: 0x7f0b011e
-			public const int action_image = 2131427614;
+			// aapt resource value: 0x7f0b0124
+			public const int action_image = 2131427620;
 			
 			// aapt resource value: 0x7f0b0003
 			public const int action_menu_divider = 2131427331;
@@ -4845,11 +4845,11 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0081
 			public const int action_mode_close_button = 2131427457;
 			
-			// aapt resource value: 0x7f0b011f
-			public const int action_text = 2131427615;
+			// aapt resource value: 0x7f0b0125
+			public const int action_text = 2131427621;
 			
-			// aapt resource value: 0x7f0b012d
-			public const int actions = 2131427629;
+			// aapt resource value: 0x7f0b0133
+			public const int actions = 2131427635;
 			
 			// aapt resource value: 0x7f0b0082
 			public const int activity_chooser_view_content = 2131427458;
@@ -4881,8 +4881,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0068
 			public const int arrow = 2131427432;
 			
-			// aapt resource value: 0x7f0b0145
-			public const int arrowbutton = 2131427653;
+			// aapt resource value: 0x7f0b014b
+			public const int arrowbutton = 2131427659;
 			
 			// aapt resource value: 0x7f0b018b
 			public const int assignment_page = 2131427723;
@@ -4944,8 +4944,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0046
 			public const int bottom = 2131427398;
 			
-			// aapt resource value: 0x7f0b0154
-			public const int bottomBar = 2131427668;
+			// aapt resource value: 0x7f0b0155
+			public const int bottomBar = 2131427669;
 			
 			// aapt resource value: 0x7f0b0064
 			public const int bottomRight = 2131427428;
@@ -4962,8 +4962,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0158
 			public const int btnDetails = 2131427672;
 			
-			// aapt resource value: 0x7f0b010f
-			public const int btnLogin = 2131427599;
+			// aapt resource value: 0x7f0b0115
+			public const int btnLogin = 2131427605;
 			
 			// aapt resource value: 0x7f0b00bc
 			public const int btnSubmit = 2131427516;
@@ -4986,11 +4986,11 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b001d
 			public const int calligraphy_tag_id = 2131427357;
 			
-			// aapt resource value: 0x7f0b0150
-			public const int cancelButton = 2131427664;
+			// aapt resource value: 0x7f0b0151
+			public const int cancelButton = 2131427665;
 			
-			// aapt resource value: 0x7f0b0121
-			public const int cancel_action = 2131427617;
+			// aapt resource value: 0x7f0b0127
+			public const int cancel_action = 2131427623;
 			
 			// aapt resource value: 0x7f0b004d
 			public const int center = 2131427405;
@@ -5010,17 +5010,17 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0109
 			public const int chkItemChecked = 2131427593;
 			
-			// aapt resource value: 0x7f0b0129
-			public const int chronometer = 2131427625;
+			// aapt resource value: 0x7f0b012f
+			public const int chronometer = 2131427631;
 			
 			// aapt resource value: 0x7f0b0069
 			public const int circle = 2131427433;
 			
-			// aapt resource value: 0x7f0b0155
-			public const int clearButton = 2131427669;
+			// aapt resource value: 0x7f0b0156
+			public const int clearButton = 2131427670;
 			
-			// aapt resource value: 0x7f0b013e
-			public const int clearSearchResult = 2131427646;
+			// aapt resource value: 0x7f0b0144
+			public const int clearSearchResult = 2131427652;
 			
 			// aapt resource value: 0x7f0b0056
 			public const int clip_horizontal = 2131427414;
@@ -5133,8 +5133,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b00fa
 			public const int dmax_spots_title = 2131427578;
 			
-			// aapt resource value: 0x7f0b0152
-			public const int doneButton = 2131427666;
+			// aapt resource value: 0x7f0b0153
+			public const int doneButton = 2131427667;
 			
 			// aapt resource value: 0x7f0b0074
 			public const int doubleCircle = 2131427444;
@@ -5160,8 +5160,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0039
 			public const int end = 2131427385;
 			
-			// aapt resource value: 0x7f0b012f
-			public const int end_padder = 2131427631;
+			// aapt resource value: 0x7f0b0135
+			public const int end_padder = 2131427637;
 			
 			// aapt resource value: 0x7f0b0048
 			public const int enterAlways = 2131427400;
@@ -5199,11 +5199,11 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b00f7
 			public const int formCheckBoxButton = 2131427575;
 			
-			// aapt resource value: 0x7f0b010c
-			public const int formContentButton = 2131427596;
+			// aapt resource value: 0x7f0b0112
+			public const int formContentButton = 2131427602;
 			
-			// aapt resource value: 0x7f0b010b
-			public const int formListLayout = 2131427595;
+			// aapt resource value: 0x7f0b0111
+			public const int formListLayout = 2131427601;
 			
 			// aapt resource value: 0x7f0b00f8
 			public const int formRadioButton = 2131427576;
@@ -5217,8 +5217,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b00e0
 			public const int fragmentContainer = 2131427552;
 			
-			// aapt resource value: 0x7f0b0139
-			public const int fragment_container = 2131427641;
+			// aapt resource value: 0x7f0b013f
+			public const int fragment_container = 2131427647;
 			
 			// aapt resource value: 0x7f0b006a
 			public const int freeText = 2131427434;
@@ -5262,8 +5262,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0087
 			public const int icon = 2131427463;
 			
-			// aapt resource value: 0x7f0b012e
-			public const int icon_group = 2131427630;
+			// aapt resource value: 0x7f0b0134
+			public const int icon_group = 2131427636;
 			
 			// aapt resource value: 0x7f0b0021
 			public const int icon_only = 2131427361;
@@ -5274,23 +5274,23 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0084
 			public const int image = 2131427460;
 			
-			// aapt resource value: 0x7f0b0137
-			public const int imageBarcode = 2131427639;
+			// aapt resource value: 0x7f0b013d
+			public const int imageBarcode = 2131427645;
 			
-			// aapt resource value: 0x7f0b011a
-			public const int imageView = 2131427610;
+			// aapt resource value: 0x7f0b0120
+			public const int imageView = 2131427616;
 			
 			// aapt resource value: 0x7f0b00ba
 			public const int imageView2 = 2131427514;
 			
-			// aapt resource value: 0x7f0b011b
-			public const int imgUser = 2131427611;
+			// aapt resource value: 0x7f0b0121
+			public const int imgUser = 2131427617;
 			
 			// aapt resource value: 0x7f0b00e2
 			public const int imgView = 2131427554;
 			
-			// aapt resource value: 0x7f0b012a
-			public const int info = 2131427626;
+			// aapt resource value: 0x7f0b0130
+			public const int info = 2131427632;
 			
 			// aapt resource value: 0x7f0b006c
 			public const int ink = 2131427436;
@@ -5319,8 +5319,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b00e7
 			public const int largeLabel = 2131427559;
 			
-			// aapt resource value: 0x7f0b011c
-			public const int lblUsername = 2131427612;
+			// aapt resource value: 0x7f0b0122
+			public const int lblUsername = 2131427618;
 			
 			// aapt resource value: 0x7f0b00e3
 			public const int lblVal1 = 2131427555;
@@ -5331,23 +5331,23 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b015e
 			public const int lblcEngrDrwgCode = 2131427678;
 			
-			// aapt resource value: 0x7f0b0149
-			public const int lblcISO = 2131427657;
+			// aapt resource value: 0x7f0b010c
+			public const int lblcISO = 2131427596;
 			
 			// aapt resource value: 0x7f0b015f
 			public const int lblcNpccDrwgCode = 2131427679;
 			
-			// aapt resource value: 0x7f0b014c
-			public const int lblcSpoolMaterial = 2131427660;
+			// aapt resource value: 0x7f0b010f
+			public const int lblcSpoolMaterial = 2131427599;
 			
-			// aapt resource value: 0x7f0b014a
-			public const int lblcSpoolNo = 2131427658;
+			// aapt resource value: 0x7f0b010d
+			public const int lblcSpoolNo = 2131427597;
 			
-			// aapt resource value: 0x7f0b014b
-			public const int lblcSpoolSize = 2131427659;
+			// aapt resource value: 0x7f0b010e
+			public const int lblcSpoolSize = 2131427598;
 			
-			// aapt resource value: 0x7f0b0148
-			public const int lbliProjNo = 2131427656;
+			// aapt resource value: 0x7f0b010b
+			public const int lbliProjNo = 2131427595;
 			
 			// aapt resource value: 0x7f0b0051
 			public const int left = 2131427409;
@@ -5364,8 +5364,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0018
 			public const int line3 = 2131427352;
 			
-			// aapt resource value: 0x7f0b0144
-			public const int linebutton = 2131427652;
+			// aapt resource value: 0x7f0b014a
+			public const int linebutton = 2131427658;
 			
 			// aapt resource value: 0x7f0b0178
 			public const int linefive = 2131427704;
@@ -5406,8 +5406,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0086
 			public const int list_item = 2131427462;
 			
-			// aapt resource value: 0x7f0b0156
-			public const int lnDetails = 2131427670;
+			// aapt resource value: 0x7f0b010a
+			public const int lnDetails = 2131427594;
 			
 			// aapt resource value: 0x7f0b018d
 			public const int logout = 2131427725;
@@ -5421,8 +5421,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0188
 			public const int masked = 2131427720;
 			
-			// aapt resource value: 0x7f0b0123
-			public const int media_actions = 2131427619;
+			// aapt resource value: 0x7f0b0129
+			public const int media_actions = 2131427625;
 			
 			// aapt resource value: 0x7f0b00b9
 			public const int menuLeft = 2131427513;
@@ -5439,8 +5439,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b017e
 			public const int moreButton = 2131427710;
 			
-			// aapt resource value: 0x7f0b0110
-			public const int moreoptions = 2131427600;
+			// aapt resource value: 0x7f0b0116
+			public const int moreoptions = 2131427606;
 			
 			// aapt resource value: 0x7f0b0079
 			public const int movieTimer = 2131427449;
@@ -5466,17 +5466,17 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0028
 			public const int normal = 2131427368;
 			
+			// aapt resource value: 0x7f0b0132
+			public const int notification_background = 2131427634;
+			
 			// aapt resource value: 0x7f0b012c
-			public const int notification_background = 2131427628;
+			public const int notification_main_column = 2131427628;
 			
-			// aapt resource value: 0x7f0b0126
-			public const int notification_main_column = 2131427622;
+			// aapt resource value: 0x7f0b012b
+			public const int notification_main_column_container = 2131427627;
 			
-			// aapt resource value: 0x7f0b0125
-			public const int notification_main_column_container = 2131427621;
-			
-			// aapt resource value: 0x7f0b0130
-			public const int opacity = 2131427632;
+			// aapt resource value: 0x7f0b0136
+			public const int opacity = 2131427638;
 			
 			// aapt resource value: 0x7f0b00d5
 			public const int opacitybutton = 2131427541;
@@ -5487,8 +5487,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0066
 			public const int outside = 2131427430;
 			
-			// aapt resource value: 0x7f0b0143
-			public const int ovalbutton = 2131427651;
+			// aapt resource value: 0x7f0b0149
+			public const int ovalbutton = 2131427657;
 			
 			// aapt resource value: 0x7f0b00c8
 			public const int pagecounttext = 2131427528;
@@ -5508,8 +5508,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b000b
 			public const int parent_matrix = 2131427339;
 			
-			// aapt resource value: 0x7f0b0133
-			public const int pdfviewercontrol = 2131427635;
+			// aapt resource value: 0x7f0b0139
+			public const int pdfviewercontrol = 2131427641;
 			
 			// aapt resource value: 0x7f0b0055
 			public const int pin = 2131427413;
@@ -5517,14 +5517,14 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b007a
 			public const int print = 2131427450;
 			
-			// aapt resource value: 0x7f0b0135
-			public const int proTextView = 2131427637;
+			// aapt resource value: 0x7f0b013b
+			public const int proTextView = 2131427643;
 			
-			// aapt resource value: 0x7f0b0131
-			public const int progress = 2131427633;
+			// aapt resource value: 0x7f0b0137
+			public const int progress = 2131427639;
 			
-			// aapt resource value: 0x7f0b0136
-			public const int progress_bar = 2131427638;
+			// aapt resource value: 0x7f0b013c
+			public const int progress_bar = 2131427644;
 			
 			// aapt resource value: 0x7f0b0006
 			public const int progress_circular = 2131427334;
@@ -5541,20 +5541,20 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b015a
 			public const int rectangle_at_the_top = 2131427674;
 			
-			// aapt resource value: 0x7f0b0142
-			public const int rectanglebutton = 2131427650;
+			// aapt resource value: 0x7f0b0148
+			public const int rectanglebutton = 2131427656;
 			
 			// aapt resource value: 0x7f0b0181
 			public const int redo = 2131427713;
 			
-			// aapt resource value: 0x7f0b0115
-			public const int redobutton = 2131427605;
+			// aapt resource value: 0x7f0b011b
+			public const int redobutton = 2131427611;
 			
-			// aapt resource value: 0x7f0b0114
-			public const int redogrid = 2131427604;
+			// aapt resource value: 0x7f0b011a
+			public const int redogrid = 2131427610;
 			
-			// aapt resource value: 0x7f0b0116
-			public const int redotext = 2131427606;
+			// aapt resource value: 0x7f0b011c
+			public const int redotext = 2131427612;
 			
 			// aapt resource value: 0x7f0b00e1
 			public const int relativeLayout1 = 2131427553;
@@ -5562,11 +5562,11 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0052
 			public const int right = 2131427410;
 			
-			// aapt resource value: 0x7f0b012b
-			public const int right_icon = 2131427627;
+			// aapt resource value: 0x7f0b0131
+			public const int right_icon = 2131427633;
 			
-			// aapt resource value: 0x7f0b0127
-			public const int right_side = 2131427623;
+			// aapt resource value: 0x7f0b012d
+			public const int right_side = 2131427629;
 			
 			// aapt resource value: 0x7f0b007b
 			public const int rollingBall = 2131427451;
@@ -5583,14 +5583,14 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b000e
 			public const int save_scale_type = 2131427342;
 			
-			// aapt resource value: 0x7f0b0118
-			public const int savebutton = 2131427608;
+			// aapt resource value: 0x7f0b011e
+			public const int savebutton = 2131427614;
 			
-			// aapt resource value: 0x7f0b0117
-			public const int savegrid = 2131427607;
+			// aapt resource value: 0x7f0b011d
+			public const int savegrid = 2131427613;
 			
-			// aapt resource value: 0x7f0b0119
-			public const int savetext = 2131427609;
+			// aapt resource value: 0x7f0b011f
+			public const int savetext = 2131427615;
 			
 			// aapt resource value: 0x7f0b017f
 			public const int saveundoredo = 2131427711;
@@ -5613,14 +5613,14 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b005d
 			public const int scrollable = 2131427421;
 			
-			// aapt resource value: 0x7f0b013c
-			public const int search = 2131427644;
+			// aapt resource value: 0x7f0b0142
+			public const int search = 2131427650;
 			
 			// aapt resource value: 0x7f0b017d
 			public const int searchButton = 2131427709;
 			
-			// aapt resource value: 0x7f0b013b
-			public const int searchGrid = 2131427643;
+			// aapt resource value: 0x7f0b0141
+			public const int searchGrid = 2131427649;
 			
 			// aapt resource value: 0x7f0b00f4
 			public const int searchText = 2131427572;
@@ -5655,17 +5655,17 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b00ae
 			public const int search_voice_btn = 2131427502;
 			
-			// aapt resource value: 0x7f0b013d
-			public const int searchcustom = 2131427645;
+			// aapt resource value: 0x7f0b0143
+			public const int searchcustom = 2131427651;
 			
-			// aapt resource value: 0x7f0b0140
-			public const int searchnextbutton = 2131427648;
+			// aapt resource value: 0x7f0b0146
+			public const int searchnextbutton = 2131427654;
 			
-			// aapt resource value: 0x7f0b013f
-			public const int searchpreviousbutton = 2131427647;
+			// aapt resource value: 0x7f0b0145
+			public const int searchpreviousbutton = 2131427653;
 			
-			// aapt resource value: 0x7f0b0132
-			public const int seekbar = 2131427634;
+			// aapt resource value: 0x7f0b0138
+			public const int seekbar = 2131427640;
 			
 			// aapt resource value: 0x7f0b00af
 			public const int select_dialog_listview = 2131427503;
@@ -5676,8 +5676,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b00c7
 			public const int separator = 2131427527;
 			
-			// aapt resource value: 0x7f0b0141
-			public const int shape = 2131427649;
+			// aapt resource value: 0x7f0b0147
+			public const int shape = 2131427655;
 			
 			// aapt resource value: 0x7f0b00b4
 			public const int shapebutton = 2131427508;
@@ -5697,14 +5697,14 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b00b7
 			public const int signatureButton = 2131427511;
 			
-			// aapt resource value: 0x7f0b0151
-			public const int signatureLabel = 2131427665;
+			// aapt resource value: 0x7f0b0152
+			public const int signatureLabel = 2131427666;
 			
-			// aapt resource value: 0x7f0b0153
-			public const int signaturePadContainer = 2131427667;
+			// aapt resource value: 0x7f0b0154
+			public const int signaturePadContainer = 2131427668;
 			
-			// aapt resource value: 0x7f0b014e
-			public const int signatureviewlayout = 2131427662;
+			// aapt resource value: 0x7f0b014f
+			public const int signatureviewlayout = 2131427663;
 			
 			// aapt resource value: 0x7f0b007c
 			public const int singleCircle = 2131427452;
@@ -5727,8 +5727,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0157
 			public const int spDt = 2131427671;
 			
-			// aapt resource value: 0x7f0b0147
-			public const int spImg = 2131427655;
+			// aapt resource value: 0x7f0b014d
+			public const int spImg = 2131427661;
 			
 			// aapt resource value: 0x7f0b0089
 			public const int spacer = 2131427465;
@@ -5736,8 +5736,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0008
 			public const int split_action_bar = 2131427336;
 			
-			// aapt resource value: 0x7f0b010a
-			public const int spnMultTest = 2131427594;
+			// aapt resource value: 0x7f0b0110
+			public const int spnMultTest = 2131427600;
 			
 			// aapt resource value: 0x7f0b00bb
 			public const int spnTest = 2131427515;
@@ -5757,8 +5757,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0053
 			public const int start = 2131427411;
 			
-			// aapt resource value: 0x7f0b0122
-			public const int status_bar_latest_event_content = 2131427618;
+			// aapt resource value: 0x7f0b0128
+			public const int status_bar_latest_event_content = 2131427624;
 			
 			// aapt resource value: 0x7f0b006f
 			public const int strikethrough = 2131427439;
@@ -5799,14 +5799,14 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b008e
 			public const int textSpacerNoTitle = 2131427470;
 			
-			// aapt resource value: 0x7f0b0138
-			public const int textView1 = 2131427640;
+			// aapt resource value: 0x7f0b013e
+			public const int textView1 = 2131427646;
 			
-			// aapt resource value: 0x7f0b013a
-			public const int textView2 = 2131427642;
+			// aapt resource value: 0x7f0b0140
+			public const int textView2 = 2131427648;
 			
-			// aapt resource value: 0x7f0b0146
-			public const int textViewOptions = 2131427654;
+			// aapt resource value: 0x7f0b014c
+			public const int textViewOptions = 2131427660;
 			
 			// aapt resource value: 0x7f0b00f3
 			public const int text_input_password_toggle = 2131427571;
@@ -5847,8 +5847,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b00db
 			public const int thicknessbutton = 2131427547;
 			
-			// aapt resource value: 0x7f0b0128
-			public const int time = 2131427624;
+			// aapt resource value: 0x7f0b012e
+			public const int time = 2131427630;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int title = 2131427356;
@@ -5865,8 +5865,8 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0047
 			public const int top = 2131427399;
 			
-			// aapt resource value: 0x7f0b014f
-			public const int topBar = 2131427663;
+			// aapt resource value: 0x7f0b0150
+			public const int topBar = 2131427664;
 			
 			// aapt resource value: 0x7f0b0067
 			public const int topLeft = 2131427431;
@@ -5895,11 +5895,11 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0013
 			public const int transition_transform = 2131427347;
 			
-			// aapt resource value: 0x7f0b010e
-			public const int txtPassword = 2131427598;
+			// aapt resource value: 0x7f0b0114
+			public const int txtPassword = 2131427604;
 			
-			// aapt resource value: 0x7f0b010d
-			public const int txtUsername = 2131427597;
+			// aapt resource value: 0x7f0b0113
+			public const int txtUsername = 2131427603;
 			
 			// aapt resource value: 0x7f0b00f6
 			public const int txvEmpty = 2131427574;
@@ -5919,14 +5919,14 @@ namespace NPCCMobileApplications.Droid
 			// aapt resource value: 0x7f0b0180
 			public const int undo = 2131427712;
 			
-			// aapt resource value: 0x7f0b0112
-			public const int undobutton = 2131427602;
+			// aapt resource value: 0x7f0b0118
+			public const int undobutton = 2131427608;
 			
-			// aapt resource value: 0x7f0b0111
-			public const int undogrid = 2131427601;
+			// aapt resource value: 0x7f0b0117
+			public const int undogrid = 2131427607;
 			
-			// aapt resource value: 0x7f0b0113
-			public const int undotext = 2131427603;
+			// aapt resource value: 0x7f0b0119
+			public const int undotext = 2131427609;
 			
 			// aapt resource value: 0x7f0b0036
 			public const int uniform = 2131427382;
@@ -6213,142 +6213,145 @@ namespace NPCCMobileApplications.Droid
 			public const int item_select_single = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int landing_page = 2130968639;
+			public const int JointCardView = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int listViewRow = 2130968640;
+			public const int landing_page = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int LoginLayout = 2130968641;
+			public const int listViewRow = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int moreoptionslayout = 2130968642;
+			public const int LoginLayout = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int nav_header_main = 2130968643;
+			public const int moreoptionslayout = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int notification_action = 2130968644;
+			public const int nav_header_main = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int notification_action_tombstone = 2130968645;
+			public const int notification_action = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int notification_media_action = 2130968646;
+			public const int notification_action_tombstone = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int notification_media_cancel_action = 2130968647;
+			public const int notification_media_action = 2130968647;
 			
 			// aapt resource value: 0x7f040048
-			public const int notification_template_big_media = 2130968648;
+			public const int notification_media_cancel_action = 2130968648;
 			
 			// aapt resource value: 0x7f040049
-			public const int notification_template_big_media_custom = 2130968649;
+			public const int notification_template_big_media = 2130968649;
 			
 			// aapt resource value: 0x7f04004a
-			public const int notification_template_big_media_narrow = 2130968650;
+			public const int notification_template_big_media_custom = 2130968650;
 			
 			// aapt resource value: 0x7f04004b
-			public const int notification_template_big_media_narrow_custom = 2130968651;
+			public const int notification_template_big_media_narrow = 2130968651;
 			
 			// aapt resource value: 0x7f04004c
-			public const int notification_template_custom_big = 2130968652;
+			public const int notification_template_big_media_narrow_custom = 2130968652;
 			
 			// aapt resource value: 0x7f04004d
-			public const int notification_template_icon_group = 2130968653;
+			public const int notification_template_custom_big = 2130968653;
 			
 			// aapt resource value: 0x7f04004e
-			public const int notification_template_lines_media = 2130968654;
+			public const int notification_template_icon_group = 2130968654;
 			
 			// aapt resource value: 0x7f04004f
-			public const int notification_template_media = 2130968655;
+			public const int notification_template_lines_media = 2130968655;
 			
 			// aapt resource value: 0x7f040050
-			public const int notification_template_media_custom = 2130968656;
+			public const int notification_template_media = 2130968656;
 			
 			// aapt resource value: 0x7f040051
-			public const int notification_template_part_chronometer = 2130968657;
+			public const int notification_template_media_custom = 2130968657;
 			
 			// aapt resource value: 0x7f040052
-			public const int notification_template_part_time = 2130968658;
+			public const int notification_template_part_chronometer = 2130968658;
 			
 			// aapt resource value: 0x7f040053
-			public const int opacitylayout = 2130968659;
+			public const int notification_template_part_time = 2130968659;
 			
 			// aapt resource value: 0x7f040054
-			public const int Pdfview_test = 2130968660;
+			public const int opacitylayout = 2130968660;
 			
 			// aapt resource value: 0x7f040055
-			public const int QrCode_test = 2130968661;
+			public const int Pdfview_test = 2130968661;
 			
 			// aapt resource value: 0x7f040056
-			public const int QrCodeScan_test = 2130968662;
+			public const int QrCode_test = 2130968662;
 			
 			// aapt resource value: 0x7f040057
-			public const int searchtoolbar = 2130968663;
+			public const int QrCodeScan_test = 2130968663;
 			
 			// aapt resource value: 0x7f040058
-			public const int select_dialog_item_material = 2130968664;
+			public const int searchtoolbar = 2130968664;
 			
 			// aapt resource value: 0x7f040059
-			public const int select_dialog_multichoice_material = 2130968665;
+			public const int select_dialog_item_material = 2130968665;
 			
 			// aapt resource value: 0x7f04005a
-			public const int select_dialog_singlechoice_material = 2130968666;
+			public const int select_dialog_multichoice_material = 2130968666;
 			
 			// aapt resource value: 0x7f04005b
-			public const int shapeannotationlayout = 2130968667;
+			public const int select_dialog_singlechoice_material = 2130968667;
 			
 			// aapt resource value: 0x7f04005c
-			public const int showData = 2130968668;
+			public const int shapeannotationlayout = 2130968668;
 			
 			// aapt resource value: 0x7f04005d
-			public const int signaturepadlayout = 2130968669;
+			public const int showData = 2130968669;
 			
 			// aapt resource value: 0x7f04005e
-			public const int spoolcardView = 2130968670;
+			public const int signaturepadlayout = 2130968670;
 			
 			// aapt resource value: 0x7f04005f
-			public const int SpoolItemView = 2130968671;
+			public const int spoolcardView = 2130968671;
 			
 			// aapt resource value: 0x7f040060
-			public const int SpoolListItem = 2130968672;
+			public const int SpoolItemView = 2130968672;
 			
 			// aapt resource value: 0x7f040061
-			public const int support_simple_spinner_dropdown_item = 2130968673;
+			public const int SpoolListItem = 2130968673;
 			
 			// aapt resource value: 0x7f040062
-			public const int tabview_test = 2130968674;
+			public const int support_simple_spinner_dropdown_item = 2130968674;
 			
 			// aapt resource value: 0x7f040063
-			public const int text_recognition = 2130968675;
+			public const int tabview_test = 2130968675;
 			
 			// aapt resource value: 0x7f040064
-			public const int textmarkuplayout = 2130968676;
+			public const int text_recognition = 2130968676;
 			
 			// aapt resource value: 0x7f040065
-			public const int thicklines = 2130968677;
+			public const int textmarkuplayout = 2130968677;
 			
 			// aapt resource value: 0x7f040066
-			public const int toast_layout = 2130968678;
+			public const int thicklines = 2130968678;
 			
 			// aapt resource value: 0x7f040067
-			public const int tooltip = 2130968679;
+			public const int toast_layout = 2130968679;
 			
 			// aapt resource value: 0x7f040068
-			public const int toptoolbar = 2130968680;
+			public const int tooltip = 2130968680;
 			
 			// aapt resource value: 0x7f040069
-			public const int undoredosave = 2130968681;
+			public const int toptoolbar = 2130968681;
 			
 			// aapt resource value: 0x7f04006a
-			public const int webview_test = 2130968682;
+			public const int undoredosave = 2130968682;
 			
 			// aapt resource value: 0x7f04006b
-			public const int zxingscanneractivitylayout = 2130968683;
+			public const int webview_test = 2130968683;
 			
 			// aapt resource value: 0x7f04006c
-			public const int zxingscannerfragmentlayout = 2130968684;
+			public const int zxingscanneractivitylayout = 2130968684;
+			
+			// aapt resource value: 0x7f04006d
+			public const int zxingscannerfragmentlayout = 2130968685;
 			
 			static Layout()
 			{

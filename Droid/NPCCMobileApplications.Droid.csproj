@@ -232,6 +232,7 @@
     <Compile Include="Fragments\assignment\dialogs\Assign.cs" />
     <Compile Include="class\adapters\CustomScrollListener.cs" />
     <Compile Include="Fragments\FillWeldLog.cs" />
+    <Compile Include="class\adapters\JointsViewAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -300,6 +301,7 @@
     <AndroidResource Include="Resources\layout\toast_layout.axml" />
     <AndroidResource Include="Resources\drawable\buttonshape.xml" />
     <AndroidResource Include="Resources\layout\FillWeldLog.axml" />
+    <AndroidResource Include="Resources\layout\JointCardView.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

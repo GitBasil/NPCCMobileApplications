@@ -27,11 +27,11 @@ namespace NPCCMobileApplications.Droid
     {
         FrameLayout mFragmentContainer;
         AppCompatActivity act;
-        List<Spools> lstObjs;
         private RecyclerView rv;
         private JointsViewAdapter adapter;
         Spools _spl;
         SupportToolbar mToolbar;
+        Button btnSubmitWeldLog;
 
         public FillWeldLog(Spools spl)
         {
@@ -56,6 +56,13 @@ namespace NPCCMobileApplications.Droid
             act.SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             mToolbar.NavigationIcon.SetColorFilter(Color.ParseColor("#FFFFFF"), PorterDuff.Mode.SrcAtop);
 
+            view.FindViewById<TextView>(Resource.Id.lbliProjNo).Text = _spl.iProjNo.ToString();
+            view.FindViewById<TextView>(Resource.Id.lblcISO).Text = _spl.cISO.Trim();
+            view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = _spl.cSpoolNo.Trim();
+
+            btnSubmitWeldLog = view.FindViewById<Button>(Resource.Id.btnSubmitWeldLog);
+            btnSubmitWeldLog.Click += BtnSubmitWeldLog_Click;
+
             rv = view.FindViewById<RecyclerView>(Resource.Id.mRecylcerID);
             rv.SetLayoutManager(new GridLayoutManager(act, 1));
             rv.SetItemAnimator(new DefaultItemAnimator());
@@ -65,6 +72,12 @@ namespace NPCCMobileApplications.Droid
 
             return view;
         }
+
+        void BtnSubmitWeldLog_Click(object sender, EventArgs e)
+        {
+            //adapter.
+        }
+
 
         public void fill_list()
         {

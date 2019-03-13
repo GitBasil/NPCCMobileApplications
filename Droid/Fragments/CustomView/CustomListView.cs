@@ -64,7 +64,6 @@ namespace NPCCMobileApplications.Droid
 
         void first_fill(){
             DBRepository dBRepository = new DBRepository();
-            dBRepository.CreateTable();
             dBRepository.RefreshSpoolAsync(npcc_types.inf_assignment_type.Pending);
             List<Spools> lstObjs = dBRepository.GetSpools(npcc_types.inf_assignment_type.Pending);
             _lvw.Adapter = new CustomViewAdapter(this.Activity, lstObjs);

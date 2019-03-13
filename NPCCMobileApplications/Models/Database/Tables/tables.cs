@@ -20,6 +20,9 @@ namespace NPCCMobileApplications.Library
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<SpoolItem> SpoolItem { get; set; }
 
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<SpoolJoints> SpoolJoints { get; set; }
+
         public int iAssignmentId { get; set; }
         public string cProjType { get; set; }
         public int iProjYear { get; set; }
@@ -66,6 +69,54 @@ namespace NPCCMobileApplications.Library
         public string cVocab { get; set; }
         public string cClassCode { get; set; }
         public string cColorCode { get; set; }
+
+        public static implicit operator Java.Lang.Object(SpoolItem v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static explicit operator SpoolItem(Java.Lang.Object v)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    [Table("SpoolJoints")]
+    public class SpoolJoints : IdentifiableModel
+    {
+        [ForeignKey(typeof(Spools))]
+        public int SpoolId { get; set; }
+
+        [ManyToOne]
+        public Spools Spool { get; set; }
+
+        public short iJointNo { get; set; }
+        public string cJointSuffix { get; set; }
+        public string cCreatedFor { get; set; }
+        public string cJointType { get; set; }
+        public string cClass { get; set; }
+        public decimal rDia { get; set; }
+        public decimal rLength { get; set; }
+        public decimal rJiontThk { get; set; }
+        public string cWPSCode { get; set; }
+
+        [TextBlob("cRHWelders")]
+        public List<string> cRHWelders { get; set; }
+
+        [TextBlob("cFCWelders")]
+        public List<string> cFCWelders { get; set; }
+
+        public decimal iWeldLogNo { get; set; }
+
+        public static implicit operator Java.Lang.Object(SpoolJoints v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static explicit operator SpoolJoints(Java.Lang.Object v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     [Table("UserInfo")]
@@ -73,8 +124,8 @@ namespace NPCCMobileApplications.Library
     {
         public string username { get; set; }
         public string fullname { get; set; }
-        public string group { get; set; }
         public byte[] img { get; set; }
+        public string group { get; set; }
 
         public static explicit operator UserInfo(Java.Lang.Object v)
         {
@@ -86,6 +137,4 @@ namespace NPCCMobileApplications.Library
             throw new NotImplementedException();
         }
     }
-
-
 }

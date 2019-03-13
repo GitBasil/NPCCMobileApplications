@@ -71,7 +71,14 @@ namespace NPCCMobileApplications.Droid
 
             DBRepository dBRepository = new DBRepository();
             lstObjs = dBRepository.GetUserInfo();
-
+            if(lstObjs == null)
+            {
+                SecureStorage.Remove("oauth_token");
+                StartActivity(typeof(LoginActivity));
+                common_functions.DisplayToast("Login Issue, Please contact the system administrator!!", this);
+                Finish();
+                return;
+            }
             navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.lblUsername).Text += lstObjs.fullname;
             ImageViewAsync imageView = navigationView.GetHeaderView(0).FindViewById<ImageViewAsync>(Resource.Id.imgUser);
             ImageService.Instance

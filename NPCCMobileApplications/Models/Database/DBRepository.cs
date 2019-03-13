@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using SQLite;
 using SQLiteNetExtensions.Extensions;
@@ -18,25 +17,6 @@ namespace NPCCMobileApplications.Library
                                   (System.Environment.SpecialFolder.Personal), "ormdemo.db");
         }
 
-        public bool CreateTable()
-        {
-            try
-            {
-                using (var cn = new SQLiteConnection(dbPath))
-                {
-                    cn.CreateTable<Spools>();
-                    cn.CreateTable<SpoolItem>();
-                    cn.CreateTable<UserInfo>();
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
         public bool DropTable()
         {
             try
@@ -45,6 +25,7 @@ namespace NPCCMobileApplications.Library
                 {
                     cn.DropTable<Spools>();
                     cn.DropTable<SpoolItem>();
+                    cn.DropTable<SpoolJoints>();
                     cn.DropTable<UserInfo>();
                 }
 
@@ -52,6 +33,7 @@ namespace NPCCMobileApplications.Library
             }
             catch (Exception ex)
             {
+                npcc_services.inf_mobile_exception_managerAsync(ex.Message);
                 return false;
             }
         }
@@ -67,6 +49,7 @@ namespace NPCCMobileApplications.Library
                 UserInfo lstObjs = await npcc_services.inf_CallWebServiceAsync<UserInfo, string>(inf_method.Get, url);
                 using (var cn = new SQLiteConnection(dbPath))
                 {
+                    cn.CreateTable<UserInfo>();
                     cn.DeleteAll<UserInfo>();
                     cn.Insert(lstObjs);
                 }
@@ -75,6 +58,7 @@ namespace NPCCMobileApplications.Library
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 npcc_services.inf_mobile_exception_managerAsync(ex.Message);
                 return false;
             }
@@ -114,6 +98,12 @@ namespace NPCCMobileApplications.Library
                 UserInfo user = dBRepository.GetUserInfo();
                 obj_spool_list_type.group = user.group;
 
+                using (var cn = new SQLiteConnection(dbPath))
+                {
+                    cn.CreateTable<SpoolJoints>();
+                    cn.CreateTable<SpoolItem>();
+                    cn.CreateTable<Spools>();
+                }
                 switch (assignment_Type)
                 {
                     case inf_assignment_type.Pending:
@@ -172,6 +162,7 @@ namespace NPCCMobileApplications.Library
             }
             catch (Exception ex)
             {
+                Console.WriteLine("########"+ ex.Message + "############");
                 npcc_services.inf_mobile_exception_managerAsync(ex.Message);
                 return false;
             }
@@ -181,6 +172,14 @@ namespace NPCCMobileApplications.Library
         {
             try
             {
+                using (var cn = new SQLiteConnection(dbPath))
+                {
+                    cn.CreateTable<SpoolJoints>();
+                    cn.CreateTable<SpoolItem>();
+                    cn.CreateTable<Spools>();
+                }
+
+                Console.WriteLine("############S#################");
                 List<Spools> lstObjs;
                 switch (assignment_Type)
                 {
@@ -189,35 +188,39 @@ namespace NPCCMobileApplications.Library
                         {
                             lstObjs = cn.GetAllWithChildren<Spools>(x => x.cStatus == "P");
                         }
-
+                        Console.WriteLine("############P#################");
                         return lstObjs;
                     case inf_assignment_type.UnderFabrication:
                         using (var cn = new SQLiteConnection(dbPath))
                         {
                             lstObjs = cn.GetAllWithChildren<Spools>(x => x.cStatus == "F");
                         }
+                        Console.WriteLine("#############F################");
                         return lstObjs;
                     case inf_assignment_type.UnderWelding:
                         using (var cn = new SQLiteConnection(dbPath))
                         {
                             lstObjs = cn.GetAllWithChildren<Spools>(x => x.cStatus == "W");
                         }
-
+                        Console.WriteLine("##############W###############");
                         return lstObjs;
                     case inf_assignment_type.Completed:
                         using (var cn = new SQLiteConnection(dbPath))
                         {
                             lstObjs = cn.GetAllWithChildren<Spools>(x => x.cStatus == "C");
                         }
-
+                        Console.WriteLine("############C#################");
                         return lstObjs;
                     default:
+                        Console.WriteLine("############N#################");
                         return null;
 
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine("############E#################");
+                Console.WriteLine("############" + ex.Message + "#################");
                 npcc_services.inf_mobile_exception_managerAsync(ex.Message);
                 return null;
             }

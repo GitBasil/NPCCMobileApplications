@@ -8,6 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
         card_view:cardElevation="2dp"
         app:cardPreventCornerOverlap="false"
         card_view:cardUseCompatPadding="true"
@@ -16,35 +17,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/lnDetails" 
-                android:padding="16dp">
-                 <TextView
-                    android:layout_width="match_parent"
+                android:id="@+id/lnDetails">
+            <LinearLayout android:background="@drawable/shadow" android:paddingLeft="5dp" android:paddingRight="5dp" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold" android:text="Joint:" />
+                <TextView android:id="@+id/lblJoint" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5dp" android:text="1" />
+            
+                <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold" android:text="Class:" />
+                <TextView android:id="@+id/lblClass" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5dp" android:text="2" />
+                
+                <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold" android:text="Dia:" />
+                <TextView android:id="@+id/lblDia" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5dp" android:text="2" />
+                
+                <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold" android:text="Thikness:" />
+                <TextView android:id="@+id/lblJiontThk" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5dp" android:text="2" />
+                <RelativeLayout
+                    android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageButton
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lbliProjNo" 
-                    android:textColor="#555" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblcISO" 
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblcSpoolNo" 
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-               <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblcSpoolSize" 
-                    android:textColor="#555" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblcSpoolMaterial" 
-                    android:textColor="#555" />
+                    android:padding="8dp"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/btnDeSelect"
+                    android:src="@android:drawable/ic_menu_delete" />
+                    </RelativeLayout>
             </LinearLayout>
+            <View style="@style/dividerHorizontal" />
+            <LinearLayout android:paddingTop="5dp" android:paddingLeft="5dp" android:paddingRight="5dp" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="left">
+            <SearchableSpinner.Droid.Controls.SpinnerSearch
+                    android:id="@+id/spnWPS"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />    
+            </LinearLayout>
+            <LinearLayout android:paddingLeft="5dp" android:paddingRight="5dp" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="left">
+                <SearchableSpinner.Droid.Controls.MultiSpinnerSearch
+                    android:id="@+id/spnMultRH"
+                    android:textColor="@drawable/EnabledAndDisabledState"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:paddingBottom="5dp" android:paddingLeft="5dp" android:paddingRight="5dp" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="left">
+                <SearchableSpinner.Droid.Controls.MultiSpinnerSearch
+                    android:id="@+id/spnMultFC"
+                    android:textSize="16sp"
+                    android:textColor="@drawable/EnabledAndDisabledState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

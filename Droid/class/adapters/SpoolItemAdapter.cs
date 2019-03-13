@@ -45,8 +45,8 @@ namespace NPCCMobileApplications.Droid
             }
 
             h = (MyViewHolder)view.Tag;
-            h.drawable.SetStroke(3, Android.Graphics.Color.ParseColor("#" + _lstObjs[position].cColorCode.Split("~")[0]));
-            h.rectangle_at_the_top.SetBackgroundColor(Android.Graphics.Color.ParseColor("#" + _lstObjs[position].cColorCode.Split("~")[0]));
+            h.drawable.SetStroke(3, Android.Graphics.Color.ParseColor("#" + _lstObjs[position].cColorCode.Split("~")[0].Replace("#","")));
+            h.rectangle_at_the_top.SetBackgroundColor(Android.Graphics.Color.ParseColor("#" + _lstObjs[position].cColorCode.Split("~")[0].Replace("#", "")));
             h.cMatType.Text = _lstObjs[position].cMatType;
             h.cVocab.Text = _lstObjs[position].cVocab;
             h.cClassCode.Text = _lstObjs[position].cClassCode;

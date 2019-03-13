@@ -68,8 +68,8 @@ namespace NPCCMobileApplications.Droid
 
         void refresh_listAsync()
         {
+            Console.WriteLine("#####Start######");
             DBRepository dBRepository = new DBRepository();
-            dBRepository.CreateTable();
             Task.Run(async () => { 
                 await dBRepository.RefreshSpoolAsync(_assignment_Type);
             }).ContinueWith(fn => {
@@ -85,7 +85,6 @@ namespace NPCCMobileApplications.Droid
         public void fill_list()
         {
             DBRepository dBRepository = new DBRepository();
-            dBRepository.CreateTable();
             lstObjs = dBRepository.GetSpools(_assignment_Type);
             if (lstObjs != null && lstObjs.Count == 0)
             {

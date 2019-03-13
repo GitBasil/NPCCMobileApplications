@@ -4,8 +4,35 @@
     android:background="@drawable/bg" 
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout  android:background="@drawable/shadow" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:padding="5dp">
+        <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:textStyle="bold" android:text="Project:" />
+        <TextView android:id="@+id/lbliProjNo" android:layout_width="wrap_content" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:text="1" />
+
+        <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:textStyle="bold" android:text="ISO:" />
+        <TextView android:id="@+id/lblcISO" android:layout_width="wrap_content" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:text="2" />
+
+        <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:textStyle="bold" android:text="Spool No.:" />
+        <TextView android:id="@+id/lblcSpoolNo" android:layout_width="wrap_content" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:text="3" />
+    </LinearLayout>
+    <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mRecylcerID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+        </LinearLayout>
+    <LinearLayout
+    android:orientation="vertical"
+        android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/btnSubmitWeldLog"
+    android:text="Submit Weld log"
+    android:theme="@style/PrimaryFlatButton" />
+</LinearLayout>
 </LinearLayout>

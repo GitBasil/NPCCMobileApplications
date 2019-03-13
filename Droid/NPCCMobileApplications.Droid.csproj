@@ -229,10 +229,11 @@
     <Compile Include="Fragments\Pdfview_test.cs" />
     <Compile Include="class\clsScaleImage.cs" />
     <Compile Include="class\ExtraMenuActions.cs" />
-    <Compile Include="Fragments\assignment\dialogs\Assign.cs" />
     <Compile Include="class\adapters\CustomScrollListener.cs" />
     <Compile Include="Fragments\FillWeldLog.cs" />
     <Compile Include="class\adapters\JointsViewAdapter.cs" />
+    <Compile Include="Fragments\dialogs\Assign.cs" />
+    <Compile Include="Fragments\dialogs\SubmitWeldLog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -302,6 +303,7 @@
     <AndroidResource Include="Resources\drawable\buttonshape.xml" />
     <AndroidResource Include="Resources\layout\FillWeldLog.axml" />
     <AndroidResource Include="Resources\layout\JointCardView.axml" />
+    <AndroidResource Include="Resources\drawable\EnabledAndDisabledState.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
@@ -311,7 +313,7 @@
     <Folder Include="Fragments\CustomView\" />
     <Folder Include="Fragments\assignment\" />
     <Folder Include="class\adapters\" />
-    <Folder Include="Fragments\assignment\dialogs\" />
+    <Folder Include="Fragments\dialogs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPCCMobileApplications\NPCCMobileApplications.Library.csproj">

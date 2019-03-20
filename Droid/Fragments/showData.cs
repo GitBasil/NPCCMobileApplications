@@ -50,7 +50,7 @@ namespace NPCCMobileApplications.Droid
             mToolbar.NavigationIcon.SetColorFilter(Color.ParseColor("#FFFFFF"), PorterDuff.Mode.SrcAtop);
 
             SpoolItemListView = view.FindViewById<ListView>(Resource.Id.SpoolItemListView);
-            List<SpoolItem> lstSplItm = _spl.SpoolItem.OrderByDescending(o => o.cMatType, new common_functions.EmptyStringsAreLast()).ThenBy(b=>b.cClassCode).ToList();
+            List<SpoolItem> lstSplItm = _spl.SpoolItem.OrderBy(o => o.cMatType, new common_functions.EmptyStringsAreLast()).ThenBy(b=>b.cClassCode).ToList();
             SpoolItemListView.Adapter = new SpoolItemAdapter(this.Activity, lstSplItm);
 
             view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = _spl.cSpoolNo;

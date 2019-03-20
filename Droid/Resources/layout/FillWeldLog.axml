@@ -1,38 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@drawable/bg" 
+    android:background="#fff6f6f6"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout  android:background="@drawable/shadow" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:padding="5dp">
-        <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:textStyle="bold" android:text="Project:" />
-        <TextView android:id="@+id/lbliProjNo" android:layout_width="wrap_content" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:text="1" />
-
-        <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:textStyle="bold" android:text="ISO:" />
-        <TextView android:id="@+id/lblcISO" android:layout_width="wrap_content" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:text="2" />
-
-        <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:textStyle="bold" android:text="Spool No.:" />
-        <TextView android:id="@+id/lblcSpoolNo" android:layout_width="wrap_content" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:gravity="left" android:text="3" />
+    <LinearLayout
+        android:background="@drawable/shadow"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/darkBlue"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:text="Project:" />
+        <TextView
+            android:id="@+id/lbliProjNo"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="left"
+            android:text="1" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/darkBlue"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:text="ISO:" />
+        <TextView
+            android:id="@+id/lblcISO"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="left"
+            android:text="2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="@color/darkBlue"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:text="Spool No.:" />
+        <TextView
+            android:id="@+id/lblcSpoolNo"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="left"
+            android:text="3" />
+    </LinearLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:padding="5dp"
+        android:theme="@style/TextLabel">
+        <EditText
+            android:id="@+id/txtWeldDate"
+            android:textColor="@color/darkBlue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:editable="false"
+            android:hint="Welding Date" />
+    </android.support.design.widget.TextInputLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecylcerID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
     <LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mRecylcerID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-        </LinearLayout>
-    <LinearLayout
-    android:orientation="vertical"
+        android:orientation="vertical"
         android:gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnSubmitWeldLog"
-    android:text="Submit Weld log"
-    android:theme="@style/PrimaryFlatButton" />
-</LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSubmitWeldLog"
+            android:text="Submit Weld log"
+            android:theme="@style/PrimaryFlatButton" />
+    </LinearLayout>
 </LinearLayout>

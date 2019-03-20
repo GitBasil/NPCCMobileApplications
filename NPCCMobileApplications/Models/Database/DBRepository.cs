@@ -272,6 +272,27 @@ namespace NPCCMobileApplications.Library
             }
         }
 
+        public bool DeleteSpoolJoints(List<SpoolJoints> joints)
+        {
+            try
+            {
+                using (var cn = new SQLiteConnection(dbPath))
+                {
+                    foreach(var obj in joints)
+                    {
+                        var splJ = cn.Get<Spools>(obj.Id);
+                        cn.Delete(splJ);
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                npcc_services.inf_mobile_exception_managerAsync(ex.Message);
+                return false;
+            }
+        }
+
         #endregion
 
     }

@@ -157,7 +157,7 @@
       <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.28.0.0.1\lib\monoandroid81\Xamarin.Android.Support.v7.CardView.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Essentials">
-      <HintPath>..\packages\Xamarin.Essentials.1.0.1\lib\monoandroid81\Xamarin.Essentials.dll</HintPath>
+      <HintPath>..\packages\Xamarin.Essentials.1.1.0\lib\monoandroid81\Xamarin.Essentials.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing">
       <HintPath>..\packages\Syncfusion.Licensing.16.4.0.54\lib\MonoAndroid10\Syncfusion.Licensing.dll</HintPath>
@@ -304,6 +304,7 @@
     <AndroidResource Include="Resources\layout\FillWeldLog.axml" />
     <AndroidResource Include="Resources\layout\JointCardView.axml" />
     <AndroidResource Include="Resources\drawable\EnabledAndDisabledState.xml" />
+    <AndroidResource Include="Resources\layout\SubmitWeldLog.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />

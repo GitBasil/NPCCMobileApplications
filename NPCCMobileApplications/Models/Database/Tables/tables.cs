@@ -90,14 +90,23 @@ namespace NPCCMobileApplications.Library
         [ManyToOne]
         public Spools Spool { get; set; }
 
+        public string cProjType { get; set; }
+        public int iProjYear { get; set; }
+        public int iProjNo { get; set; }
+        public string cProjSuffix { get; set; }
+        public int iDrwgSrl { get; set; }
+        public int iSubDrwgSrl { get; set; }
         public short iJointNo { get; set; }
+        public short iJointSerial { get; set; }
         public string cJointSuffix { get; set; }
         public string cCreatedFor { get; set; }
         public string cJointType { get; set; }
         public string cClass { get; set; }
         public decimal rDia { get; set; }
         public decimal rLength { get; set; }
-        public decimal rJiontThk { get; set; }
+        public decimal rJointThk { get; set; }
+        public Nullable<decimal> iWeldLogNo { get; set; }
+        public Nullable<DateTime> dWeld { get; set; }
         public string cWPSCode { get; set; }
 
         [TextBlob("cRHWelders")]
@@ -106,7 +115,6 @@ namespace NPCCMobileApplications.Library
         [TextBlob("cFCWelders")]
         public List<string> cFCWelders { get; set; }
 
-        public decimal iWeldLogNo { get; set; }
 
         public static implicit operator Java.Lang.Object(SpoolJoints v)
         {

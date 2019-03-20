@@ -17,7 +17,6 @@ namespace NPCCMobileApplications.Library
     {
         public static async Task<WebServiceResault> inf_CallWebServiceAsync<WebServiceResault, post_data>(inf_method method, string url, post_data data = default(post_data))
         {
-
             var oauthToken = await SecureStorage.GetAsync("oauth_token");
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oauthToken);
@@ -54,16 +53,19 @@ namespace NPCCMobileApplications.Library
             catch (HttpRequestException e)
             {
                 inf_mobile_exception_managerAsync(e.Message);
-
                 return default(WebServiceResault);
             }
         }
 
         public static async void inf_mobile_exception_managerAsync(string ex)
         {
-            var oauthToken = await SecureStorage.GetAsync("oauth_token");
-            if (oauthToken != null)
-                await inf_CallWebServiceAsync<bool, bool>(inf_method.Get, "https://webapps.npcc.ae/ApplicationWebServices/api/Common/MobileExceptionManager?exception=" + ex);
+            if (ex.Trim().ToUpper() != "500 (Internal Server Error)".ToUpper())
+            {
+                var oauthToken = await SecureStorage.GetAsync("oauth_token");
+                if (oauthToken != null)
+                    await inf_CallWebServiceAsync<bool, bool>(inf_method.Get, "https://webapps.npcc.ae/ApplicationWebServices/api/Common/MobileExceptionManager?exception=" + ex);
+            }
+
         }
 
         static readonly string[] SizeSuffixes =

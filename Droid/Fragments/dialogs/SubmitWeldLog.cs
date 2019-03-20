@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Android.App;
 using Android.OS;
@@ -15,106 +16,113 @@ namespace NPCCMobileApplications.Droid
 {
     class SubmitWeldLog : DialogFragment
     {
-        SpinnerSearch SpnTest;
-        Spools _spl;
+        List<SpoolJoints> _splJoint;
         View view;
         AppCompatActivity act;
-        List<inf_userinfo> lstFabUsers;
-        SpoolsCardViewAdapter _ins;
-        int _position;
-        public SubmitWeldLog(Spools spl, SpoolsCardViewAdapter ins, int position)
+        SubmitWeldLog _exportFragment;
+        Button btnSubmit;
+        EditText txtWeldLogNo;
+        inf_ReturnStatus status;
+        JointsViewAdapter _jointsView;
+        public SubmitWeldLog(List<SpoolJoints> splJoint, JointsViewAdapter jointsView)
         {
-            _spl = spl;
-            _ins = ins;
-            _position = position;
+            _splJoint = splJoint;
+            _jointsView = jointsView;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            view = inflater.Inflate(Resource.Layout.Assign, container, false);
+            view = inflater.Inflate(Resource.Layout.SubmitWeldLog, container, false);
 
             //SET TITLE FOR DIALOG
-            this.Dialog.SetTitle("Assign");
-            Button btnSubmit = view.FindViewById<Button>(Resource.Id.btnSubmit);
-            SpnTest = view.FindViewById<SpinnerSearch>(Resource.Id.spnTest);
+            this.Dialog.SetTitle("SubmitWeldLog");
+            btnSubmit = view.FindViewById<Button>(Resource.Id.btnSubmit);
+            txtWeldLogNo = view.FindViewById<EditText>(Resource.Id.txtWeldLogNo);
+            _exportFragment = (SubmitWeldLog)FragmentManager.FindFragmentByTag("SubmitWeldLog");
 
-            btnSubmit.Click += BtnSubmit_ClickAsync;
+            btnSubmit.Click += BtnSubmit_Click;
             act = (AppCompatActivity)this.Activity;
-            fillFabList();
 
             return view;
         }
 
-        void fillFabList()
+        void BtnSubmit_Click(object sender, EventArgs e)
         {
-            Task.Run(async () => {
-                string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/GetFabricatorsList?iStationId=" + _spl.iStationId;
-                lstFabUsers = await npcc_services.inf_CallWebServiceAsync<List<inf_userinfo>, string>(inf_method.Get, url);
-            }).ContinueWith(fn => {
-                if (lstFabUsers != null)
-                    act.RunOnUiThread(() => {
-                        var items = new List<SpinnerItem>();
-                        foreach (inf_userinfo fabUser in lstFabUsers)
-                        {
-                            items.Add(new SpinnerItem { Name = fabUser.cFullName, Item = fabUser });
-                        }
-
-                        SpnTest.SpinnerTitle = "Select user from the list";
-                        SpnTest.SetItems(items, -1, null);
-                    });
-            });
-        }
-
-
-        async void BtnSubmit_ClickAsync(object sender, EventArgs e)
-        {
-            if (SpnTest.GetSelectedItem() != null)
+            try
             {
-                inf_userinfo fabUser = (inf_userinfo)SpnTest.GetSelectedItem().Item;
+                var lstFJ = _splJoint.Where((arg) => arg.cWPSCode != null).ToList();
 
-
-                string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/assignfabricator";
-
-                inf_assignment objAssignment = new inf_assignment();
-                objAssignment.iAssignmentId = _spl.iAssignmentId;
-                objAssignment.cFabricatorUser = fabUser.cUsername;
-
-                int assignRes = await npcc_services.inf_CallWebServiceAsync<int, inf_assignment>(inf_method.Post, url, objAssignment);
-                if (assignRes == 1)
+                if (lstFJ.Any())
                 {
-                    DBRepository dBRepository = new DBRepository();
-                    _spl.cStatus = "F";
-                    dBRepository.UpdateSpool(_spl);
+                    int WldrFilled = lstFJ.Where(c => c.cRHWelders == null && c.cFCWelders == null).Count();
+                    if (WldrFilled == 0)
+                    {
+                        if (txtWeldLogNo.Text.Trim() != "")
+                        {
 
-                    common_functions.DisplayToast("Task assigned successfully!!", Context);
-                }
-                else if (assignRes == 2)
-                {
-                    DBRepository dBRepository = new DBRepository();
-                    _spl.cStatus = "F";
-                    dBRepository.UpdateSpool(_spl);
+                            Task.Run(async () => {
+                                string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/FillWeldLog";
+                                status = await npcc_services.inf_CallWebServiceAsync<inf_ReturnStatus, List< inf_SpoolJoints>>(inf_method.Post, url, lstFJ.Select(c=>new inf_SpoolJoints { cProjType=c.cProjType, iProjYear=c.iProjYear, iProjNo=c.iProjNo, cProjSuffix=c.cProjSuffix, iDrwgSrl=c.iDrwgSrl, iSubDrwgSrl=c.iSubDrwgSrl, iJointNo=c.iJointNo, iJointSerial=c.iJointSerial, cJointSuffix=c.cJointSuffix, cCreatedFor=c.cCreatedFor, cJointType=c.cJointType, cClass=c.cClass, rDia=c.rDia, rLength=c.rLength, rJointThk=c.rJointThk, cWPSCode=c.cWPSCode, iWeldLogNo=c.iWeldLogNo, dWeld=c.dWeld, cRHWelders=c.cRHWelders, cFCWelders=c.cFCWelders }).ToList());
+                            }).ContinueWith(fn => {
+                                act.RunOnUiThread(() => {
+                                    if (status != null && status.status)
+                                    {
+                                        DBRepository dBRepository = new DBRepository();
+                                        dBRepository.DeleteSpoolJoints(lstFJ);
 
-                    _ins._lsObjs.RemoveAt(_position);
-                    _ins.NotifyItemRemoved(_position);
-                    _ins.NotifyItemRangeChanged(_position, _ins._lsObjs.Count);
+                                        _jointsView._lsObjs.RemoveAll(c => lstFJ.Contains(c));
+                                        _jointsView.NotifyDataSetChanged();
 
-                    common_functions.DisplayToast("Task assigned successfully!!", Context);
+                                        if (_exportFragment != null)
+                                        {
+                                            _exportFragment.Dismiss();
+                                        }
+                                        common_functions.DisplayToast("Weld log filled successfully!!", Context);
+                                    }
+                                    else
+                                    {
+                                        if (_exportFragment != null)
+                                        {
+                                            _exportFragment.Dismiss();
+                                        }
+                                        string msg;
+                                        if (status == null)
+                                            msg = "API request error, Please contact the administrator!!";
+                                        else
+                                            msg = status.msg;
+
+                                        common_functions.DisplayToast(msg, Context);
+                                    }
+                                });
+                            });
+                        }
+                        else
+                        {
+                            common_functions.DisplayToast("Please fill the weld log number!!", Context);
+                        }
+                    }
+                    else
+                    {
+                        if (_exportFragment != null)
+                        {
+                            _exportFragment.Dismiss();
+                        }
+                        common_functions.DisplayToast("You have to select at least one welder for each joint!!", Context);
+                    }
+
                 }
                 else
                 {
-                    common_functions.DisplayToast("Error occurred while assigning the task, contact system admin!!", Context);
-                }
-
-
-                Assign _exportFragment = (Assign)FragmentManager.FindFragmentByTag("Assign");
-                if (_exportFragment != null)
-                {
-                    _exportFragment.Dismiss();
+                    if (_exportFragment != null)
+                    {
+                        _exportFragment.Dismiss();
+                    }
+                    common_functions.DisplayToast("You have to fill at least one joint!!", Context);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                common_functions.DisplayToast("You have to select a user!!", Context);
+                npcc_services.inf_mobile_exception_managerAsync(ex.Message);
             }
         }
 

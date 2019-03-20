@@ -48,6 +48,7 @@ namespace NPCCMobileApplications.Droid
         void fillFabList()
         {
             Task.Run(async () => {
+                SpnTest.Enabled = false;
                 string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/GetFabricatorsList?iStationId=" + _spl.iStationId;
                 lstFabUsers = await npcc_services.inf_CallWebServiceAsync<List<inf_userinfo>, string>(inf_method.Get, url);
             }).ContinueWith(fn => {
@@ -61,6 +62,7 @@ namespace NPCCMobileApplications.Droid
 
                     SpnTest.SpinnerTitle = "Select user from the list";
                     SpnTest.SetItems(items, -1, null);
+                    SpnTest.Enabled = true;
                 });
             });
         }

@@ -20,18 +20,21 @@ using Java.Interop;
 using NPCCMobileApplications.Library;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using SupportFragment = Android.Support.V4.App.Fragment;
+using System.Globalization;
 
 namespace NPCCMobileApplications.Droid
 {
-    public class FillWeldLog : SupportFragment
+    public class FillWeldLog : SupportFragment, DatePickerDialog.IOnDateSetListener
     {
         FrameLayout mFragmentContainer;
         AppCompatActivity act;
         private RecyclerView rv;
         private JointsViewAdapter adapter;
         Spools _spl;
+        string _dWeld;
         SupportToolbar mToolbar;
         Button btnSubmitWeldLog;
+        EditText txtWeldDate;
 
         public FillWeldLog(Spools spl)
         {
@@ -60,6 +63,22 @@ namespace NPCCMobileApplications.Droid
             view.FindViewById<TextView>(Resource.Id.lblcISO).Text = _spl.cISO.Trim();
             view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = _spl.cSpoolNo.Trim();
 
+            txtWeldDate = view.FindViewById<EditText>(Resource.Id.txtWeldDate);
+            txtWeldDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            _dWeld = DateTime.Now.ToString("yyyyMMdd");
+            txtWeldDate.Click += (sender, e) =>
+            {
+                CultureInfo provider= CultureInfo.InvariantCulture;
+                DateTime dateTime = DateTime.ParseExact(txtWeldDate.Text, "dd/MM/yyyy", provider);
+
+                DatePickerDialog datePicker = new DatePickerDialog(this.Context, this, dateTime.Year, dateTime.Month -1, dateTime.Day);
+                datePicker.Show();
+            };
+
+            txtWeldDate.AfterTextChanged += (sender, e) => {
+                fill_list();
+            };
+
             btnSubmitWeldLog = view.FindViewById<Button>(Resource.Id.btnSubmitWeldLog);
             btnSubmitWeldLog.Click += BtnSubmitWeldLog_Click;
 
@@ -73,15 +92,24 @@ namespace NPCCMobileApplications.Droid
             return view;
         }
 
+
+        public void OnDateSet(DatePicker view, int year, int month, int dayOfMonth)
+        {
+            month += 1;
+            _dWeld = year.ToString() + month.ToString("00") + dayOfMonth.ToString("00");
+            txtWeldDate.Text = new DateTime(year, month, dayOfMonth).ToString("dd/MM/yyyy");
+        }
+
         void BtnSubmitWeldLog_Click(object sender, EventArgs e)
         {
-            //adapter.
+            var dialog = new SubmitWeldLog(adapter._lsObjs, adapter._ins);
+            dialog.Show(act.FragmentManager, "SubmitWeldLog");
         }
 
 
         public void fill_list()
         {
-            adapter = new JointsViewAdapter(act, this, _spl.SpoolJoints);
+            adapter = new JointsViewAdapter(act, this, _spl.SpoolJoints, _dWeld);
             rv.SetAdapter(adapter);
         }
 

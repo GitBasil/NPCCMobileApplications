@@ -29,7 +29,7 @@
                 <TextView android:id="@+id/lblDia" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5dp" android:text="2" />
                 
                 <TextView android:layout_width="wrap_content" android:textColor="@color/darkBlue" android:textSize="18sp" android:layout_height="wrap_content" android:padding="5dp" android:textStyle="bold" android:text="Thikness:" />
-                <TextView android:id="@+id/lblJiontThk" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5dp" android:text="2" />
+                <TextView android:id="@+id/lblJointThk" android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5dp" android:text="2" />
                 <RelativeLayout
                     android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -48,6 +48,7 @@
             <SearchableSpinner.Droid.Controls.SpinnerSearch
                     android:id="@+id/spnWPS"
                     android:textSize="16sp"
+                    android:visibility="invisible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />    
             </LinearLayout>
@@ -56,6 +57,7 @@
                     android:id="@+id/spnMultRH"
                     android:textColor="@drawable/EnabledAndDisabledState"
                     android:textSize="16sp"
+                    android:visibility="invisible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -63,6 +65,7 @@
                 <SearchableSpinner.Droid.Controls.MultiSpinnerSearch
                     android:id="@+id/spnMultFC"
                     android:textSize="16sp"
+                    android:visibility="invisible"
                     android:textColor="@drawable/EnabledAndDisabledState"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Android.Graphics;
-using Java.Lang;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
 
@@ -44,16 +42,6 @@ namespace NPCCMobileApplications.Library
         public string cForemanUser { get; set; }
         public string cStatus { get; set; }
         public string icon { get; set; }
-
-        public static explicit operator Spools(Java.Lang.Object v)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static explicit operator Spools(PropertyInfo v)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     [Table("SpoolItem")]
@@ -69,16 +57,6 @@ namespace NPCCMobileApplications.Library
         public string cVocab { get; set; }
         public string cClassCode { get; set; }
         public string cColorCode { get; set; }
-
-        public static implicit operator Java.Lang.Object(SpoolItem v)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static explicit operator SpoolItem(Java.Lang.Object v)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     [Table("SpoolJoints")]
@@ -114,17 +92,6 @@ namespace NPCCMobileApplications.Library
 
         [TextBlob("cFCWelders")]
         public List<string> cFCWelders { get; set; }
-
-
-        public static implicit operator Java.Lang.Object(SpoolJoints v)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static explicit operator SpoolJoints(Java.Lang.Object v)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     [Table("UserInfo")]
@@ -134,15 +101,5 @@ namespace NPCCMobileApplications.Library
         public string fullname { get; set; }
         public byte[] img { get; set; }
         public string group { get; set; }
-
-        public static explicit operator UserInfo(Java.Lang.Object v)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static explicit operator UserInfo(PropertyInfo v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

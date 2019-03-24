@@ -6,7 +6,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Android.Graphics;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 using static NPCCMobileApplications.Library.npcc_types;

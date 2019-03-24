@@ -41,7 +41,7 @@ namespace NPCCMobileApplications.Droid
             _lvw = view.FindViewById<ListView>(Resource.Id.customListView);
             _swipeRefresh.Refresh += _swipeRefresh_Refresh;
 
-            _lvw.ItemClick += _lvw_ItemClick;
+            //_lvw.ItemClick += _lvw_ItemClick;
 
             first_fill();
 
@@ -53,14 +53,14 @@ namespace NPCCMobileApplications.Droid
             fill_list();
         }
 
-        void _lvw_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
-        {
-            var SelObjId = e.Position;
+        //void _lvw_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        //{
+        //    var SelObjId = e.Position;
 
-            Spools selectedSp = (Spools)_lvw.GetItemAtPosition(e.Position);
-            showData mshowData = new showData(selectedSp);
-            common_functions.npcc_show_fragment(act, mFragmentContainer, mshowData, this);
-        }
+        //    Spools selectedSp = (Spools)_lvw.GetItemAtPosition(e.Position);
+        //    showData mshowData = new showData(selectedSp);
+        //    common_functions.npcc_show_fragment(act, mFragmentContainer, mshowData, this);
+        //}
 
         void first_fill(){
             DBRepository dBRepository = new DBRepository();

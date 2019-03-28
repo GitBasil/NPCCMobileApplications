@@ -17,6 +17,8 @@
             android:textColor="@color/darkBlue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
             android:hint="Weld log No." />
     </android.support.design.widget.TextInputLayout>
     <Button

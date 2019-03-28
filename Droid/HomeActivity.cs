@@ -24,7 +24,7 @@ using System;
 namespace NPCCMobileApplications.Droid
 {
     [Activity(Theme = "@style/AppTheme", ScreenOrientation = ScreenOrientation.Portrait)]
-    public class HomeActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
+    public class HomeActivity : AppCompatActivity
     {
         private FrameLayout mFragmentContainer;
         private DrawerLayout drawer;
@@ -49,7 +49,7 @@ namespace NPCCMobileApplications.Droid
             SetContentView(Resource.Layout.Home);
 
             drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            var menuLeft = FindViewById<Button>(Resource.Id.menuLeft);
+            Button menuLeft = FindViewById<Button>(Resource.Id.menuLeft);
 
             menuLeft.Click += (sender, args) =>
             {
@@ -66,7 +66,7 @@ namespace NPCCMobileApplications.Droid
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetCheckedItem(Resource.Id.assignment_page);
 
-            navigationView.SetNavigationItemSelectedListener(this);
+            //navigationView.SetNavigationItemSelectedListener(this);
 
 
             DBRepository dBRepository = new DBRepository();

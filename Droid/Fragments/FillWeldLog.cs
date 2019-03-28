@@ -31,7 +31,7 @@ namespace NPCCMobileApplications.Droid
         private RecyclerView rv;
         private JointsViewAdapter adapter;
         Spools _spl;
-        string _dWeld;
+        DateTime _dWeld;
         SupportToolbar mToolbar;
         Button btnSubmitWeldLog;
         EditText txtWeldDate;
@@ -64,14 +64,18 @@ namespace NPCCMobileApplications.Droid
             view.FindViewById<TextView>(Resource.Id.lblcSpoolNo).Text = _spl.cSpoolNo.Trim();
 
             txtWeldDate = view.FindViewById<EditText>(Resource.Id.txtWeldDate);
-            txtWeldDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            _dWeld = DateTime.Now.ToString("yyyyMMdd");
+            _dWeld = DateTime.Now;
+            txtWeldDate.Text = _dWeld.ToString("dd/MM/yyyy");
             txtWeldDate.Click += (sender, e) =>
             {
                 CultureInfo provider= CultureInfo.InvariantCulture;
                 DateTime dateTime = DateTime.ParseExact(txtWeldDate.Text, "dd/MM/yyyy", provider);
 
                 DatePickerDialog datePicker = new DatePickerDialog(this.Context, this, dateTime.Year, dateTime.Month -1, dateTime.Day);
+                DateTime baseDate = new DateTime(1970, 1, 1);
+                TimeSpan diff = DateTime.Now - baseDate;
+
+                datePicker.DatePicker.MaxDate =(long)diff.TotalMilliseconds;
                 datePicker.Show();
             };
 
@@ -96,8 +100,8 @@ namespace NPCCMobileApplications.Droid
         public void OnDateSet(DatePicker view, int year, int month, int dayOfMonth)
         {
             month += 1;
-            _dWeld = year.ToString() + month.ToString("00") + dayOfMonth.ToString("00");
-            txtWeldDate.Text = new DateTime(year, month, dayOfMonth).ToString("dd/MM/yyyy");
+            _dWeld = new DateTime(year, month, dayOfMonth);
+            txtWeldDate.Text = _dWeld.ToString("dd/MM/yyyy");
         }
 
         void BtnSubmitWeldLog_Click(object sender, EventArgs e)

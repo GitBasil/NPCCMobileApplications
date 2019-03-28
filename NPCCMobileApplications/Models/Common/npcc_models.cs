@@ -89,6 +89,8 @@ namespace NPCCMobileApplications.Library
         public Nullable<decimal> iWeldLogNo { get; set; }
         public Nullable<DateTime> dWeld { get; set; }
         public string cWPSCode { get; set; }
+        public string cJointAreaCode { get; set; }
+        public string cMatType { get; set; }
         public List<string> cRHWelders { get; set; }
         public List<string> cFCWelders { get; set; }
     }

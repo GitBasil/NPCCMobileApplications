@@ -23,14 +23,14 @@ namespace NPCCMobileApplications.Droid
         public List<SpoolJoints> _lsObjs { get; set; }
         private AppCompatActivity _currentContext;
         private SpoolJoints _splJ;
-        private string _dWeld;
+        private DateTime _dWeld;
         private SupportFragment _fragment;
         FrameLayout mFragmentContainer;
         public JointsViewAdapter _ins;
         List<inf_JointWPS> lstJointWPS;
         List<inf_JointWelder> lstJointWelders;
 
-        public JointsViewAdapter(AppCompatActivity currentContext, SupportFragment fragment, List<SpoolJoints> lsObjs, string dWeld)
+        public JointsViewAdapter(AppCompatActivity currentContext, SupportFragment fragment, List<SpoolJoints> lsObjs, DateTime dWeld)
         {
             _ins = this;
             this._lsObjs = lsObjs;
@@ -46,6 +46,7 @@ namespace NPCCMobileApplications.Droid
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             _splJ = _lsObjs[position];
+            _splJ.dWeld = _dWeld;
             MyViewHolder h = holder as MyViewHolder;
             h.lblJointNo.Text = _splJ.iJointNo.ToString() + _splJ.cJointSuffix.Trim() + _splJ.cCreatedFor.Trim();
             h.lblClass.Text = _splJ.cClass;
@@ -57,8 +58,8 @@ namespace NPCCMobileApplications.Droid
             h.btnDeSelect.Click += (sender, e) => {
                 h.SpnWPS.SetItems(h.SpnWPS.Items.Select(c => { c.IsSelected = false; return c; }).ToList(), -1, null);
                 _lsObjs[(int)((ImageButton)sender).Tag].cWPSCode = null;
-                 _lsObjs[(int)((ImageButton)sender).Tag].cFCWelders = null;
-                 _lsObjs[(int)((ImageButton)sender).Tag].cRHWelders = null;
+                _lsObjs[(int)((ImageButton)sender).Tag].cFCWelders = null;
+                _lsObjs[(int)((ImageButton)sender).Tag].cRHWelders = null;
             };
 
             bindWPSData(h, position);
@@ -96,6 +97,8 @@ namespace NPCCMobileApplications.Droid
                 if (((SpinnerSearch)sender).GetSelectedItem() != null)
                 {
                     _lsObjs[(int)((SpinnerSearch)sender).Tag].cWPSCode = ((inf_JointWPS)((SpinnerSearch)sender).GetSelectedItem().Item).cWPSCode;
+                    _lsObjs[(int)((SpinnerSearch)sender).Tag].cFCWelders = null;
+                    _lsObjs[(int)((SpinnerSearch)sender).Tag].cRHWelders = null;
 
                     bindWeldersData(h, position, (inf_JointWPS)((SpinnerSearch)sender).GetSelectedItem().Item);
 
@@ -105,6 +108,10 @@ namespace NPCCMobileApplications.Droid
                 }
                 else
                 {
+                    _lsObjs[(int)((SpinnerSearch)sender).Tag].cWPSCode = null;
+                    _lsObjs[(int)((SpinnerSearch)sender).Tag].cFCWelders = null;
+                    _lsObjs[(int)((SpinnerSearch)sender).Tag].cRHWelders = null;
+
                     h.SpnMultiFC.Visibility = ViewStates.Invisible;
                     h.SpnMultiRH.Visibility = ViewStates.Invisible;
                     h.btnDeSelect.Visibility = ViewStates.Invisible;
@@ -122,7 +129,7 @@ namespace NPCCMobileApplications.Droid
             Task.Run(async () => {
                 h.SpnMultiFC.Enabled = false;
                 h.SpnMultiRH.Enabled = false;
-                string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/GetWeldersList?iProjectId=" + _splJ.Spool.iProjectId + "&cJointType=" + _splJ.cJointType.Trim() + "&rDia=" + _splJ.rDia + "&cQualRefKey=" + objWPS.cQualRefKey.Trim() + "&dWeld=" + _dWeld;
+                string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/GetWeldersList?iProjectId=" + _splJ.Spool.iProjectId + "&cJointType=" + _splJ.cJointType.Trim() + "&rDia=" + _splJ.rDia + "&cQualRefKey=" + objWPS.cQualRefKey.Trim() + "&dWeld=" + _dWeld.ToString("yyyyMMdd");
                 lstJointWelders = await npcc_services.inf_CallWebServiceAsync<List<inf_JointWelder>, string>(inf_method.Get, url);
             }).ContinueWith(fn => {
                 if (lstJointWelders != null)
@@ -155,6 +162,10 @@ namespace NPCCMobileApplications.Droid
                 {
                     _lsObjs[(int)((MultiSpinnerSearch)sender).Tag].cRHWelders = ((MultiSpinnerSearch)sender).GetSelectedItems().Select(r => ((inf_JointWelder)r.Item).cBadgeNo).ToList();
                 }
+                else
+                {
+                    _lsObjs[(int)((MultiSpinnerSearch)sender).Tag].cRHWelders = null;
+                }
             };
 
             h.SpnMultiFC.SpinnerTitle = "Select FC Welders";
@@ -166,6 +177,10 @@ namespace NPCCMobileApplications.Droid
                 if (((MultiSpinnerSearch)sender).GetSelectedItems().Any())
                 {
                     _lsObjs[(int)((MultiSpinnerSearch)sender).Tag].cFCWelders = ((MultiSpinnerSearch)sender).GetSelectedItems().Select(r => ((inf_JointWelder)r.Item).cBadgeNo).ToList();
+                }
+                else
+                {
+                    _lsObjs[(int)((MultiSpinnerSearch)sender).Tag].cFCWelders = null;
                 }
             };
         }

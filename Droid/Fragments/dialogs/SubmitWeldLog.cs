@@ -8,6 +8,7 @@ using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 using NPCCMobileApplications.Library;
 using SearchableSpinner.Droid.Controls;
 using static NPCCMobileApplications.Library.npcc_types;
@@ -59,10 +60,12 @@ namespace NPCCMobileApplications.Droid
                     {
                         if (txtWeldLogNo.Text.Trim() != "")
                         {
-
+                            decimal iWeldLogNo = Convert.ToDecimal(txtWeldLogNo.Text.Trim());
                             Task.Run(async () => {
                                 string url = "https://webapps.npcc.ae/ApplicationWebServices/api/paperless/FillWeldLog";
-                                status = await npcc_services.inf_CallWebServiceAsync<inf_ReturnStatus, List< inf_SpoolJoints>>(inf_method.Post, url, lstFJ.Select(c=>new inf_SpoolJoints { cProjType=c.cProjType, iProjYear=c.iProjYear, iProjNo=c.iProjNo, cProjSuffix=c.cProjSuffix, iDrwgSrl=c.iDrwgSrl, iSubDrwgSrl=c.iSubDrwgSrl, iJointNo=c.iJointNo, iJointSerial=c.iJointSerial, cJointSuffix=c.cJointSuffix, cCreatedFor=c.cCreatedFor, cJointType=c.cJointType, cClass=c.cClass, rDia=c.rDia, rLength=c.rLength, rJointThk=c.rJointThk, cWPSCode=c.cWPSCode, iWeldLogNo=c.iWeldLogNo, dWeld=c.dWeld, cRHWelders=c.cRHWelders, cFCWelders=c.cFCWelders }).ToList());
+                                List<inf_SpoolJoints> lsFinal = lstFJ.Select(c => new inf_SpoolJoints { cProjType = c.cProjType, iProjYear = c.iProjYear, iProjNo = c.iProjNo, cProjSuffix = c.cProjSuffix, iDrwgSrl = c.iDrwgSrl, iSubDrwgSrl = c.iSubDrwgSrl, iJointNo = c.iJointNo, iJointSerial = c.iJointSerial, cJointSuffix = c.cJointSuffix, cCreatedFor = c.cCreatedFor, cJointType = c.cJointType, cClass = c.cClass, rDia = c.rDia, rLength = c.rLength, rJointThk = c.rJointThk, cWPSCode = c.cWPSCode, iWeldLogNo = iWeldLogNo, dWeld = c.dWeld, cRHWelders = c.cRHWelders, cFCWelders = c.cFCWelders, cJointAreaCode = c.cJointAreaCode, cMatType=c.cMatType }).ToList();
+                                Console.WriteLine(JsonConvert.SerializeObject(lsFinal));
+                                 status = await npcc_services.inf_CallWebServiceAsync<inf_ReturnStatus, List< inf_SpoolJoints>>(inf_method.Post, url, lsFinal);
                             }).ContinueWith(fn => {
                                 act.RunOnUiThread(() => {
                                     if (status != null && status.status)
